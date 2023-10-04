@@ -87,8 +87,8 @@ public class Receta {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 				name="recetas_favoritas",
-				joinColumns = @JoinColumn(name="receta_id"), //ID de la clase en la que estoy
-				inverseJoinColumns = @JoinColumn(name="usuario_id") //ID de la contraparte
+				joinColumns = @JoinColumn(name="receta_id"), 
+				inverseJoinColumns = @JoinColumn(name="usuario_id") 
 				)
 	private List<Usuario> usuarios;
 	

@@ -86,6 +86,9 @@ public class Usuario {
 	@OneToMany(mappedBy="redactor", fetch=FetchType.LAZY)
 	private List<Comentario> comentarios; 
 	
+	@OneToMany(mappedBy="creadorProducto", fetch=FetchType.LAZY)
+	private List<Producto> misProductos; 
+	
 	
 	// GETTERS Y SETTERS
 	
@@ -167,7 +170,12 @@ public class Usuario {
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
-	
+	public List<Producto> getMisProductos() {
+		return misProductos;
+	}
+	public void setMisProductos(List<Producto> misProductos) {
+		this.misProductos = misProductos;
+	}
 	
 	// PREPERSIST
 
