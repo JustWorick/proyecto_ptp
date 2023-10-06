@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -37,6 +38,9 @@ public class Producto {
 	
 	@NotEmpty(message="Este Campo no puede estar vacio")
 	private String descripcion;
+	
+	@OneToMany(mappedBy="productoImg", fetch=FetchType.LAZY)
+	private List<Imagen> imagenesPro;
 	
 	/*
 		
@@ -135,10 +139,16 @@ public class Producto {
 	public void setCreadorProducto(Usuario creadorProducto) {
 		this.creadorProducto = creadorProducto;
 	}     
+	public List<Imagen> getImagenesPro() {
+		return imagenesPro;
+	}
+	public void setImagenesPro(List<Imagen> imagenesPro) {
+		this.imagenesPro = imagenesPro;
+	}
 	
 	
 	// PREPERSIST
-
+	
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 

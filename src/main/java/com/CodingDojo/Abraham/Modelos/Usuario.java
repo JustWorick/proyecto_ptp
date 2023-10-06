@@ -78,8 +78,8 @@ public class Usuario {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 				name="recetas_favoritas",
-				joinColumns = @JoinColumn(name="usuario_id"), //ID de la clase en la que estoy
-				inverseJoinColumns = @JoinColumn(name="receta_id") //ID de la contraparte
+				joinColumns = @JoinColumn(name="usuario_id"), 
+				inverseJoinColumns = @JoinColumn(name="receta_id")  
 				)
 	private List<Receta> misRecetasFav;
 	
@@ -88,6 +88,12 @@ public class Usuario {
 	
 	@OneToMany(mappedBy="creadorProducto", fetch=FetchType.LAZY)
 	private List<Producto> misProductos; 
+	
+	@OneToMany(mappedBy="creadorImg", fetch=FetchType.LAZY)
+	private List<Imagen> misImagenes; 
+	
+	@OneToMany(mappedBy="creadorVid", fetch=FetchType.LAZY)
+	private List<Video> misVideos; 
 	
 	
 	// GETTERS Y SETTERS
@@ -176,6 +182,19 @@ public class Usuario {
 	public void setMisProductos(List<Producto> misProductos) {
 		this.misProductos = misProductos;
 	}
+	public List<Imagen> getMisImagenes() {
+		return misImagenes;
+	}
+	public void setMisImagenes(List<Imagen> misImagenes) {
+		this.misImagenes = misImagenes;
+	}
+	public List<Video> getMisVideos() {
+		return misVideos;
+	}
+	public void setMisVideos(List<Video> misVideos) {
+		this.misVideos = misVideos;
+	}
+	
 	
 	// PREPERSIST
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,6 +17,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -94,6 +96,12 @@ public class Receta {
 	
 	@OneToMany(mappedBy="recipe", fetch=FetchType.LAZY)
 	private List<Comentario> comentariosDeReceta;
+	 
+	@OneToMany(mappedBy="recetaImg", fetch=FetchType.LAZY)
+	private List<Imagen> imagenesRec; 
+	
+	@OneToOne(mappedBy="recetasVid", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Video videoRec;
 	
 	
 	// GETTERS Y SETTERS
@@ -188,6 +196,19 @@ public class Receta {
 	public void setComentariosDeReceta(List<Comentario> comentariosDeReceta) {
 		this.comentariosDeReceta = comentariosDeReceta;
 	}
+	public List<Imagen> getImagenesRec() {
+		return imagenesRec;
+	}
+	public void setImagenesRec(List<Imagen> imagenesRec) {
+		this.imagenesRec = imagenesRec;
+	}
+	public Video getVideoRec() {
+		return videoRec;
+	}
+	public void setVideoRec(Video videoRec) {
+		this.videoRec = videoRec;
+	}
+	
 	
 	// PREPERSIST
 
