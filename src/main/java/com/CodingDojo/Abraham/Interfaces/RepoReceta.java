@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Receta;
 
 public interface RepoReceta extends CrudRepository<Receta, Long>{
