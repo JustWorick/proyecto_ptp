@@ -213,16 +213,13 @@ public class Receta {
 	// PREPERSIST
 
 	@PrePersist
-    public void calcularValoracionFinal() {
-        if (numeroValoraciones == 0) {
-        	valoracionFinal = 0.0;
-        } else {
-        	valoracionFinal = valoracionTotal / numeroValoraciones;
-        }
-    }
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date(); 
+	public void beforePersist() {
+	    if (numeroValoraciones == 0) {
+	        valoracionFinal = 0.0;
+	    } else {
+	        valoracionFinal = valoracionTotal / numeroValoraciones;
+	    }
+	    this.createdAt = new Date();
 	}
 	@PreUpdate
 	protected void onUpdate() {
