@@ -22,7 +22,7 @@
       src="https://kit.fontawesome.com/c6f3fdb2bb.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/style/login.css" />
     <title>Life | Login</title>
   </head>
   <body class="bg-dark">
@@ -55,7 +55,7 @@
             <div class="carousel-inner">
               <div class="carousel-item active img-1 min-vh-100">
                 <img
-                  src="img/fotoCarruselLogin3.jpg"
+                  src="/src/main/resources/static/public/img/fotoCarruselLogin3.jpg"
                   class="d-block w-100"
                   alt="..."
                 />
@@ -66,7 +66,7 @@
               </div>
               <div class="carousel-item img-2">
                 <img
-                  src="img/fotoCarruselLogin2"
+                  src="/src/main/resources/static/public/img/fotoCarruselLogin2"
                   class="d-block w-100"
                   alt="..."
                 />
@@ -77,7 +77,7 @@
               </div>
               <div class="carousel-item img-3">
                 <img
-                  src="img/fotoCarruselLogin1"
+                  src="/src/main/resources/static/public/img/fotoCarruselLogin1"
                   class="d-block w-100"
                   alt="..."
                 />
@@ -116,7 +116,7 @@
         <div class="col-lg-5 d-flex flex-column justify-content-around">
           <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-0"> 
             <img
-              src="img/logo.png" 
+              src="/src/main/resources/static/public/img/logo.png" 
               alt="logoLife"
               class="img- mb-0"
               width="100px"

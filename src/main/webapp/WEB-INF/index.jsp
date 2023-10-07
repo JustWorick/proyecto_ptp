@@ -12,7 +12,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="/src/main/resources/static/style/index.css" />
     <title>Life</title>
   </head>
   <body class="vh-100 overflow-hidden">
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="img/logo.png" alt="logoLife" width="120px" />
+          <img src="/src/main/resources/static/public/img/logo.png" alt="logoLife" width="120px" />
           <!--Cambiar Logo-->
         </a>
         <button
