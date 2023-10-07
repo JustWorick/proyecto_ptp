@@ -1,0 +1,25 @@
+:root {
+  --green: #447a1c;
+  --orange: #f19820;
+  --light: #ffffff;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  color: var(--light);
+}
+
+.bg-dark {
+  background-color: var(--green) !important;
+}
+
+.bg-dark-x {
+  background-color: var(--light);
+}
+
+.form-control,
+.btn {
+  min-height: 3.125rem;
+  line-height: initial;
+}
