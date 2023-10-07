@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mis Recetas</title>
+<title>Receta</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
+	<nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
         <div class="container">
             <a class="navbar-brand" href="#">
             <img src="img/logo.png" alt="logoLife" width="120px" />
@@ -88,44 +90,26 @@
     </nav>
 	<div class="contenido">
         <header class="d-flex justify-content-between align-items-center">
-            <h1>Mis Recetas</h1>
+            <h1>${receta.nombre}</h1>
         </header>
-        <p>Aquí podrás encontrar todas las recetas que haz publicado</p>    
-        <form action="/busqueda" method="post" class="row">
-            <div class="col-7">
-                <input type="text" name="palabra" class="form-control" placeholder="busca entre tus recetas">
-                </div>	
-                <input type="submit" value="Buscar" class="btn btn-primary col-1">
-        </form>
-            
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Valoración</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${MisRecetas}" var="receta">
-                    <tr>
-                        <td><a href="/show/${receta.id}">${receta.nombre}</a></td>
-                        <td>${receta.valoracionFinal}</td>
-                        <td>
-                            <!--Editar y eliminar una receta solo si es el autor-->
-							<c:if test="${receta.autor.id == usuarioEnSesion.id}">
-							<!-- si es autor entonces se muestran los botones -->
-								<a href="/editar/${receta.id}" class="btn btn-warning">Editar</a>
-							</c:if>
-							<c:if test="${receta.autor.id == usuarioEnSesion.id}">
-								<a href="/eliminar/${receta.id}" class="btn btn-danger">Eliminar receta</a>
-							</c:if>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <p>${receta.descripcion}</p>
+        <div>
+            <!--Número de valoraciones y volaración final-->
+            <p>${receta.numeroValoraciones}</p>
+            <p>${receta.valoracionFinal}</p>
+        </div>
+        <p>Porciones ${receta.porciones}</p>
+        <p>Tiempo de preparación</p>
+        <!--Ingredientes-->
+        <ul>
+            <c:forEach items="ingredientes" var="ingrediente">
+                <li>${ingrediente}</li>
+            </c:forEach>
+        </ul>
+        <!--Video-->
+        <!--Preparación con fotos (opcional)-->
+        <!--Comentarios-->
+        <!---->
 	</div>
-</body>
-</html>
 </body>
 </html>
