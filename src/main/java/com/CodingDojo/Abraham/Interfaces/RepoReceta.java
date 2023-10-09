@@ -10,6 +10,8 @@ public interface RepoReceta extends CrudRepository<Receta, Long>{
 
 	List<Receta> findAll();
 	
+	List<Receta> findAllByCreadorId(Long id);
+	
 	List<Receta> findTop5ByOrderByValoracionFinalDesc();
 	
 	Receta findByNombreContains(String palabra);

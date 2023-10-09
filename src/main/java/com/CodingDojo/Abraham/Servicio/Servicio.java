@@ -170,6 +170,14 @@ public class Servicio {
 		return rRec.findTop5ByOrderByValoracionFinalDesc();
 	}
 	
+	public List<Receta> buscarRecetasPorCreadorId(Long id){
+		return rRec.findAllByCreadorId(id);
+	}
+	
+	public Receta buscarRecetaPorId(Long id) {
+		return rRec.findById(id).orElse(null);
+	}
+	
 	public Receta buscarRecetaPorNombreCreador(String nombre) {
 		return rRec.findByCreadorNombreContains(nombre);
 	}

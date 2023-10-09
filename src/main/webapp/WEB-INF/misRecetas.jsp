@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Mis Recetas</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Mis Recetas</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
@@ -107,17 +109,17 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${MisRecetas}" var="receta">
+                <c:forEach items="${misRecetas}" var="receta">
                     <tr>
-                        <td><a href="/show/${receta.id}">${receta.nombre}</a></td>
+                        <td><a href="/receta/${receta.id}">${receta.nombre}</a></td>
                         <td>${receta.valoracionFinal}</td>
                         <td>
                             <!--Editar y eliminar una receta solo si es el autor-->
-							<c:if test="${receta.autor.id == usuarioEnSesion.id}">
+							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
-								<a href="/editar/${receta.id}" class="btn btn-warning">Editar</a>
+								<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
 							</c:if>
-							<c:if test="${receta.autor.id == usuarioEnSesion.id}">
+							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 								<a href="/eliminar/${receta.id}" class="btn btn-danger">Eliminar receta</a>
 							</c:if>
                     </tr>

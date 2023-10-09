@@ -41,6 +41,7 @@ public class Receta {
 	private String descripcion;
 	
 	@NotEmpty(message="Este Campo no puede estar vacio")
+	@Column(columnDefinition = "LONGTEXT")
 	private String preparacion;
 	
 	private int porciones;

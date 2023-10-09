@@ -100,12 +100,13 @@
         </div>
         <p>Porciones ${receta.porciones}</p>
         <p>Tiempo de preparación</p>
-        <!--Ingredientes-->
+        <!--Ingredientes
         <ul>
             <c:forEach items="ingredientes" var="ingrediente">
                 <li>${ingrediente}</li>
             </c:forEach>
         </ul>
+        -->
         <!--Video-->
         <!--Preparación con fotos (opcional)-->
         <!--Comentarios-->

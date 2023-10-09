@@ -23,16 +23,22 @@ public class ControladorLogin {
 	private Servicio serv;
 	
 	
-	@GetMapping("/registro")
+	@GetMapping("/login")
 	public String registro(@ModelAttribute("usuario")Usuario nuevoUsuario) {
-		return "registro.jsp";
+		return "login.jsp";
 	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("usuarioEnSesion");
-		return "redirect:/registro";
+		return "redirect:/";
 	}
+	
+	@GetMapping("/registro")
+	public String singUp(@ModelAttribute("usuario")Usuario nuevoUsuario) {
+		return "registro.jsp";
+	}
+	
 	@PostMapping("/registro")
 	public String registrarCliente(HttpSession session, @Valid @ModelAttribute("usuario")Usuario nuevoUsuario, BindingResult result, Model model) {
 		serv.registroUsuario(nuevoUsuario, result);
@@ -41,7 +47,7 @@ public class ControladorLogin {
 			return "registro.jsp";
 		}else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			return "redirect:/";
 		}
 	}
 	@PostMapping("/login")
@@ -52,12 +58,10 @@ public class ControladorLogin {
 		
 		if(usuario == null) {
 			flash.addFlashAttribute("error_login", "El email o el password son incorrectos");
-			return "redirect:/registro";
+			return "redirect:/login";
 		}else {
 			session.setAttribute("usuarioEnSesion", usuario);
-			return "redirect:/dashboard";
+			return "redirect:/";
 		}
 	}
-	
-	
 }
