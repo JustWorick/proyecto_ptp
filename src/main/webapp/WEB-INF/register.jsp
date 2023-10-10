@@ -23,7 +23,7 @@ pageEncoding="UTF-8"%>
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/src/main/resources/static/style/login.css" />
-    <title>Life | Login</title>
+    <title>Life | Registro</title>
   </head>
   <body class="bg-dark">
     <section>
@@ -125,9 +125,42 @@ pageEncoding="UTF-8"%>
             <!--Cambiar Logo-->
           </div>
           <div class="px-lg-5 py-lg-4 p-4">
-            <h1 class="fw-bold mb-1">Inicia Sesion en Life</h1>
-            <!--Login-->
+            <h1 class="fw-bold mb-1">Registrate en Life</h1>
+            <!--Register-->
             <form class="mb-5">
+              <div class="mb-4">
+                <label for="exampleInputNick" class="form-label fw-bold"
+                  >Nombre de usuario</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-dark-x border-0"
+                  placeholder="Ingresa tu nombre de usuario"
+                  id="exampleInputNick"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="exampleInputName" class="form-label fw-bold"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-dark-x border-0"
+                  placeholder="Ingresa tu nombre"
+                  id="exampleInputName"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="exampleInputLastName" class="form-label fw-bold"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-dark-x border-0"
+                  placeholder="Ingresa tu apellido"
+                  id="exampleInputLastName"
+                />
+              </div>
               <div class="mb-4">
                 <label for="exampleInputEmail1" class="form-label fw-bold"
                   >Correo Electronico</label
@@ -141,49 +174,36 @@ pageEncoding="UTF-8"%>
                 />
               </div>
               <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label fw-bold"
+                <label for="exampleInputPassword" class="form-label fw-bold"
                   >Contraseña</label
                 >
                 <input
                   type="password"
                   class="form-control bg-dark-x border-0 mb-2"
                   placeholder="Ingresa tu contraseña"
-                  id="exampleInputPassword1"
+                  id="exampleInputPassword"
                 />
-                <a
-                  id="emailHelp"
-                  class="form-text text-muted text-decoration-none"
-                  href="#"
-                  >¿Olvidaste tu contraseña?</a
+              </div>
+              <div class="mb-4">
+                <label for="exampleInputConfPassword" class="form-label fw-bold"
+                  >Confirmar contraseña</label
                 >
+                <input
+                  type="password"
+                  class="form-control bg-dark-x border-0 mb-2"
+                  placeholder="Ingresa tu contraseña"
+                  id="exampleInputConfPassword"
+                />
               </div>
               <button type="submit" class="btn btn-primary w-100 mb-0">
-                Ingresar
+                Registrarme
               </button>
             </form>
-
-            <p class="fw-bold text-center text-muted mb-3">
-              O inicia sesion con
-            </p>
-            <div class="d-flex justify-content-around">
-              <button
-                type="submit"
-                class="btn btn-outline-light flex-grow-1 me-2"
-              >
-                <i class="fa-brands fa-google lead me-2"></i>Google
-              </button>
-              <button
-                type="submit"
-                class="btn btn-outline-light flex-grow-1 ms-2"
-              >
-                <i class="fa-brands fa-facebook lead me-2"></i>Facebook
-              </button>
-            </div>
           </div>
           <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4">
-            <p class="d-inline-block mb-0">¿No te has creado una cuenta aun?</p>
+            <p class="d-inline-block mb-0">¿Ya tienes una cuenta creada?</p>
             <a href="#" class="text-light fw-bold text-decoration-none">
-              Crea tu cuenta</a
+              Ingresa Aqui</a
             >
           </div>
         </div>
