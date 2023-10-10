@@ -90,7 +90,7 @@
     </nav>
 	<div class="contenido">
 		<h1>Nueva Receta</h1>
-		<form:form action="/crear" method="post" modelAttribute="receta">
+		<form:form action="/nuevaReceta" method="post" modelAttribute="receta">
 			<div>
 				<form:label path="nombre">Nombre</form:label>
 				<form:input path="nombre" class="form-control" type="text"/>
@@ -106,22 +106,19 @@
 				<form:input path="porciones" class="form-control" type="number"/>
 				<form:errors path="porciones" class="text-danger"/>	
 			</div>
-            <div>
-				<form:label path="tiempo">Tiempo de preparación</form:label>
-				<form:input path="tiempo" class="form-control" type="time" step="60"/>
-				<form:errors path="tiempo" class="text-danger"/>	
-			</div>
-            <div>
-				<form:label path="ingredientes">Ingredientes</form:label>
-				<form:input path="ingredientes" class="form-control"/>
-				<form:errors path="ingredientes" class="text-danger"/>	
-			</div>
+			
+            <!-- 
+            
+            	AQUI HAY QUE AÑADIR LOS INGREDIENTES
+            
+             -->
+			
             <div>
 				<form:label path="preparacion">Preparación</form:label>
-				<form:input path="preparacion" class="form-control"/>
+				<form:textarea path="preparacion" class="form-control"/>
 				<form:errors path="preparacion" class="text-danger"/>	
 			</div>
-			<form:hidden path="autor" value="${usuarioEnSesion.id}"/>
+			<form:hidden path="creador" value="${usuarioEnSesion.id}"/>
 			<input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
 	
