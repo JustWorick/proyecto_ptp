@@ -1,0 +1,198 @@
+.contenido {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.contenido p {
+    margin: 10px 0;
+}
+
+#valoraciones {
+    display: flex;
+    flex-direction: row;
+}
+
+#buscador {
+    margin-bottom: 30px;
+}
+
+.card mb-3 {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.card-body {
+    height: 300px;
+    overflow: hidden;
+}
+
+.card-text {
+    height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+.col-md-4 {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#imagen-principal {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+form.input, a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+
+.average-rating {
+    position: relative;
+    appearance: none;
+    color: transparent;
+    width: auto;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.average-rating::before {
+    --percent: calc(4.3/5*100%);
+    content: '★★★★★';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(0,0,0,0.2);
+    background:
+    linear-gradient(90deg, gold var(--percent), rgba(0,0,0,0.2) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    direction: rtl;
+}
+
+.radio-input {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.radio-label {
+    cursor: pointer;
+    font-size: 0;
+    color: rgba(0,0,0,0.2);
+    transition: color 0.1s ease-in-out;
+}
+
+.radio-label:before {
+    content: "★";
+    display: inline-block;
+    font-size: 32px;
+}
+
+.radio-input:checked ~ .radio-label {
+    color: #ffc700;
+    color: gold;
+}
+
+.radio-label:hover,
+.radio-label:hover ~ .radio-label {
+    color: goldenrod;
+}
+
+.radio-input:checked + .radio-label:hover,
+.radio-input:checked + .radio-label:hover ~ .radio-label,
+.radio-input:checked ~ .radio-label:hover,
+.radio-input:checked ~ .radio-label:hover ~ .radio-label,
+.radio-label:hover ~ .radio-input:checked ~ .radio-label {
+    color: darkgoldenrod;
+}
+
+.porciones-tiempo {
+    display: flex;
+    flex-direction: row;
+}
+
+.porciones-tiempo p {
+    margin: 0 1rem;
+}
+
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: whitesmoke;
+    transform: translateX(-200px);
+    transition: transform 0.5s;
+}
+
+  /* Estilo del elemento con la clase sidebar cuando tiene la clase open */
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar h5 {
+    margin-top: 100px;
+    word-wrap: break-word;
+}
+
+.sidebar h5, p, ul {
+    padding: 10px;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.sidebar li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+  /* Estilo del elemento con la clase sidebar-toggle */
+.sidebar-toggle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: lightgreen;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.calificar-estrellas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.calificar-estrellas p {
+    margin-right: 10px;
+}
