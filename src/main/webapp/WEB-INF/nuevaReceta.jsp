@@ -89,7 +89,7 @@
 
 	<div class="contenido">
 		<h1>Nueva Receta</h1>
-		<form:form action="/nuevaReceta" method="post" modelAttribute="receta">
+		<form:form action="/nuevaReceta" method="post" modelAttribute="receta" enctype="multipart/form-data">
 			<div>
 				<form:label path="nombre">Nombre</form:label>
 				<form:input path="nombre" class="form-control" type="text"/>
@@ -106,6 +106,10 @@
 				<form:errors path="porciones" class="text-danger"/>	
 			</div>
 			
+			<div>
+				<input type="file" name="imagen" class="form-control">
+			</div>
+			
             <!-- 
             
             	AQUI HAY QUE AÑADIR LOS INGREDIENTES
@@ -120,7 +124,14 @@
 			<form:hidden path="creador" value="${usuarioEnSesion.id}"/>
 			<input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
-	
+		
+		<!--  
+		<form action="/subir-imagen" method="post" enctype="multipart/form-data">
+		  <input type="file" name="imagen" class="form-control">
+		  <input type="submit" value="Añadir imagen">
+		</form>
+		-->
+		
 	</div>
 </body>
 </html>

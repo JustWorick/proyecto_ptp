@@ -104,6 +104,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Valoración</th>
+                    <th>fotos</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -113,6 +114,11 @@
                         <td><a href="/receta/${receta.id}">${receta.nombre}</a></td>
                         <td>${receta.valoracionFinal}</td>
                         <td>
+                        	<c:forEach items="${receta.imagenesRec}" var="ima">
+                        		<img alt="..." src="${ima.nombre}">
+                        	</c:forEach>
+                        </td>
+                        <td>
                             <!--Editar y eliminar una receta solo si es el autor-->
 							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
@@ -121,6 +127,7 @@
 							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 								<a href="/eliminar/${receta.id}" class="btn btn-danger">Eliminar receta</a>
 							</c:if>
+						</td>
                     </tr>
                 </c:forEach>
             </tbody>

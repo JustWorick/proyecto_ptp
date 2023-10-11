@@ -30,10 +30,6 @@ public class Imagen {
 	
 	private String url;
 	
-	private String tipo;
-	
-	private long peso;
-	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -78,18 +74,6 @@ public class Imagen {
 	}
 	public void setUrl(String url) {
 		this.url = url;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public long getPeso() {
-		return peso;
-	}
-	public void setPeso(long peso) {
-		this.peso = peso;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
