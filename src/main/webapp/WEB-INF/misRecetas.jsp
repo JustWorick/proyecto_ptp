@@ -115,7 +115,7 @@
                         <td>${receta.valoracionFinal}</td>
                         <td>
                         	<c:forEach items="${receta.imagenesRec}" var="ima">
-                        		<img alt="..." src="${ima.nombre}">
+                        		<img alt="..." src="${ima.url}">
                         	</c:forEach>
                         </td>
                         <td>
