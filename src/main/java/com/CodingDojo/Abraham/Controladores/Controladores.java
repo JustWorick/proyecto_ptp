@@ -152,7 +152,8 @@ public class Controladores {
 			}
 
 			String nombreImagen = UUID.randomUUID().toString() + extension;
-		    Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+		    // Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+		    Path rutaImagen = Paths.get("target/classes/static/img", nombreImagen);
 		    
 		    // RUTA ABSOLUTA (NOSE PARA QUE)
 		    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
@@ -183,12 +184,21 @@ public class Controladores {
 		}
 		
 		//  <<================         Logica Para añadir Etiquetas                   ==================>> 
-		
+		serv.guardarReceta(newReceta);
 		if(!nombreEtiqueta.isEmpty()) {
 			Etiqueta eti = new Etiqueta();		
 			eti.setNombre(nombreEtiqueta);
-			eti.getRecetas().add(newReceta);
-			serv.guardarEtiqueta(eti);
+			
+			if(eti.getRecetas() == null) {
+				ArrayList<Receta> recetas = new ArrayList<>();
+				recetas.add(newReceta);
+				eti.setRecetas(recetas);
+				serv.guardarEtiqueta(eti);
+			}else {
+				eti.getRecetas().add(newReceta);
+				serv.guardarEtiqueta(eti);
+			}
+			
 		}
 		
 		
@@ -208,6 +218,12 @@ public class Controladores {
 	@DeleteMapping("/borrar/imagen/all")
 	public String borrarTodasImagenes() {
 		serv.deleteTodasImagenes();
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/recetas/all")
+	public String borrarTodasRecetas() {
+		serv.deleteTodasRecetas();
 		return "redirect:/";
 	}
 }

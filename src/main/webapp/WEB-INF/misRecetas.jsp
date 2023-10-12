@@ -98,6 +98,19 @@
                 </div>	
                 <input type="submit" value="Buscar" class="btn btn-primary col-1">
         </form>
+        <div>
+			<p>Botones de testeo no borrar hasta el final</p>
+			<form action="/borrar/imagen/all" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input class="btn btn-danger" type="submit" value="Delete All imagenes">
+			</form>
+		</div>
+		<div>
+			<form action="/borrar/recetas/all" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input class="btn btn-danger" type="submit" value="Delete All recetas">
+			</form>
+		</div>
             
         <table class="table table-hover">
             <thead>
@@ -122,7 +135,13 @@
 							</c:if>
                         </td>
                         <td>
-                        	
+                        	<ul>
+	                        	<c:if test="${not empty receta.etiquetas}">
+	                        		<c:forEach items="${receta.etiquetas}" var="eti">
+	                        			<li>${eti.nombre}</li>
+	                        		</c:forEach>
+	                        	</c:if>
+                        	</ul>
                         </td>
                         <td>
                             <!--Editar y eliminar una receta solo si es el autor-->
@@ -135,14 +154,6 @@
 									<input class="btn btn-danger" type="submit" value="Delete">
 								</form>
 								
-								
-								<div>
-									<p>Botones de testeo no borrar hasta el final</p>
-									<form action="/borrar/imagen/all" method="post">
-										<input type="hidden" name="_method" value="delete">
-										<input class="btn btn-danger" type="submit" value="Delete All">
-									</form>
-								</div>
 							</c:if>
 						</td>
                     </tr>

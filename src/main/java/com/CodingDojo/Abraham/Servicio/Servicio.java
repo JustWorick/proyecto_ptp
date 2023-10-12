@@ -237,4 +237,11 @@ public class Servicio {
 	public void deleteImagen(Long id) {
 		rIma.deleteById(id);
 	}
+	
+	public void deleteTodasRecetas() {
+		List<Receta> recetas = rRec.findAll();
+		for(Receta rec:recetas) {
+			rRec.delete(rec);
+		}
+	}
 }
