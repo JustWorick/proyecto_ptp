@@ -105,27 +105,44 @@
                     <th>Nombre</th>
                     <th>Valoración</th>
                     <th>fotos</th>
+                    <th>Etiqueta</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${misRecetas}" var="receta">
+                <c:forEach items="${recetas}" var="receta">
                     <tr>
                         <td><a href="/receta/${receta.id}">${receta.nombre}</a></td>
                         <td>${receta.valoracionFinal}</td>
                         <td>
-                        	<c:forEach items="${receta.imagenesRec}" var="ima">
-                        		<img alt="..." src="${ima.url}">
-                        	</c:forEach>
+                        	<c:if test="${not empty receta.imagenesRec}">
+								<c:forEach items="${receta.imagenesRec}" var="ima">
+                        			<img alt="..." src="${ima.url}">
+                        		</c:forEach>
+							</c:if>
+                        </td>
+                        <td>
+                        	
                         </td>
                         <td>
                             <!--Editar y eliminar una receta solo si es el autor-->
 							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
 								<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
-							</c:if>
-							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
-								<a href="/eliminar/${receta.id}" class="btn btn-danger">Eliminar receta</a>
+							
+								<form action="#" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<input class="btn btn-danger" type="submit" value="Delete">
+								</form>
+								
+								
+								<div>
+									<p>Botones de testeo no borrar hasta el final</p>
+									<form action="/borrar/imagen/all" method="post">
+										<input type="hidden" name="_method" value="delete">
+										<input class="btn btn-danger" type="submit" value="Delete All">
+									</form>
+								</div>
 							</c:if>
 						</td>
                     </tr>

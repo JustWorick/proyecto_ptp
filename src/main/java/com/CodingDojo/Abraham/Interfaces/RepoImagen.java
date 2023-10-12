@@ -8,6 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import com.CodingDojo.Abraham.Modelos.Imagen;
 
 public interface RepoImagen extends CrudRepository<Imagen, Long>{
+	
+	List<Imagen> findAll();
 
 	List<Imagen> findByRecetaImgContains(Long id);
 	

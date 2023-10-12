@@ -107,9 +107,15 @@
 			</div>
 			
 			<div>
-				<input type="file" name="imagen" class="form-control">
+				<input type="file" name="imagen" class="form-control">     
 			</div>
-			
+			<div>
+				<select name="etiqueta">
+					<c:forEach items="${nombreEtiquetas}" var="etiName">
+						<option value="${etiName}">${etiName}</option>
+					</c:forEach>
+				</select>
+			</div>
             <!-- 
             
             	AQUI HAY QUE AÑADIR LOS INGREDIENTES
