@@ -35,7 +35,6 @@ public class Controladores {
 	@Autowired
 	private Servicio serv;
 	
-	
 	// GETMAPPING
 	
 	@GetMapping()
