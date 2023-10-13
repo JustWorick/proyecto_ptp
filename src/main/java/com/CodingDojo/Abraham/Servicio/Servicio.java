@@ -154,6 +154,10 @@ public class Servicio {
 		return rPro.findByNombreContains(nombre);
 	}
 	
+	public List<Etiqueta> buscarTodasEtiquetas(){
+		return rEti.findAll();
+	}
+	
 	public List<Receta> buscarTodasRecetas() {
 		return rRec.findAll();
 	}
@@ -220,4 +224,24 @@ public class Servicio {
 		return rVid.save(video);
 	}
 	
+	
+	
+	// DELETE
+	
+	public void deleteTodasImagenes() {          // <<<======= USAR SOLO PARA PRUEBAS
+		List<Imagen> imagenes = rIma.findAll();
+		for(Imagen img:imagenes) {
+			rIma.delete(img);
+		}
+	}
+	public void deleteImagen(Long id) {
+		rIma.deleteById(id);
+	}
+	
+	public void deleteTodasRecetas() {
+		List<Receta> recetas = rRec.findAll();
+		for(Receta rec:recetas) {
+			rRec.delete(rec);
+		}
+	}
 }

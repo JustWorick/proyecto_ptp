@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Imagen;
 import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
 import com.CodingDojo.Abraham.Modelos.Receta;
@@ -35,6 +37,31 @@ public class Controladores {
 	@Autowired
 	private Servicio serv;
 	
+<<<<<<< HEAD
+=======
+	
+	/*
+	 * --------------------------------------------------------------------------
+	 * CONTROLADOR DE PRUEBA
+	 * 
+	 * 
+	 * 
+	 * */
+	@GetMapping("/prueba")
+	public String prueba() {
+		
+		return "pruebaYarni1.jsp";
+	}
+	
+	// yarni nacho =>> necesito una lista de etiquetas, una lista de productos
+	
+	
+	
+	
+	
+	
+	// -----------------------------------------------------------
+>>>>>>> dd28a21aa0be0e03c33bd901ccaa69a8e580242c
 	// GETMAPPING
 	
 	@GetMapping()
@@ -46,6 +73,11 @@ public class Controladores {
 	
 	@GetMapping("/recetas")
 	public String recetas(Model model, HttpSession session) {
+		
+		
+		List<Etiqueta> todasEtiquetas = serv.buscarTodasEtiquetas();
+		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		
 		List<Receta> todasRecetas = serv.buscarTodasRecetas();
 		model.addAttribute("todasRecetas", todasRecetas);
 		return "recetas.jsp";
@@ -58,7 +90,7 @@ public class Controladores {
 			return "redirect:/";
 		}
 		List<String> nombreEtiquetas =  Arrays.asList(NombresEtiquetas.NomEtiquetas);
-		model.addAttribute("etiquetas", nombreEtiquetas);
+		model.addAttribute("nombreEtiquetas", nombreEtiquetas);
 		return "nuevaReceta.jsp";
 	}
 	
@@ -75,8 +107,11 @@ public class Controladores {
 		if(userTemp == null) {
 			return "redirect:/";
 		}
+		
 		List<Receta> misRecetas = serv.buscarRecetasPorCreadorId(id);
-		model.addAttribute("misRecetas", misRecetas);
+		
+		
+		model.addAttribute("recetas", misRecetas);
 		return "misRecetas.jsp";
 	}
 	
@@ -97,7 +132,10 @@ public class Controladores {
 	// POSTMAPPING
 	
 	@PostMapping("/nuevaReceta")
-	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, BindingResult result, HttpSession session, @RequestParam("imagen")MultipartFile imagen) {
+	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, 
+								BindingResult result, HttpSession session,
+								@RequestParam("imagen")MultipartFile imagen,
+								@RequestParam("etiqueta")String nombreEtiqueta) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
 			return "redirect:/";
@@ -106,7 +144,10 @@ public class Controladores {
 			return "nuevaReceta.jsp";
 		}
 		
-		if(!imagen.isEmpty()) {		// <<===== Logica Para añadir Imagenes
+		
+		// <<=========== Logica Para añadir Imagenes ================>>
+		
+		if(!imagen.isEmpty()) {		
 			String originalFileName = imagen.getOriginalFilename();
 			String extension = "";
 			if (originalFileName != null && originalFileName.contains(".")) {
@@ -114,7 +155,8 @@ public class Controladores {
 			}
 
 			String nombreImagen = UUID.randomUUID().toString() + extension;
-		    Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+		    // Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+		    Path rutaImagen = Paths.get("target/classes/static/img", nombreImagen);
 		    
 		    // RUTA ABSOLUTA (NOSE PARA QUE)
 		    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
@@ -122,16 +164,7 @@ public class Controladores {
 		    // Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
 		    Imagen newImagen = new Imagen();
 		    
-		    /*
-		     * String nombreImagen = UUID.randomUUID().toString() + "." + imagen.getOriginalFilename().split(".")[1];
-		    Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
-		    
-		    // RUTA ABSOLUTA (NOSE PARA QUE)
-		    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
-		    
-		    Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
-		    Imagen newImagen = new Imagen();
-		     * */
+		
 		    try {
 		        Files.write(rutaImagen, imagen.getBytes());
 		        newImagen.setNombre(imagen.getOriginalFilename());
@@ -139,8 +172,7 @@ public class Controladores {
 		        
 		        serv.guardarImagen(newImagen);		// <<<======== SE GUARDA LA IMAGEN
 		        
-		        
-		        
+
 		       ArrayList<Imagen> imagenesDeLaReceta = new ArrayList<>(); //<<<==== AÑADIMOS LA IMAGEN A LA RELACION CON LA RECETA
 		       imagenesDeLaReceta.add(newImagen);
 		       newReceta.setImagenesRec(imagenesDeLaReceta);
@@ -148,23 +180,53 @@ public class Controladores {
 		       serv.guardarReceta(newReceta);
 		       newImagen.setRecetaImg(newReceta);
 		       serv.guardarImagen(newImagen);
-		        /*
-		         * if (!imagenesDeLaReceta.isEmpty()) {
-		        	  imagenesDeLaReceta.add(newImagen);
-		        	  newReceta.setImagenesRec(imagenesDeLaReceta);
-		        	}
-		        else {
-		        	List<Imagen> imagenesDeLaReceta1 = new ArrayList<>();
-		        	imagenesDeLaReceta1.add(new Imagen());
-		        	newReceta.setImagenesRec(imagenesDeLaReceta1);
-		        }
-		         * */
+		        
 		      } catch (IOException e) {
 		        e.printStackTrace();
 		      }
 		}
-
+		
+		//  <<================         Logica Para añadir Etiquetas                   ==================>> 
+		serv.guardarReceta(newReceta);
+		if(!nombreEtiqueta.isEmpty()) {
+			Etiqueta eti = new Etiqueta();		
+			eti.setNombre(nombreEtiqueta);
+			
+			if(eti.getRecetas() == null) {
+				ArrayList<Receta> recetas = new ArrayList<>();
+				recetas.add(newReceta);
+				eti.setRecetas(recetas);
+				serv.guardarEtiqueta(eti);
+			}else {
+				eti.getRecetas().add(newReceta);
+				serv.guardarEtiqueta(eti);
+			}
+			
+		}
+		
+		
 		serv.guardarReceta(newReceta);
 		return "redirect:/misRecetas/"+userTemp.getId();
+	}
+	
+	
+	
+	// DELETEMAPPING
+	@DeleteMapping("/borrar/imagen/{id}")
+	public String borrarImagen(@PathVariable("id")Long id) {
+		serv.deleteImagen(id);
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/imagen/all")
+	public String borrarTodasImagenes() {
+		serv.deleteTodasImagenes();
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/recetas/all")
+	public String borrarTodasRecetas() {
+		serv.deleteTodasRecetas();
+		return "redirect:/";
 	}
 }
