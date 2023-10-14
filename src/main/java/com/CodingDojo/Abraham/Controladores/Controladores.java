@@ -37,6 +37,8 @@ public class Controladores {
 	@Autowired
 	private Servicio serv;
 	
+<<<<<<< HEAD
+=======
 	
 	/*
 	 * --------------------------------------------------------------------------
@@ -59,6 +61,7 @@ public class Controladores {
 	
 	
 	// -----------------------------------------------------------
+>>>>>>> dd28a21aa0be0e03c33bd901ccaa69a8e580242c
 	// GETMAPPING
 	
 	@GetMapping()
