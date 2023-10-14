@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.CodingDojo.Abraham.Modelos.Comentario;
 import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Imagen;
 import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
@@ -37,8 +38,8 @@ public class Controladores {
 	@Autowired
 	private Servicio serv;
 	
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
 	
 	/*
 	 * --------------------------------------------------------------------------
@@ -61,7 +62,7 @@ public class Controladores {
 	
 	
 	// -----------------------------------------------------------
->>>>>>> dd28a21aa0be0e03c33bd901ccaa69a8e580242c
+// >>>>>>> dd28a21aa0be0e03c33bd901ccaa69a8e580242c
 	// GETMAPPING
 	
 	@GetMapping()
@@ -135,12 +136,14 @@ public class Controladores {
 	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, 
 								BindingResult result, HttpSession session,
 								@RequestParam("imagen")MultipartFile imagen,
-								@RequestParam("etiqueta")String nombreEtiqueta) {
+								@RequestParam("etiqueta")String nombreEtiqueta, Model model) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
 			return "redirect:/";
 		}
 		if(result.hasErrors()) {
+			List<String> nombreEtiquetas =  Arrays.asList(NombresEtiquetas.NomEtiquetas);
+			model.addAttribute("nombreEtiquetas", nombreEtiquetas);
 			return "nuevaReceta.jsp";
 		}
 		
@@ -208,6 +211,38 @@ public class Controladores {
 		serv.guardarReceta(newReceta);
 		return "redirect:/misRecetas/"+userTemp.getId();
 	}
+	/*
+	@PostMapping("/receta/{recetaId}/imagenes")
+	public String añadirMasImagenesReceta(@RequestParam("imagen")MultipartFile imagen,
+			HttpSession session, @PathVariable("recetaId")Long recetaId) {
+		
+		return "redirect:/receta/"+recetaId;
+	}
+	*/
+	@PostMapping("/receta/{recetaId}/comentario")
+	public String crearComentarioReceta(@Valid @ModelAttribute("comentario")Comentario nuevoComentario, 
+										BindingResult result, HttpSession session, @PathVariable("recetaId")Long recetaId, Model model) {
+		
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		
+		if(result.hasErrors()) {
+			Receta receta = serv.buscarRecetaPorId(recetaId);
+			model.addAttribute("receta", receta);
+			return "mostrarReceta.jsp";
+		}
+		else {
+			serv.guardarComentario(nuevoComentario);
+		}
+		return "redirect:/receta/"+recetaId;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

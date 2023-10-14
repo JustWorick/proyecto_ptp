@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 <title>Receta</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
-<link rel="stylesheet" type="text/css" href="styles.css/recetas.css">
+<link rel="stylesheet" type="text/css" href="style/recetas.css">
 </head>
 <body>
     <!--Nav-->
@@ -129,7 +129,8 @@
             </div>
         </div>
         <!--solo si el usuario esta logeado-->
-        <div class="calificar-estrellas">
+        <c:if test="${usuarioEnSesion != null}">
+        	<div class="calificar-estrellas">
             <p>Califica esta receta: </p>
             <form class="star-rating">
                 <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
@@ -148,6 +149,8 @@
                 <label class="radio-label" for="star1" title="1 star">1 star</label>
             </form>
         </div>
+        </c:if>
+        
         <!--Ingredientes-->
         <h3>Ingredientes</h3>
         <ul>

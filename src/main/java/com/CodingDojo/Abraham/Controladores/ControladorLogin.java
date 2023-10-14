@@ -36,7 +36,7 @@ public class ControladorLogin {
 	
 	@GetMapping("/registro")
 	public String singUp(@ModelAttribute("usuario")Usuario nuevoUsuario) {
-		return "registro.jsp";
+		return "register.jsp";
 	}
 	
 	@PostMapping("/registro")
