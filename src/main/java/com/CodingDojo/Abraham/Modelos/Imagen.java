@@ -107,6 +107,14 @@ public class Imagen {
 	}        
 	
 	
+	// ELIMINAR ? 
+	public void eliminarRelaciones() {
+		this.creadorImg = null;
+		this.recetaImg = null;
+		this.productoImg = null;
+	}
+	
+	
 	// PREPERSIST
 	
 	@PrePersist

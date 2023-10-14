@@ -1,5 +1,8 @@
 package com.CodingDojo.Abraham.Servicio;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -231,17 +234,78 @@ public class Servicio {
 	public void deleteTodasImagenes() {          // <<<======= USAR SOLO PARA PRUEBAS
 		List<Imagen> imagenes = rIma.findAll();
 		for(Imagen img:imagenes) {
+			
+			img.eliminarRelaciones();
+			Path rutaImagen = Paths.get("target/classes/static", img.getUrl());
+		    
+		    // RUTA ABSOLUTA 
+		    String filePath = rutaImagen.toAbsolutePath().toString();
+		    
+		    System.out.println("Esta es la ruta Absoluta: "+filePath);
+		    
+			try { 
+	            File file = new File(filePath);
+	            if(file.delete()) { 
+	               System.out.println(file.getName() + " is deleted!");
+	            } else {
+	               System.out.println("Delete operation is failed.");
+	               }
+	         }
+	           catch(Exception e)
+	           {
+	               System.out.println("Failed to Delete image !!");
+	           }
+			
 			rIma.delete(img);
 		}
 	}
 	public void deleteImagen(Long id) {
+		
+		Imagen imagen = rIma.findById(id).orElse(null);
+		
+		imagen.eliminarRelaciones();
+		Path rutaImagen = Paths.get("target/classes/static", imagen.getUrl());
+	    
+	    // RUTA ABSOLUTA 
+	    String filePath = rutaImagen.toAbsolutePath().toString();
+	    
+	    System.out.println("Esta es la ruta Absoluta: "+filePath);
+	    
+		try { 
+            File file = new File(filePath);
+            if(file.delete()) { 
+               System.out.println(file.getName() + " is deleted!");
+            } else {
+               System.out.println("Delete operation is failed.");
+               }
+         }
+           catch(Exception e)
+           {
+               System.out.println("Failed to Delete image !!");
+           }
+		
 		rIma.deleteById(id);
+	}
+
+	public void deleteReceta(Long id) {
+		Receta rec = rRec.findById(id).orElse(null);
+		List<Imagen> imagenes = rec.getImagenesRec();
+		for(Imagen ima:imagenes) {
+			deleteImagen(ima.getId());
+		}
+		rec.getIngredientes().clear();
+		rec.getComentariosDeReceta().clear();
+		rec.getUsuarios().clear();
+		rec.getImagenesRec().clear();
+		rec.getEtiquetas().clear();
+		rRec.save(rec);
+		rRec.delete(rec);
 	}
 	
 	public void deleteTodasRecetas() {
 		List<Receta> recetas = rRec.findAll();
 		for(Receta rec:recetas) {
-			rRec.delete(rec);
+			deleteReceta(rec.getId());
 		}
 	}
 }

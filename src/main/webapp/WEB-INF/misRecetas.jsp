@@ -149,9 +149,13 @@
 							<!-- si es autor entonces se muestran los botones -->
 								<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
 							
-								<form action="#" method="post">
+								<form action="/borrar/receta/${receta.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete">
+									<input class="btn btn-danger" type="submit" value="Delete Receta">
+								</form>
+								<form action="/borrar/receta/imagenes/${receta.id}" method="post">
+									<input type="hidden" name="_method" value="delete">
+									<input class="btn btn-danger" type="submit" value="Delete Imagenes">
 								</form>
 								
 							</c:if>

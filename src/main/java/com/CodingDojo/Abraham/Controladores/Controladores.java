@@ -210,20 +210,57 @@ public class Controladores {
 	
 	// DELETEMAPPING
 	@DeleteMapping("/borrar/imagen/{id}")
-	public String borrarImagen(@PathVariable("id")Long id) {
+	public String borrarImagen(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
 		serv.deleteImagen(id);
 		return "redirect:/";
 	}
 	
+	@DeleteMapping("/borrar/receta/imagenes/{id}")
+	public String borrarTodasImagenesDeUnaReceta(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		Receta receta = serv.buscarRecetaPorId(id);
+		List<Imagen> imagenes = receta.getImagenesRec();
+		
+		for(Imagen ima:imagenes) {
+			serv.deleteImagen(ima.getId());
+		}
+		return "redirect:/";
+	}
+	
 	@DeleteMapping("/borrar/imagen/all")
-	public String borrarTodasImagenes() {
+	public String borrarTodasImagenes(HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
 		serv.deleteTodasImagenes();
 		return "redirect:/";
 	}
 	
 	@DeleteMapping("/borrar/recetas/all")
-	public String borrarTodasRecetas() {
+	public String borrarTodasRecetas(HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
 		serv.deleteTodasRecetas();
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/receta/{id}")
+	public String borrarReceta(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		serv.deleteReceta(id);
 		return "redirect:/";
 	}
 }
