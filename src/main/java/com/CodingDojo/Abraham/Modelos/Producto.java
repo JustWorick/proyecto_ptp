@@ -27,7 +27,7 @@ import jakarta.validation.constraints.Size;
 public class Producto {
 
 	// ATRIBUTOS <<====
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -41,6 +41,14 @@ public class Producto {
 	
 	@OneToMany(mappedBy="productoImg", fetch=FetchType.LAZY)
 	private List<Imagen> imagenesPro;
+
+    // Nuevo campo para el precio
+    private double precio;
+
+    // Nuevo campo para la imagen
+    private String imagen;
+    
+    private String informacionNutricional;
 	
 	/*
 		
@@ -145,10 +153,29 @@ public class Producto {
 	public void setImagenesPro(List<Imagen> imagenesPro) {
 		this.imagenesPro = imagenesPro;
 	}
+	public double getPrecio() {
+		return precio;
+	}		
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}	
+	public String getImagen() {
+		return imagen;
+	}	
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public String getInformacionNutricional() {
+		return informacionNutricional;
+	}
+	public void setInformacionNutricional(String informacionNutricional) {
+		this.informacionNutricional = informacionNutricional;
+	}
 	
 	
 	// PREPERSIST
 	
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date(); 

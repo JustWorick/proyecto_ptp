@@ -25,6 +25,7 @@ import com.CodingDojo.Abraham.Modelos.Comentario;
 import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Imagen;
 import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
+import com.CodingDojo.Abraham.Modelos.Producto;
 import com.CodingDojo.Abraham.Modelos.Receta;
 import com.CodingDojo.Abraham.Modelos.Usuario;
 import com.CodingDojo.Abraham.Servicio.Servicio;
@@ -127,7 +128,22 @@ public class Controladores {
 		return "editarReceta.jsp";
 	}
 	
+	@GetMapping("/productos")
+	public String productos(Model model, HttpSession session) {
+	    List<Producto> productos = serv.buscarTodosProductos();
+	    model.addAttribute("productos", productos);
+	    return "productos.jsp";
+	}
+
+	@GetMapping("/nuevoProducto")
+	public String nuevoProducto(@ModelAttribute("producto") Producto newProducto, HttpSession session, Model model) {
+	    return "nuevoProducto.jsp";
+	}
 	
+	
+
+
+
 	
 	
 	// POSTMAPPING
@@ -239,12 +255,13 @@ public class Controladores {
 		return "redirect:/receta/"+recetaId;
 	}
 	
-	
-	
-	
-	
-	
-	
+	@PostMapping("/nuevoProducto")
+	public String crearProducto(@ModelAttribute("producto") Producto newProducto, HttpSession session) {
+	    serv.guardarProducto(newProducto);
+	    return "redirect:/misProductos"; // Redirecciona a la lista de mis productos
+	}
+
+		
 	
 	// DELETEMAPPING
 	@DeleteMapping("/borrar/imagen/{id}")
