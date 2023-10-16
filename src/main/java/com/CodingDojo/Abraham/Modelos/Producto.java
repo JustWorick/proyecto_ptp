@@ -44,11 +44,15 @@ public class Producto {
 
     // Nuevo campo para el precio
     private double precio;
-
-    // Nuevo campo para la imagen
-    private String imagen;
     
     private String informacionNutricional;
+    
+	private double valoracionTotal;   //  <<==== es la suma de todas las valoraciones
+	
+    private int numeroValoraciones;  // <<==== cuenta el numero de valoraciones
+    
+    private double valoracionFinal; // <<==== es el resultado final de las valoraciones (valoracionTotal / numeroValoraciones)
+    
 	
 	/*
 		
@@ -159,17 +163,29 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}	
-	public String getImagen() {
-		return imagen;
-	}	
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
 	public String getInformacionNutricional() {
 		return informacionNutricional;
 	}
 	public void setInformacionNutricional(String informacionNutricional) {
 		this.informacionNutricional = informacionNutricional;
+	}
+	public double getValoracionTotal() {
+		return valoracionTotal;
+	}
+	public void setValoracionTotal(double valoracionTotal) {
+		this.valoracionTotal = valoracionTotal;
+	}
+	public int getNumeroValoraciones() {
+		return numeroValoraciones;
+	}
+	public void setNumeroValoraciones(int numeroValoraciones) {
+		this.numeroValoraciones = numeroValoraciones;
+	}
+	public double getValoracionFinal() {
+		return valoracionFinal;
+	}
+	public void setValoracionFinal(double valoracionFinal) {
+		this.valoracionFinal = valoracionFinal;
 	}
 	
 	
@@ -177,8 +193,13 @@ public class Producto {
 	
 
 	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date(); 
+	public void beforePersist() {
+	    if (numeroValoraciones == 0) {
+	        valoracionFinal = 0.0;
+	    } else {
+	        valoracionFinal = valoracionTotal / numeroValoraciones;
+	    }
+	    this.createdAt = new Date();
 	}
 	@PreUpdate
 	protected void onUpdate() {

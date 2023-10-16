@@ -6,16 +6,6 @@
 <%@ page import="java.math.BigDecimal" %>
 <%@ page import="com.CodingDojo.Abraham.Modelos.Producto" %>
 
-<%
-    Producto producto = (Producto) request.getAttribute("producto");
-    double precio = producto.getPrecio();
-
-    NumberFormat formatoDolar = NumberFormat.getCurrencyInstance(Locale.US);
-
-    String precioFormateado = formatoDolar.format(new BigDecimal(precio));
-
-    request.setAttribute("precioFormateado", precioFormateado);
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +14,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
 <link rel="stylesheet" type="text/css" href="style/nuevaReceta.css">
+
+<!-- 
+
+
+    Producto producto = (Producto) request.getAttribute("producto");
+    double precio = producto.getPrecio();
+
+    NumberFormat formatoDolar = NumberFormat.getCurrencyInstance(Locale.US);
+
+    String precioFormateado = formatoDolar.format(new BigDecimal(precio));
+
+    request.setAttribute("precioFormateado", precioFormateado);
+
+ -->
+
+
 </head>
 <body>
     <!--Nav-->
@@ -90,19 +96,25 @@
             </div>
 			<div>
 			    <form:label path="precio">Precio</form:label>
-			    <form:input path="precio" class="form-control" type="text" value="${precioFormateado}"/>
+			    <form:input path="precio" class="form-control" type="number" step="0.01"/>
 			    <form:errors path="precio" class="text-danger"/>   
 			</div>
-
             <div>
-                <input type="file" name="imagen" class="form-control">     
-            </div>
+				<input type="file" name="imagen" class="form-control">     
+			</div>
+			<div>
+				<select name="etiqueta">
+					<c:forEach items="${nombreEtiquetas}" var="etiName">
+						<option value="${etiName}">${etiName}</option>
+					</c:forEach>
+				</select>
+			</div>
             <div>
 			    <form:label path="informacionNutricional">Información Nutricional</form:label>
 			    <form:textarea path="informacionNutricional" class="form-control" type="text"/>
 			    <form:errors path="informacionNutricional" class="text-danger"/>   
 			</div>
-            
+
             
             <!-- 
                 AQUÍ HAY QUE AÑADIR LOS ATRIBUTOS ESPECÍFICOS DEL PRODUCTO

@@ -153,6 +153,10 @@ public class Servicio {
 		return rPro.findAll();
 	}
 	
+	public List<Producto> buscarTodosProductosPorCreador(Long id){
+		return rPro.findAllByCreadorProductoId(id);
+	}
+	
 	public Producto buscarProductoPorNombre(String nombre) {
 		return rPro.findByNombreContains(nombre);
 	}
@@ -231,7 +235,7 @@ public class Servicio {
 	
 	// DELETE
 	
-	public void deleteTodasImagenes() {          // <<<======= USAR SOLO PARA PRUEBAS
+	public void deleteTodasImagenesReceta() {          // <<<======= USAR SOLO PARA PRUEBAS
 		List<Imagen> imagenes = rIma.findAll();
 		for(Imagen img:imagenes) {
 			
@@ -259,9 +263,11 @@ public class Servicio {
 			rIma.delete(img);
 		}
 	}
-	public void deleteImagen(Long id) {
+	public void deleteRecetaImagen(Long id) {
 		
-		Imagen imagen = rIma.findById(id).orElse(null);
+		Receta receta = rRec.findById(id).orElse(null);
+		List<Imagen> listIma = receta.getImagenesRec();
+		Imagen imagen = listIma.get(0);
 		
 		imagen.eliminarRelaciones();
 		Path rutaImagen = Paths.get("target/classes/static", imagen.getUrl());
@@ -291,7 +297,7 @@ public class Servicio {
 		Receta rec = rRec.findById(id).orElse(null);
 		List<Imagen> imagenes = rec.getImagenesRec();
 		for(Imagen ima:imagenes) {
-			deleteImagen(ima.getId());
+			deleteRecetaImagen(ima.getId());
 		}
 		rec.getIngredientes().clear();
 		rec.getComentariosDeReceta().clear();
