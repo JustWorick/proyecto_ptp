@@ -235,7 +235,7 @@ public class Servicio {
 	
 	// DELETE
 	
-	public void deleteTodasImagenesReceta() {          // <<<======= USAR SOLO PARA PRUEBAS
+	public void deleteTodasImagenes() {          // <<<======= USAR SOLO PARA PRUEBAS
 		List<Imagen> imagenes = rIma.findAll();
 		for(Imagen img:imagenes) {
 			
@@ -263,11 +263,9 @@ public class Servicio {
 			rIma.delete(img);
 		}
 	}
-	public void deleteRecetaImagen(Long id) {
+	public void deleteImagen(Long id) {
 		
-		Receta receta = rRec.findById(id).orElse(null);
-		List<Imagen> listIma = receta.getImagenesRec();
-		Imagen imagen = listIma.get(0);
+		Imagen imagen = rIma.findById(id).orElse(null);
 		
 		imagen.eliminarRelaciones();
 		Path rutaImagen = Paths.get("target/classes/static", imagen.getUrl());
@@ -297,7 +295,7 @@ public class Servicio {
 		Receta rec = rRec.findById(id).orElse(null);
 		List<Imagen> imagenes = rec.getImagenesRec();
 		for(Imagen ima:imagenes) {
-			deleteRecetaImagen(ima.getId());
+			deleteImagen(ima.getId());
 		}
 		rec.getIngredientes().clear();
 		rec.getComentariosDeReceta().clear();
@@ -313,5 +311,18 @@ public class Servicio {
 		for(Receta rec:recetas) {
 			deleteReceta(rec.getId());
 		}
+	}
+	
+	public void deleteProducto(Long id) {
+		Producto pro = rPro.findById(id).orElse(null);
+		List<Imagen> imagenes = pro.getImagenesPro();
+		for(Imagen ima:imagenes) {
+			deleteImagen(ima.getId());
+		}
+		pro.getComentariosProducto().clear();
+		pro.getEtiquetasProducto().clear();
+		pro.getImagenesPro().clear();
+		rPro.save(pro);
+		rPro.delete(pro);
 	}
 }

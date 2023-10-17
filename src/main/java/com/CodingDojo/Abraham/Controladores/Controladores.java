@@ -352,12 +352,12 @@ public class Controladores {
 	
 	// DELETEMAPPING
 	@DeleteMapping("/borrar/imagen/{id}")
-	public String borrarImagen(@PathVariable("id")Long id, HttpSession session) {
+	public String borrarImagen(@PathVariable("id")Long imagenId, HttpSession session) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
 			return "redirect:/";
 		}
-		serv.deleteImagen(id);
+		serv.deleteImagen(imagenId);
 		return "redirect:/";
 	}
 	
@@ -403,6 +403,16 @@ public class Controladores {
 			return "redirect:/";
 		}
 		serv.deleteReceta(id);
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/producto/{id}")
+	public String borrarProducto(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		serv.deleteProducto(id);
 		return "redirect:/";
 	}
 }
