@@ -15,6 +15,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/style/index.css" />
+    <link rel="stylesheet" type="text/css" href="style/recetas.css">
     <title>Life</title>
   </head>
 
@@ -88,18 +89,20 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
             </li>
           </ul>
           <!--Login/SignUp-->
-          <div
-            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
-          >
-            <a href="/login" class="text-white text-decoration-none">Login</a>
-            <a
-              href="/registro"
-              class="text-black text-decoration-none px-3 py-1 rounded-4"
-              style="background-color: #eefb03"
-            >
-              Sign Up
-            </a>
-          </div>
+          <c:if test="${usuarioEnSesion == null}">
+	          <div
+	            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
+	          >
+	            <a href="/login" class="text-white text-decoration-none">Login</a>
+	            <a
+	              href="/registro"
+	              class="text-black text-decoration-none px-3 py-1 rounded-4"
+	              style="background-color: #eefb03"
+	            >
+	              Sign Up
+	            </a>
+	          </div>
+          </c:if>
         </div>
       </div>
     </nav>
@@ -134,6 +137,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
       <ul>
         <c:forEach items="${todasLasEtiquetas}" var="eti">
           <li><a href="/recetas/etiquetas/${eti.id}">${eti.nombre}</a></li>
+        </c:forEach>
+      </ul>
+      <ul>
+        <c:forEach items="${todasRecetas}" var="rec">
+          <li><a href="/receta/${rec.id}"><img>${rec.imagenesRec}<img>${rec.nombre}</a></li>
         </c:forEach>
       </ul>
     </div>

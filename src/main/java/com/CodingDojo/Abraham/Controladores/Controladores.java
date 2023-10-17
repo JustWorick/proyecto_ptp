@@ -49,10 +49,17 @@ public class Controladores {
 	 * 
 	 * */
 	@GetMapping("/prueba")
-	public String prueba() {
+	public String prueba(Model model, HttpSession session) {
 		
-		return "pruebaYarni1.jsp";
+		
+		List<Etiqueta> todasEtiquetas = serv.buscarTodasEtiquetas();
+		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		
+		List<Receta> todasRecetas = serv.buscarTodasRecetas();
+		model.addAttribute("todasRecetas", todasRecetas);
+		return "buscadorRecetas.jsp";
 	}
+	
 	
 	// yarni nacho =>> necesito una lista de etiquetas, una lista de productos
 	
