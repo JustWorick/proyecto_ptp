@@ -8,7 +8,7 @@ import com.CodingDojo.Abraham.Modelos.Comentario;
 
 public interface RepoComentario extends CrudRepository<Comentario, Long>{
 
-	List<Comentario> findByRecipeId(Long id);   
+	List<Comentario> findAllByRecipeId(Long id);   
 	
 	List<Comentario> findAll();
 }

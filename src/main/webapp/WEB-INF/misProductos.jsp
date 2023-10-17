@@ -149,17 +149,17 @@
 							<c:if test="${producto.creadorProducto.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
 								<a href="/editar/producto/${producto.id}" class="btn btn-warning">Editar</a>
-								<!--  
+								
 								<c:if test="${producto.imagenesPro != null && !producto.imagenesPro.isEmpty()}">
-									<form action="/borrar/receta/imagenes/${producto.imagenesPro.get(0).id}" method="post">
+									<form action="/borrar/imagen/${producto.imagenesPro.get(0).id}" method="post">
 										<input type="hidden" name="_method" value="delete">
-										<input class="btn btn-danger" type="submit" value="Delete Receta">
+										<input class="btn btn-danger" type="submit" value="Delete Imagen">
 									</form>
 								</c:if>
-								-->
+								
 								<form action="/borrar/producto/${producto.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Imagenes">
+									<input class="btn btn-danger" type="submit" value="Delete Producto">
 								</form>
 								
 							</c:if>

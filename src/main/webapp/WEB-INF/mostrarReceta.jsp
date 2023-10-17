@@ -117,10 +117,10 @@
 	                </c:forEach>
 				</c:if>
 				<c:if test="${not empty receta.etiquetas}">
-	                        	<c:forEach items="${receta.etiquetas}" var="eti">
-	                        		<li>${eti.nombre}</li>
-	                        	</c:forEach>
-	                        </c:if>
+	                <c:forEach items="${receta.etiquetas}" var="eti">
+	                	<li>${eti.nombre}</li>
+	            	</c:forEach>
+	            </c:if>
 			</div>
         </div>
        	<div class="row"> 
@@ -142,7 +142,7 @@
             </div>
        
         <!--solo si el usuario esta logeado-->
-        <c:if test="${usuarioEnSesion != null}">
+        <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
         	<div class="calificar-estrellas">
             <p>Califica esta receta: </p>
             <form class="star-rating">
@@ -178,6 +178,31 @@
         <p id="mostrarPreparacion">${receta.preparacion}</p>
         <!--Comentarios-->
         <h5>Comentarios</h5>
+        <c:if test="${usuarioEnSesion == null}"><p>Inicio Sesion para añadir tu comentario</p></c:if>
+        <div>
+        	<c:if test="${usuarioEnSesion != null && receta.creador.id != usuarioEnSesion.id}">
+        			<p>Añade tu comentario aqui</p>
+        		<div>
+        			<form action="/receta/${receta.id}/comentario" method="post">
+        				<textarea name="contenido" rows="4" cols="50" class="form-control"></textarea>
+        				<input type="hidden" value="${usuarioEnSesion.id}" name="redactor">
+        				<input type="hidden" value="${receta.id}" name="recipe">
+        				<input type="submit" value="Crear Comentario">
+        			</form>
+        		</div>
+        	</c:if>
+        	
+        	<div>
+        		<c:if test="${receta.comentariosDeReceta != null && !receta.comentariosDeReceta.isEmpty()}">
+        			<c:forEach items="${receta.comentariosDeReceta}" var="com">
+        				<div>
+	        				<span>${com.redactor.nombre}</span>
+	        				<p>${com.contenido}</p>
+        				</div>
+        			</c:forEach>
+        		</c:if>
+        	</div>
+        </div>
         <!---->
 	</div>
 	</div>

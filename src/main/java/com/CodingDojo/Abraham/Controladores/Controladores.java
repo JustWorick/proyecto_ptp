@@ -106,6 +106,9 @@ public class Controladores {
 	@GetMapping("/receta/{id}")
 	public String mostrarReceta(@PathVariable("id")Long id, Model model) {
 		Receta receta = serv.buscarRecetaPorId(id);
+		List<Comentario> comentarios = serv.buscarTodosComentariosPorReceta(id);
+		
+		model.addAttribute("comentarios", comentarios);
 		model.addAttribute("receta", receta);
 		return "mostrarReceta.jsp";
 	}
@@ -420,6 +423,15 @@ public class Controladores {
 			return "redirect:/";
 		}
 		serv.deleteProducto(id);
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/producto/imagenes/{id}")
+	public String borrarImagenProducto(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
 		return "redirect:/";
 	}
 }

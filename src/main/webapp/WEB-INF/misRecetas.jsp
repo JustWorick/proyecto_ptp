@@ -139,16 +139,16 @@
 		 <div class="card mb-3">
 		 	
 		 	<div class="row g-0">
-            	<c:forEach items="${recetas}" var="miReceta">
+            	<c:forEach items="${recetas}" var="receta">
 	                <div class="col-md-4">
 	                	<div id="imagen-portada">
-		                    <c:if test="${not empty miReceta.imagenesRec}">
-								<c:forEach items="${miReceta.imagenesRec}" var="ima">
+		                    <c:if test="${not empty receta.imagenesRec}">
+								<c:forEach items="${receta.imagenesRec}" var="ima">
 	                        		<img alt="..." src="${ima.url}">
 	                        	</c:forEach>
 							</c:if>
-							<c:if test="${not empty miReceta.etiquetas}">
-	                        	<c:forEach items="${miReceta.etiquetas}" var="eti">
+							<c:if test="${not empty receta.etiquetas}">
+	                        	<c:forEach items="${receta.etiquetas}" var="eti">
 	                        		<li>${eti.nombre}</li>
 	                        	</c:forEach>
 	                        </c:if>
@@ -157,32 +157,22 @@
 								<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
 							
 								<c:if test="${receta.imagenesRec != null && !receta.imagenesRec.isEmpty()}">
-									<form action="/borrar/receta/${receta.imagenesRec.get(0).id}" method="post">
+									<form action="/borrar/imagen/${receta.imagenesRec.get(0).id}" method="post">
 										<input type="hidden" name="_method" value="delete">
-										<input class="btn btn-danger" type="submit" value="Delete Receta">
+										<input class="btn btn-danger" type="submit" value="Delete Imagen">
 									</form>
 								</c:if>
-								<form action="/borrar/receta/imagenes/${receta.id}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Imagenes">
-								</form>
-								
-							</c:if>
-							<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
-							
 								<form action="/borrar/receta/${receta.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
 									<input class="btn btn-danger" type="submit" value="Delete Receta">
 								</form>
-								<form action="/borrar/receta/imagenes/${receta.id}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Imagenes">
-								</form>
+								
+							</c:if>
 						</div>
 							
 						<div class="col-md-8">
 							<div class="card-body">
-								<h5 class="card-title"><a href="/receta/{id}">${receta.nombre}</a></h5>
+								<h5 class="card-title"><a href="/receta/${receta.id}">${receta.nombre}</a></h5>
 								<p class="card-text"><small class="text-body-secondary">Porciones: ${receta.porciones}</small></p>
 								<p class="card-text"><small class="text-body-secondary">Valoración: <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 de 5</meter></small></p>
 			                        <!-- cambiar value="${receta.valoracionFinal}" title="${receta.valoracionFinal}..." ${receta.valoracionFinal} de 5 -->

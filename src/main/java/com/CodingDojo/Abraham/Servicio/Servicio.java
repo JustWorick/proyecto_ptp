@@ -125,6 +125,10 @@ public class Servicio {
 		return rCom.findById(id).orElse(null);
 	}
 	
+	public List<Comentario> buscarTodosComentariosPorReceta(Long id){
+		return rCom.findAllByRecipeId(id);
+	}
+	
 	public List<Comentario> buscarTodosComentarios() {
 		return rCom.findAll();
 	}
