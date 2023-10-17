@@ -110,23 +110,24 @@
 	<div class="contenido">
         <div class="col-md-4" id="imagen-principal">
                <!-- imagen -->
-			<div id="imagen-portada">
+			<div id="imagen-portada-mostrar">
 				<c:if test="${not empty receta.imagenesRec}">
 					<c:forEach items="${receta.imagenesRec}" var="ima">
 	                 	<img alt="..." src="${ima.url}" id="portada">
 	                </c:forEach>
-				</c:if>
-				<c:if test="${not empty receta.etiquetas}">
-	                <c:forEach items="${receta.etiquetas}" var="eti">
-	                	<li>${eti.nombre}</li>
-	            	</c:forEach>
-	            </c:if>
+				
 			</div>
         </div>
        	<div class="row"> 
 	        <header class="d-flex justify-content-between align-items-center">
 	            <h1>${receta.nombre}</h1>
 	        </header>
+	        </c:if>
+				<c:if test="${not empty receta.etiquetas}">
+	                <c:forEach items="${receta.etiquetas}" var="eti">
+	                	<li>${eti.nombre}</li>
+	            	</c:forEach>
+	            </c:if>
 	        <div class="porciones-tiempo">
 	            <p>Porciones: ${receta.porciones}</p>
 	        </div>
@@ -160,6 +161,9 @@
             
                 <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
                 <label class="radio-label" for="star1" title="1 star">1 star</label>
+                
+                <input type="submit" value= "Enviar calificación" id="enviar-estrellas" class="btn btn-success"/>
+                
             </form>
         </div>
         </c:if>
