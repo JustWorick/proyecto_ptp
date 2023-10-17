@@ -24,35 +24,37 @@
 .card-body {
     height: 300px;
     overflow: hidden;
+    gap: 10px;
 }
 
 .card-text {
-    height: 150px;
+    height: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-img {
-    display: block;
-    margin: 0 auto;
+#imagen-portada {
+  display: flex;
+  align-items: center;
 }
+
+#imagen-portada img {
+  max-width: 300px;
+  margin-right: 10px;
+}
+
 .col-md-4 {
     width: 100%;
-    height: auto;
-    background-size: cover;
-    background-position: center center;
+    height: 300px;
     align-items: center;
     justify-content: center;
     display: flex;
+    flex-direction: row;
 }
 
-#imagen-principal {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.col-md-8 {
+	height: 300px;
 }
-
-
 
 form.input, a {
     display: inline-block;
@@ -126,15 +128,6 @@ form.input, a {
     color: darkgoldenrod;
 }
 
-.porciones-tiempo {
-    display: flex;
-    flex-direction: row;
-}
-
-.porciones-tiempo p {
-    margin: 0 1rem;
-}
-
 
 .sidebar {
     position: fixed;
@@ -163,7 +156,7 @@ form.input, a {
 
 .sidebar li a {
     text-decoration: none;
-    color: darkgreen;
+    color: #447a1c;
 }
 
 .sidebar li {
@@ -175,11 +168,10 @@ form.input, a {
 .sidebar-toggle {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 18px;
     width: 50px;
     height: 50px;
-    background-color: lightgreen;
-    color: white;
+    color: #447a1c;
     font-size: 30px;
     text-align: center;
     line-height: 50px;
@@ -195,4 +187,20 @@ form.input, a {
 
 .calificar-estrellas p {
     margin-right: 10px;
+}
+
+.contenido header {
+    margin-top: 70px;
+}
+
+.container a {
+    color:#447a1c;
+}
+
+.container {
+	background-color: #447a1c;
+}
+
+#mostrarPreparacion {
+	white-space: pre-line;
 }

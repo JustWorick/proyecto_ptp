@@ -25,6 +25,7 @@ import com.CodingDojo.Abraham.Modelos.Comentario;
 import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Imagen;
 import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
+import com.CodingDojo.Abraham.Modelos.Producto;
 import com.CodingDojo.Abraham.Modelos.Receta;
 import com.CodingDojo.Abraham.Modelos.Usuario;
 import com.CodingDojo.Abraham.Servicio.Servicio;
@@ -87,7 +88,7 @@ public class Controladores {
 		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
 		
 		List<Receta> todasRecetas = serv.buscarTodasRecetas();
-		model.addAttribute("todasRecetas", todasRecetas);
+		model.addAttribute("recetas", todasRecetas);
 		return "recetas.jsp";
 	}
 	
@@ -134,7 +135,39 @@ public class Controladores {
 		return "editarReceta.jsp";
 	}
 	
+	@GetMapping("/productos")
+	public String productos(Model model, HttpSession session) {
+	    List<Producto> productos = serv.buscarTodosProductos();
+	    model.addAttribute("productos", productos);
+	    return "productos.jsp";
+	}
+
+	@GetMapping("/nuevoProducto")
+	public String nuevoProducto(@ModelAttribute("producto") Producto newProducto, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		List<String> nombreEtiquetas =  Arrays.asList(NombresEtiquetas.NomEtiquetas);
+		model.addAttribute("nombreEtiquetas", nombreEtiquetas);
+	    return "nuevoProducto.jsp";
+	}
 	
+	@GetMapping("/misProductos/{id}")
+	public String misProductos(@PathVariable("id")Long id, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		List<Producto> productos = serv.buscarTodosProductosPorCreador(id);
+		model.addAttribute("productos", productos);
+		return "misProductos.jsp";
+	}
+	
+	
+
+
+
 	
 	
 	// POSTMAPPING
@@ -153,8 +186,7 @@ public class Controladores {
 			model.addAttribute("nombreEtiquetas", nombreEtiquetas);
 			return "nuevaReceta.jsp";
 		}
-		
-		
+	
 		// <<=========== Logica Para añadir Imagenes ================>>
 		
 		if(!imagen.isEmpty()) {		
@@ -174,14 +206,12 @@ public class Controladores {
 		    // Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
 		    Imagen newImagen = new Imagen();
 		    
-		
 		    try {
 		        Files.write(rutaImagen, imagen.getBytes());
 		        newImagen.setNombre(imagen.getOriginalFilename());
 		        newImagen.setUrl("/img/"+nombreImagen);		
 		        
 		        serv.guardarImagen(newImagen);		// <<<======== SE GUARDA LA IMAGEN
-		        
 
 		       ArrayList<Imagen> imagenesDeLaReceta = new ArrayList<>(); //<<<==== AÑADIMOS LA IMAGEN A LA RELACION CON LA RECETA
 		       imagenesDeLaReceta.add(newImagen);
@@ -194,8 +224,7 @@ public class Controladores {
 		      } catch (IOException e) {
 		        e.printStackTrace();
 		      }
-		}
-		
+		}		
 		//  <<================         Logica Para añadir Etiquetas                   ==================>> 
 		serv.guardarReceta(newReceta);
 		if(!nombreEtiqueta.isEmpty()) {
@@ -210,15 +239,93 @@ public class Controladores {
 			}else {
 				eti.getRecetas().add(newReceta);
 				serv.guardarEtiqueta(eti);
-			}
-			
+			}		
 		}
-		
-		
 		serv.guardarReceta(newReceta);
 		return "redirect:/misRecetas/"+userTemp.getId();
 	}
+	
+	
+	
+	@PostMapping("/nuevoProducto")
+	public String crearProducto(@Valid @ModelAttribute("producto") Producto newProducto, BindingResult result, Model model,
+								@RequestParam("imagen")MultipartFile imagen,
+								@RequestParam("etiqueta")String nombreEtiqueta,HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		if(result.hasErrors()) {
+			List<String> nombreEtiquetas =  Arrays.asList(NombresEtiquetas.NomEtiquetas);
+			model.addAttribute("nombreEtiquetas", nombreEtiquetas);
+			return "nuevoProducto.jsp";
+		}
+		
+		// <<=========== Logica Para añadir Imagenes ================>>
+		
+				if(!imagen.isEmpty()) {		
+					String originalFileName = imagen.getOriginalFilename();
+					String extension = "";
+					if (originalFileName != null && originalFileName.contains(".")) {
+					    extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+					}
+
+					String nombreImagen = UUID.randomUUID().toString() + extension;
+				    // Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+				    Path rutaImagen = Paths.get("target/classes/static/img", nombreImagen);
+				    
+				    // RUTA ABSOLUTA (NOSE PARA QUE)
+				    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
+				    
+				    // Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
+				    Imagen newImagen = new Imagen();
+				    
+				    try {
+				        Files.write(rutaImagen, imagen.getBytes());
+				        newImagen.setNombre(imagen.getOriginalFilename());
+				        newImagen.setUrl("/img/"+nombreImagen);		
+				        
+				        serv.guardarImagen(newImagen);		// <<<======== SE GUARDA LA IMAGEN
+
+				       ArrayList<Imagen> imagenesDeElProducto = new ArrayList<>(); //<<<==== AÑADIMOS LA IMAGEN A LA RELACION CON LA RECETA
+				       imagenesDeElProducto.add(newImagen);
+				       newProducto.setImagenesPro(imagenesDeElProducto);
+				       
+				       serv.guardarProducto(newProducto);
+				       newImagen.setProductoImg(newProducto);
+				       serv.guardarImagen(newImagen);
+				        
+				      } catch (IOException e) {
+				        e.printStackTrace();
+				      }
+				}
+			//  <<================         Logica Para añadir Etiquetas                   ==================>> 
+				serv.guardarProducto(newProducto);
+				if(!nombreEtiqueta.isEmpty()) {
+					Etiqueta eti = new Etiqueta();		
+					eti.setNombre(nombreEtiqueta);
+					
+					if(eti.getProductos() == null) {
+						ArrayList<Producto> productos = new ArrayList<>();
+						productos.add(newProducto);
+						eti.setProductos(productos);
+						serv.guardarEtiqueta(eti);
+					}else {
+						eti.getProductos().add(newProducto);
+						serv.guardarEtiqueta(eti);
+					}		
+				}
+		
+	    serv.guardarProducto(newProducto);
+	    return "redirect:/misProductos/"+userTemp.getId(); // Redirecciona a la lista de mis productos
+	}
+	
+	
+	
+	
+	
 	/*
+	 * -------------------------------------------------------------------------------------------------------------
 	@PostMapping("/receta/{recetaId}/imagenes")
 	public String añadirMasImagenesReceta(@RequestParam("imagen")MultipartFile imagen,
 			HttpSession session, @PathVariable("recetaId")Long recetaId) {
@@ -247,20 +354,17 @@ public class Controladores {
 	}
 	
 	
-	
-	
-	
-	
-	
+
+		
 	
 	// DELETEMAPPING
 	@DeleteMapping("/borrar/imagen/{id}")
-	public String borrarImagen(@PathVariable("id")Long id, HttpSession session) {
+	public String borrarImagen(@PathVariable("id")Long imagenId, HttpSession session) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
 			return "redirect:/";
 		}
-		serv.deleteImagen(id);
+		serv.deleteImagen(imagenId);
 		return "redirect:/";
 	}
 	
@@ -306,6 +410,16 @@ public class Controladores {
 			return "redirect:/";
 		}
 		serv.deleteReceta(id);
+		return "redirect:/";
+	}
+	
+	@DeleteMapping("/borrar/producto/{id}")
+	public String borrarProducto(@PathVariable("id")Long id, HttpSession session) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		serv.deleteProducto(id);
 		return "redirect:/";
 	}
 }

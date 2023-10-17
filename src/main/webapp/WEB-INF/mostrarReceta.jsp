@@ -9,84 +9,84 @@
 <title>Receta</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
-<link rel="stylesheet" type="text/css" href="style/recetas.css">
+<link rel="stylesheet" href="/style/recetas.css">
 </head>
 <body>
-    <!--Nav-->
+<!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="/public/img/logo.png" alt="logoLife" width="120px" />
-          <!--Cambiar Logo-->
-        </a>
-        <button
-          class="navbar-toggler shadow-none border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse d-flex flex-column p-4 flex-lg-row p-lg-0"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/public/img/logo2.png" alt="logoLife" width="120px" />
+                <!--Cambiar Logo-->
+            </a>
+            <button
+                class="navbar-toggler shadow-none border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
                 aria-expanded="false"
-              >
-                Productos
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Recetas
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <!--Login/SignUp-->
-          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-            <a href="/login" class="text-white text-decoration-none">Login</a>
-            <a href="/registro" class="text-black text-decoration-none px-3 py-1 rounded-4" style="background-color: #eefb03"> Sign Up </a>
-          </div>
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="collapse navbar-collapse d-flex flex-column p-4 flex-lg-row p-lg-0"
+                id="navbarSupportedContent"
+            >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/">Todos los productos</a></li>
+                            <li><a class="dropdown-item" href="/">Another action</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item" href="/">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Recetas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/recetas">Todas las recetas</a></li>
+                            <li><a class="dropdown-item" href="/">Another action</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item" href="/">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--Login/SignUp-->
+                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                    <a href="/login" class="text-white text-decoration-none">Login</a>
+                    <a href="/registro" class="text-black text-decoration-none px-3 py-1 rounded-4" style="background-color: #eefb03"> Sign Up </a>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
     
 	<!--SIDEBAR--> 
@@ -109,25 +109,38 @@
 
 	<div class="contenido">
         <div class="col-md-4" id="imagen-principal">
-            <img src="https://cdn.pixabay.com/photo/2015/09/16/20/10/dough-943245_1280.jpg" class="img-fluid rounded-start" alt="imagen_receta">
+               <!-- imagen -->
+			<div id="imagen-portada">
+				<c:if test="${not empty receta.imagenesRec}">
+					<c:forEach items="${receta.imagenesRec}" var="ima">
+	                 	<img alt="..." src="${ima.url}" id="portada">
+	                </c:forEach>
+				</c:if>
+				<c:if test="${not empty receta.etiquetas}">
+	                        	<c:forEach items="${receta.etiquetas}" var="eti">
+	                        		<li>${eti.nombre}</li>
+	                        	</c:forEach>
+	                        </c:if>
+			</div>
         </div>
-        <header class="d-flex justify-content-between align-items-center">
-            <h1>${receta.nombre}</h1>
-        </header>
-        <div class="porciones-tiempo">
-            <p>Porciones ${receta.porciones}</p>
-            <p>Tiempo de preparación</p>
+       	<div class="row"> 
+	        <header class="d-flex justify-content-between align-items-center">
+	            <h1>${receta.nombre}</h1>
+	        </header>
+	        <div class="porciones-tiempo">
+	            <p>Porciones: ${receta.porciones}</p>
+	        </div>
+	     
+	        <p>${receta.descripcion}</p>
         </div>
-        <p>${receta.descripcion}</p>
         <div>
             <!--Número de valoraciones y volaración final-->
             <div id="valoraciones">
                 <p>${receta.numeroValoraciones}</p>
-                <p>${receta.valoracionFinal} <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 out of 5</meter></p>
-
-                
+                <p>${receta.valoracionFinal} <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter></p>
             </div>
-        </div>
+            </div>
+       
         <!--solo si el usuario esta logeado-->
         <c:if test="${usuarioEnSesion != null}">
         	<div class="calificar-estrellas">
@@ -162,9 +175,11 @@
         <p>Mira este video de la receta paso a paso</p>
         <!--Preparación con fotos (opcional)-->
         <h3>Preparación</h3>
+        <p id="mostrarPreparacion">${receta.preparacion}</p>
         <!--Comentarios-->
         <h5>Comentarios</h5>
         <!---->
+	</div>
 	</div>
 </body>
 </html>

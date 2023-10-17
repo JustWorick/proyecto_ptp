@@ -153,6 +153,10 @@ public class Servicio {
 		return rPro.findAll();
 	}
 	
+	public List<Producto> buscarTodosProductosPorCreador(Long id){
+		return rPro.findAllByCreadorProductoId(id);
+	}
+	
 	public Producto buscarProductoPorNombre(String nombre) {
 		return rPro.findByNombreContains(nombre);
 	}
@@ -307,5 +311,18 @@ public class Servicio {
 		for(Receta rec:recetas) {
 			deleteReceta(rec.getId());
 		}
+	}
+	
+	public void deleteProducto(Long id) {
+		Producto pro = rPro.findById(id).orElse(null);
+		List<Imagen> imagenes = pro.getImagenesPro();
+		for(Imagen ima:imagenes) {
+			deleteImagen(ima.getId());
+		}
+		pro.getComentariosProducto().clear();
+		pro.getEtiquetasProducto().clear();
+		pro.getImagenesPro().clear();
+		rPro.save(pro);
+		rPro.delete(pro);
 	}
 }

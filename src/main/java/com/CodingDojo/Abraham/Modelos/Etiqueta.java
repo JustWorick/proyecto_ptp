@@ -63,9 +63,23 @@ public class Etiqueta {
 				)
 	private List<Ingrediente> ingredientes;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+				name="etiquetas_productos",
+				joinColumns = @JoinColumn(name="etiqueta_id"), 
+				inverseJoinColumns = @JoinColumn(name="producto_id") 
+				)
+	private List<Producto> productos;
+	
 	
 	// GETTERS Y SETTERS
 	
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
 	public long getId() {
 		return id;
 	}

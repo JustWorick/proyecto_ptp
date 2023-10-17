@@ -1,8 +1,22 @@
-body{
+/*body{
     background: url(../public/img/fondo.png) rgba(0,0, 0, 0);
     background-blend-mode: multiply;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     
+}*/
+
+.container {
+	margin: 0 auto;
+	background-color: #447a1c;
+}
+
+.carousel-item {
+  height: 400px;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
 }

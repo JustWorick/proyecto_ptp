@@ -27,7 +27,7 @@ import jakarta.validation.constraints.Size;
 public class Producto {
 
 	// ATRIBUTOS <<====
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -41,6 +41,18 @@ public class Producto {
 	
 	@OneToMany(mappedBy="productoImg", fetch=FetchType.LAZY)
 	private List<Imagen> imagenesPro;
+
+    // Nuevo campo para el precio
+    private double precio;
+    
+    private String informacionNutricional;
+    
+	private double valoracionTotal;   //  <<==== es la suma de todas las valoraciones
+	
+    private int numeroValoraciones;  // <<==== cuenta el numero de valoraciones
+    
+    private double valoracionFinal; // <<==== es el resultado final de las valoraciones (valoracionTotal / numeroValoraciones)
+    
 	
 	/*
 		
@@ -145,13 +157,49 @@ public class Producto {
 	public void setImagenesPro(List<Imagen> imagenesPro) {
 		this.imagenesPro = imagenesPro;
 	}
+	public double getPrecio() {
+		return precio;
+	}		
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}	
+	public String getInformacionNutricional() {
+		return informacionNutricional;
+	}
+	public void setInformacionNutricional(String informacionNutricional) {
+		this.informacionNutricional = informacionNutricional;
+	}
+	public double getValoracionTotal() {
+		return valoracionTotal;
+	}
+	public void setValoracionTotal(double valoracionTotal) {
+		this.valoracionTotal = valoracionTotal;
+	}
+	public int getNumeroValoraciones() {
+		return numeroValoraciones;
+	}
+	public void setNumeroValoraciones(int numeroValoraciones) {
+		this.numeroValoraciones = numeroValoraciones;
+	}
+	public double getValoracionFinal() {
+		return valoracionFinal;
+	}
+	public void setValoracionFinal(double valoracionFinal) {
+		this.valoracionFinal = valoracionFinal;
+	}
 	
 	
 	// PREPERSIST
 	
+
 	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date(); 
+	public void beforePersist() {
+	    if (numeroValoraciones == 0) {
+	        valoracionFinal = 0.0;
+	    } else {
+	        valoracionFinal = valoracionTotal / numeroValoraciones;
+	    }
+	    this.createdAt = new Date();
 	}
 	@PreUpdate
 	protected void onUpdate() {
