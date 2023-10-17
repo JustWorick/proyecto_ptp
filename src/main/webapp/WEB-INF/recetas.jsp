@@ -132,16 +132,17 @@
 	                        		<img alt="..." src="${ima.url}">
 	                        	</c:forEach>
 							</c:if>
-							<c:if test="${not empty receta.etiquetas}">
-	                        	<c:forEach items="${receta.etiquetas}" var="eti">
-	                        		<li>${eti.nombre}</li>
-	                        	</c:forEach>
-	                        </c:if>
+							
 						</div>
 							
 						<div class="col-md-8">
 							<div class="card-body">
 								<h5 class="card-title"><a href="/receta/${receta.id}">${receta.nombre}</a></h5>
+								<c:if test="${not empty receta.etiquetas}">
+	                        	<c:forEach items="${receta.etiquetas}" var="eti">
+	                        		<li>${eti.nombre}</li>
+	                        	</c:forEach>
+	                        </c:if>
 								<p class="card-text"><small class="text-body-secondary">Porciones: ${receta.porciones}</small></p>
 								<p class="card-text"><small class="text-body-secondary">Valoración: <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 de 5</meter></small></p>
 			                        <!-- cambiar value="${receta.valoracionFinal}" title="${receta.valoracionFinal}..." ${receta.valoracionFinal} de 5 -->
