@@ -129,16 +129,16 @@
                         <td><a href="/producto/${producto.id}">${producto.nombre}</a></td>
                         <td>${producto.valoracionFinal}</td>
                         <td>
-                        	<c:if test="${not empty producto.imagenesRec}">
-								<c:forEach items="${producto.imagenesRec}" var="ima">
+                        	<c:if test="${not empty producto.imagenesPro}">
+								<c:forEach items="${producto.imagenesPro}" var="ima">
                         			<img alt="..." src="${ima.url}">
                         		</c:forEach>
 							</c:if>
                         </td>
                         <td>
                         	<ul>
-	                        	<c:if test="${not empty producto.etiquetas}">
-	                        		<c:forEach items="${producto.etiquetas}" var="eti">
+	                        	<c:if test="${not empty producto.etiquetasProducto}">
+	                        		<c:forEach items="${producto.etiquetasProducto}" var="eti">
 	                        			<li>${eti.nombre}</li>
 	                        		</c:forEach>
 	                        	</c:if>
@@ -146,15 +146,18 @@
                         </td>
                         <td>
                             <!--Editar y eliminar un producto solo si es el autor-->
-							<c:if test="${producto.creador.id == usuarioEnSesion.id}">
+							<c:if test="${producto.creadorProducto.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
 								<a href="/editar/producto/${producto.id}" class="btn btn-warning">Editar</a>
-							
+								<!--  
+								<c:if test="${producto.imagenesPro != null && !producto.imagenesPro.isEmpty()}">
+									<form action="/borrar/receta/imagenes/${producto.imagenesPro.get(0).id}" method="post">
+										<input type="hidden" name="_method" value="delete">
+										<input class="btn btn-danger" type="submit" value="Delete Receta">
+									</form>
+								</c:if>
+								-->
 								<form action="/borrar/producto/${producto.id}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Receta">
-								</form>
-								<form action="/borrar/producto/imagenes/${producto.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
 									<input class="btn btn-danger" type="submit" value="Delete Imagenes">
 								</form>
