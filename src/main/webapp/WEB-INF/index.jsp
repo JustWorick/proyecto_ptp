@@ -15,8 +15,8 @@
     <!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/public/img/logo.png" alt="logoLife" width="120px" />
+            <a class="navbar-brand" href="/">
+                <img src="/public/img/logo2.png" alt="logoLife" width="120px" />
                 <!--Cambiar Logo-->
             </a>
             <button
@@ -36,7 +36,7 @@
             >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
@@ -52,7 +52,7 @@
                             Productos
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="/productos">Todos los productos</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li>
@@ -71,11 +71,11 @@
                             Recetas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="/recetas">Todas las recetas</a></li>
+                            <li><a class="dropdown-item" href="/">Another action</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="/">Something else here</a>
                             </li>
                         </ul>
                     </li>

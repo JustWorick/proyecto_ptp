@@ -81,7 +81,7 @@ public class Controladores {
 		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
 		
 		List<Receta> todasRecetas = serv.buscarTodasRecetas();
-		model.addAttribute("todasRecetas", todasRecetas);
+		model.addAttribute("recetas", todasRecetas);
 		return "recetas.jsp";
 	}
 	
