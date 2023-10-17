@@ -141,7 +141,10 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
       </ul>
       <ul>
         <c:forEach items="${todasRecetas}" var="rec">
-          <li><a href="/receta/${rec.id}"><img>${rec.imagenesRec}<img>${rec.nombre}</a></li>
+        	<c:forEach items="${rec.imagenesRec}" var="img">
+        		<li><img alt="..." src="${img.url}"></li>
+        	</c:forEach>
+          <li><a href="/receta/${rec.id}">${rec.nombre}</a></li>
         </c:forEach>
       </ul>
     </div>
