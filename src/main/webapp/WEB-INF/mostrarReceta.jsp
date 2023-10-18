@@ -70,7 +70,7 @@
 	          </c:if>
 	          <c:if test="${usuarioEnSesion != null}">
 	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                	<a href="#" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
 		     	 </div>
@@ -135,6 +135,7 @@
         <!--solo si el usuario esta logeado-->
         <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
         	<div class="calificar-estrellas">
+        	
             <p>Califica esta receta: </p>
             <form class="star-rating">
                 <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
@@ -156,13 +157,14 @@
                 
             </form>
         </div>
+
         </c:if>
         
         <!--Ingredientes-->
         <h3>Ingredientes</h3>
         <ul>
-            <c:forEach items="ingredientes" var="ingrediente">
-                <li>${ingrediente}</li>
+            <c:forEach items="${receta.ingredientes}" var="ingr">
+                <li><span>${ingr.nombre} ${ingr.cantidad}</span></li>
             </c:forEach>
         </ul>
         <!--Video-->

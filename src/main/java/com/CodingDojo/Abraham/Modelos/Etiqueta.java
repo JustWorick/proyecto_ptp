@@ -55,13 +55,6 @@ public class Etiqueta {
 	private List<Receta> recetas;
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-				name="ingredientes_tienen_etiquetas",
-				joinColumns = @JoinColumn(name="etiqueta_id"),
-				inverseJoinColumns = @JoinColumn(name="ingrediente_id") 
-				)
-	private List<Ingrediente> ingredientes;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -109,12 +102,6 @@ public class Etiqueta {
 	}
 	public void setRecetas(List<Receta> recetas) {
 		this.recetas = recetas;
-	}
-	public List<Ingrediente> getIngredientes() {
-		return ingredientes;
-	}
-	public void setIngredientes(List<Ingrediente> ingredientes) {
-		this.ingredientes = ingredientes;
 	}
 	
 	

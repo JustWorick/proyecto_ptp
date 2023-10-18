@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.CodingDojo.Abraham.Modelos.Comentario;
 import com.CodingDojo.Abraham.Modelos.Etiqueta;
 import com.CodingDojo.Abraham.Modelos.Imagen;
+import com.CodingDojo.Abraham.Modelos.Ingrediente;
 import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
 import com.CodingDojo.Abraham.Modelos.Producto;
 import com.CodingDojo.Abraham.Modelos.Receta;
@@ -167,6 +168,17 @@ public class Controladores {
 		return "misProductos.jsp";
 	}
 	
+	@GetMapping("/perfil/{id}")
+	public String perfil(@PathVariable("id")Long id, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
+		Usuario user = serv.buscarUsuario(id);
+		model.addAttribute("usuario", user);
+		return "perfil.jsp";
+	}
+	
 	
 
 
@@ -179,7 +191,8 @@ public class Controladores {
 	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, 
 								BindingResult result, HttpSession session,
 								@RequestParam("imagen")MultipartFile imagen,
-								@RequestParam("etiqueta")String nombreEtiqueta, Model model) {
+								@RequestParam("etiqueta")String nombreEtiqueta,
+								@RequestParam("nombreIng[]")String[] nombreIng, @RequestParam("cantidad[]")String[] cantidad, Model model) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
 			return "redirect:/";
@@ -244,6 +257,25 @@ public class Controladores {
 				serv.guardarEtiqueta(eti);
 			}		
 		}
+		
+		
+		// <<================         Logica Para añadir Ingredientes                  ==================>> 
+		
+		for(int i = 0; i < nombreIng.length; i++) {
+			String nomIng = nombreIng[i];
+			String can = cantidad[i];
+			
+			if(!nomIng.isEmpty() && !can.isEmpty()) {
+				Ingrediente ingrediente = new Ingrediente();
+				ingrediente.setNombre(nomIng);
+				ingrediente.setCantidad(can);
+				serv.guardarIngrediente(ingrediente);
+				ingrediente.setReceta(newReceta);
+				serv.guardarIngrediente(ingrediente);
+			}
+		}
+		
+		
 		serv.guardarReceta(newReceta);
 		return "redirect:/misRecetas/"+userTemp.getId();
 	}

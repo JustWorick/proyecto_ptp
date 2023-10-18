@@ -1,7 +1,6 @@
 package com.CodingDojo.Abraham.Modelos;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,8 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -34,6 +32,9 @@ public class Ingrediente {
 		@Size(min=2, max=30, message="El nombre debe tener al menos, entre 2 y 30 caracteres")
 		private String nombre;
 		
+		@NotEmpty(message="Este Campo no puede estar vacio")
+		private String cantidad;
+		
 		@Column(updatable=false)
 		@DateTimeFormat(pattern="yyyy-MM-dd")
 		private Date createdAt;
@@ -45,22 +46,9 @@ public class Ingrediente {
 		
 		public Ingrediente () {}
 		
-		@ManyToMany(fetch = FetchType.LAZY)
-		@JoinTable(
-					name="recetas_tienen_ingredientes",
-					joinColumns = @JoinColumn(name="ingrediente_id"), 
-					inverseJoinColumns = @JoinColumn(name="receta_id") 
-					)
-		private List<Receta> recetas;
-		
-		
-		@ManyToMany(fetch = FetchType.LAZY)
-		@JoinTable(
-					name="ingredientes_tienen_etiquetas",
-					joinColumns = @JoinColumn(name="ingrediente_id"),
-					inverseJoinColumns = @JoinColumn(name="etiqueta_id") 
-					)
-		private List<Etiqueta> etiquetas;
+		@ManyToOne(fetch=FetchType.LAZY)
+		@JoinColumn(name="receta_id") 
+		private Receta receta;          
 		
 		
 		// GETTERS Y SETTERS
@@ -74,6 +62,12 @@ public class Ingrediente {
 		public String getNombre() {
 			return nombre;
 		}
+		public Receta getReceta() {
+			return receta;
+		}
+		public void setReceta(Receta receta) {
+			this.receta = receta;
+		}
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
@@ -86,21 +80,16 @@ public class Ingrediente {
 		public Date getUpdatedAt() {
 			return updatedAt;
 		}
+		public String getCantidad() {
+			return cantidad;
+		}
+		public void setCantidad(String cantidad) {
+			this.cantidad = cantidad;
+		}
 		public void setUpdatedAt(Date updatedAt) {
 			this.updatedAt = updatedAt;
 		}
-		public List<Receta> getRecetas() {
-			return recetas;
-		}
-		public void setRecetas(List<Receta> recetas) {
-			this.recetas = recetas;
-		}
-		public List<Etiqueta> getEtiquetas() {
-			return etiquetas;
-		}
-		public void setEtiquetas(List<Etiqueta> etiquetas) {
-			this.etiquetas = etiquetas;
-		}
+
 		
 		
 		// PREPERSIST

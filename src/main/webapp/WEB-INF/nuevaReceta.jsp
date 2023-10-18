@@ -70,7 +70,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	          </c:if>
 	          <c:if test="${usuarioEnSesion != null}">
 	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                	<a href="#" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
 		     	 </div>
@@ -109,11 +109,6 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 					</c:forEach>
 				</select>
 			</div>
-            <!-- 
-            
-            	AQUI HAY QUE AÑADIR LOS INGREDIENTES
-            
-             -->
 			
             <div>
 				<form:label path="preparacion">Preparación</form:label>
@@ -121,10 +116,23 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 				<form:errors path="preparacion" class="text-danger"/>	
 			</div>
 			<form:hidden path="creador" value="${usuarioEnSesion.id}"/>
-			<input type="submit" class="btn btn-success mt-3" value="Publicar"/>
+			
+			
+			<div id="ingredientes">
+            	<div class="divs">
+	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
+	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
+            	</div>
+            </div>
+            <input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
 		
+		<div>
+			<button class="btn btn-info" onclick="add()" id="add">Añadir Ingrediente</button>
+			<button class="btn btn-info"  onclick="remove()" id="remove">Quitar Ingrediente</button>
+		</div>
 		<!--  
+		
 		<form action="/subir-imagen" method="post" enctype="multipart/form-data">
 		  <input type="file" name="imagen" class="form-control">
 		  <input type="submit" value="Añadir imagen">
