@@ -1,31 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let currentIndex = 0;
+    let currentIndex1 = 0;
+    let currentIndex2 = 0;
 
-    function showSlide(index) {
-        const slides = document.querySelectorAll('.carousel-item');
+    function showSlide(index, carouselId) {
+        const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
         slides.forEach((slide) => slide.classList.remove('active'));
         slides[index].classList.add('active');
     }
 
-    function changeSlide(direction) {
-        currentIndex += direction;
-        const slides = document.querySelectorAll('.carousel-item');
-        if (currentIndex >= slides.length) {
-            currentIndex = 0;
-        } else if (currentIndex < 0) {
-            currentIndex = slides.length - 1;
+    function changeSlide(direction, carouselId) {
+        if (carouselId === 'carouselExampleIndicators') {
+            currentIndex1 += direction;
+            const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            if (currentIndex1 >= slides.length) {
+                currentIndex1 = 0;
+            } else if (currentIndex1 < 0) {
+                currentIndex1 = slides.length - 1;
+            }
+            showSlide(currentIndex1, carouselId);
+        } else if (carouselId === 'carouselExampleAutoplaying') {
+            currentIndex2 += direction;
+            const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
+            if (currentIndex2 >= slides.length) {
+                currentIndex2 = 0;
+            } else if (currentIndex2 < 0) {
+                currentIndex2 = slides.length - 1;
+            }
+            showSlide(currentIndex2, carouselId);
         }
-        showSlide(currentIndex);
     }
 
-    document.querySelector('.carousel-control-prev').addEventListener('click', function(e) {
+    document.querySelector('#carouselExampleIndicators .carousel-control-prev').addEventListener('click', function(e) {
         e.preventDefault();
-        changeSlide(-1);
+        changeSlide(-1, 'carouselExampleIndicators');
     });
 
-    document.querySelector('.carousel-control-next').addEventListener('click', function(e) {
+    document.querySelector('#carouselExampleIndicators .carousel-control-next').addEventListener('click', function(e) {
         e.preventDefault();
-        changeSlide(1);
+        changeSlide(1, 'carouselExampleIndicators');
+    });
+
+    document.querySelector('#carouselExampleAutoplaying .carousel-control-prev').addEventListener('click', function(e) {
+        e.preventDefault();
+        changeSlide(-1, 'carouselExampleAutoplaying');
+    });
+
+    document.querySelector('#carouselExampleAutoplaying .carousel-control-next').addEventListener('click', function(e) {
+        e.preventDefault();
+        changeSlide(1, 'carouselExampleAutoplaying');
     });
 });
+
+
 

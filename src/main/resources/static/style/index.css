@@ -33,3 +33,32 @@
   height: 100%;
   object-fit: cover;
 }
+
+.segundo-carrusel {
+	margin: 0 auto;
+}
+/* Estilos para el carrusel de tarjetas */
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: -15px; /* Para ajustar el espacio entre las tarjetas */
+}
+
+.card {
+    width: calc(33.33% - 30px); /* Para que haya 3 tarjetas por fila */
+    margin: 15px; /* Espacio entre las tarjetas */
+    box-sizing: border-box;
+}
+
+section .card {
+	margin: 0 10px
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

@@ -18,7 +18,7 @@
     <title>Life</title>
 </head>
 
-<body class="vh-100 overflow-hidden">
+<body>
    <!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
         <div class="container">
@@ -93,17 +93,126 @@
 	            <img class="d-block w-100" src="public/img/prote.png" alt="Third slide">
 	        </div>
 	    </div>
-	    <a class="carousel-control-prev" href="#" role="button" data-slide="prev" onclick="changeSlide(-1)">
-	        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	        <span class="sr-only">Previous</span>
-	    </a>
-	    <a class="carousel-control-next" href="#" role="button" data-slide="next" onclick="changeSlide(1)">
-	        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	        <span class="sr-only">Next</span>
-	    </a>
+		<a class="carousel-control-prev" href="#" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
 	</div>
 	
-	<!-- Footer -->
+    <!-- SEGUNDO CARRUSEL -->
+    <section class="segundo-carrusel">
+    <h2>Recetas Destacadas</h2>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="cards-wrapper">
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="cards-wrapper">
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="cards-wrapper">
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" onclick="changeSlide(-1, 'carouselExampleAutoplaying')">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" onclick="changeSlide(1, 'carouselExampleAutoplaying')">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+	</section>
+	<section class="texto-eslogan">
+	    <h3>better.Life</h3>
+	    <h5>Cocina Inclusiva: Recetas y Productos para todos</h5>
+	    <p>
+	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer better.Life! Un espacio creada para ti. En better.Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
+	    </p>
+	</section>
+
+    
+    <!-- Footer -->
 	<footer class="bg-dark text-white py-5">
 	    <div class="container">
 	        <div class="row">
@@ -140,7 +249,7 @@
 	        </div>
 	    </div>
 	</footer>
-    
+ 
     <script src="js/index.js"></script>
 </body>
 </html>
