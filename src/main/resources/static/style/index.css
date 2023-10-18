@@ -6,11 +6,24 @@
     background-repeat: no-repeat;
     
 }*/
-
+	
 .container {
 	margin: 0 auto;
 	background-color: #447a1c;
 }
+
+
+#perfil{
+	font-family: 'Gabarito', sans-serif;
+	transition: 0.5s;
+	object-fit: cover;
+}
+
+#perfil:hover{
+	transform: scale(1.2);
+}
+
+
 
 .carousel-item {
   height: 400px;
