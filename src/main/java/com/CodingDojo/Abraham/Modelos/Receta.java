@@ -64,13 +64,8 @@ public class Receta {
 	public Receta() {}
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(
-				name="recetas_tienen_ingredientes",
-				joinColumns = @JoinColumn(name="receta_id"), 
-				inverseJoinColumns = @JoinColumn(name="ingrediente_id") 
-				)
-	private List<Ingrediente> ingredientes;
+	@OneToMany(mappedBy="receta", fetch=FetchType.LAZY)
+	private List<Ingrediente> ingredientes; 
 	
 	
 	@ManyToMany(fetch = FetchType.LAZY)

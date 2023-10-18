@@ -1,12 +1,4 @@
-/*body{
-    background: url(../public/img/fondo.png) rgba(0,0, 0, 0);
-    background-blend-mode: multiply;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-}*/
-	
+
 .container {
 	margin: 0 auto;
 	background-color: #447a1c;
@@ -32,4 +24,23 @@
 .carousel-item img {
   height: 100%;
   object-fit: cover;
+}
+
+.segundo-carrusel {
+	margin: 0 auto;
+}
+.cards-wrapper {
+	display: flex;
+}
+
+section .card {
+	margin: 0 10px
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
