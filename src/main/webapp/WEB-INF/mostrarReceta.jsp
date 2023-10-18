@@ -9,7 +9,11 @@
 <title>Receta</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style/recetas.css">
+<script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <!--Nav-->
@@ -41,50 +45,36 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contacto</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/">Todos los productos</a></li>
-                            <li><a class="dropdown-item" href="/">Another action</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li>
-                                <a class="dropdown-item" href="/">Something else here</a>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/productos">Productos</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            Recetas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/recetas">Todas las recetas</a></li>
-                            <li><a class="dropdown-item" href="/">Another action</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li>
-                                <a class="dropdown-item" href="/">Something else here</a>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recetas">Recetas</a>
+                    </li>
                     </li>
                 </ul>
                 <!--Login/SignUp-->
-                <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                    <a href="/login" class="text-white text-decoration-none">Login</a>
-                    <a href="/registro" class="text-black text-decoration-none px-3 py-1 rounded-4" style="background-color: #eefb03"> Sign Up </a>
-                </div>
+	          <c:if test="${usuarioEnSesion == null}">
+		          <div
+		            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
+		          >
+		            <a href="/login" class="text-white text-decoration-none">Login</a>
+		            <a
+		              href="/registro"
+		              class="text-black text-decoration-none px-3 py-1 rounded-4"
+		              style="background-color: #eefb03"
+		            >
+		              Sign Up
+		            </a>
+		          </div>
+	          </c:if>
+	          <c:if test="${usuarioEnSesion != null}">
+	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+                	<a href="#" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+                	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
+                	</i>${usuarioEnSesion.nickname}</a>
+		     	 </div>
+		      </c:if>
             </div>
         </div>
     </nav>
@@ -110,23 +100,24 @@
 	<div class="contenido">
         <div class="col-md-4" id="imagen-principal">
                <!-- imagen -->
-			<div id="imagen-portada">
+			<div id="imagen-portada-mostrar">
 				<c:if test="${not empty receta.imagenesRec}">
 					<c:forEach items="${receta.imagenesRec}" var="ima">
 	                 	<img alt="..." src="${ima.url}" id="portada">
 	                </c:forEach>
-				</c:if>
-				<c:if test="${not empty receta.etiquetas}">
-	                <c:forEach items="${receta.etiquetas}" var="eti">
-	                	<li>${eti.nombre}</li>
-	            	</c:forEach>
-	            </c:if>
+				
 			</div>
         </div>
        	<div class="row"> 
 	        <header class="d-flex justify-content-between align-items-center">
 	            <h1>${receta.nombre}</h1>
 	        </header>
+	        </c:if>
+				<c:if test="${not empty receta.etiquetas}">
+	                <c:forEach items="${receta.etiquetas}" var="eti">
+	                	<li>${eti.nombre}</li>
+	            	</c:forEach>
+	            </c:if>
 	        <div class="porciones-tiempo">
 	            <p>Porciones: ${receta.porciones}</p>
 	        </div>
@@ -144,24 +135,29 @@
         <!--solo si el usuario esta logeado-->
         <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
         	<div class="calificar-estrellas">
-          	    <p>Califica esta receta: </p>
-	            <form class="star-rating">
-	                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
-	                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
-	            
-	                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
-	                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
-	            
-	                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
-	                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
-	            
-	                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
-	                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
-	            
-	                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
-	                <label class="radio-label" for="star1" title="1 star">1 star</label>
-	            </form>
-       		 </div>
+        	
+            <p>Califica esta receta: </p>
+            <form class="star-rating">
+                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
+                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
+            
+                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
+                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
+            
+                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
+                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
+            
+                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
+                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
+            
+                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
+                <label class="radio-label" for="star1" title="1 star">1 star</label>
+                
+                <input type="submit" value= "Enviar calificación" id="enviar-estrellas" class="btn btn-success"/>
+                
+            </form>
+        </div>
+
         </c:if>
         
         <!--Ingredientes-->

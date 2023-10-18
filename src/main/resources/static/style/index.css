@@ -1,13 +1,21 @@
-@charset "ISO-8859-1";
-
-body {
-	background-color: red;
-}
 
 .container {
 	margin: 0 auto;
 	background-color: #447a1c;
 }
+
+
+#perfil{
+	font-family: 'Gabarito', sans-serif;
+	transition: 0.5s;
+	object-fit: cover;
+}
+
+#perfil:hover{
+	transform: scale(1.2);
+}
+
+
 
 .carousel-item {
   height: 400px;
@@ -16,4 +24,23 @@ body {
 .carousel-item img {
   height: 100%;
   object-fit: cover;
+}
+
+.segundo-carrusel {
+	margin: 0 auto;
+}
+.cards-wrapper {
+	display: flex;
+}
+
+section .card {
+	margin: 0 10px
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
