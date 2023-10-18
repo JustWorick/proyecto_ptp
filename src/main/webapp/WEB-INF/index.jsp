@@ -54,7 +54,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/recetas">Recetas</a>
                     </li>
-                    </li>
                 </ul>
                 <!--Login/SignUp-->
 	          <c:if test="${usuarioEnSesion == null}">
@@ -82,35 +81,66 @@
         </div>
     </nav>
     
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="public/img/airelibre.png" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="public/img/fuego.png" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="public/img/airelibre.png" alt="Third slide">
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+	<div id="carouselExampleIndicators" class="carousel">
+	    <div class="carousel-inner">
+	        <div class="carousel-item active">
+	            <img class="d-block w-100" src="public/img/airelibre.png" alt="First slide">
+	        </div>
+	        <div class="carousel-item">
+	            <img class="d-block w-100" src="public/img/fuego.png" alt="Second slide">
+	        </div>
+	        <div class="carousel-item">
+	            <img class="d-block w-100" src="public/img/prote.png" alt="Third slide">
+	        </div>
+	    </div>
+	    <a class="carousel-control-prev" href="#" role="button" data-slide="prev" onclick="changeSlide(-1)">
+	        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	        <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="carousel-control-next" href="#" role="button" data-slide="next" onclick="changeSlide(1)">
+	        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	        <span class="sr-only">Next</span>
+	    </a>
+	</div>
+	
+	<!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-4">
+	                <h5>Contacto</h5>
+	                <p>Teléfono: +56 123 456 789</p>
+	                <p>Email: info@lifediet.com</p>
+	                <p>Dirección: Caupolicán #263, Concepción, Región del Biobío, Chile</p> <!-- Dirección Falsa -->
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Quiénes Somos</h5>
+	                <p>Descubre más sobre <a href="/quienes_somos">quiénes somos</a>.</p>
+	                <p>Explora nuestra <a href="/vision">visión</a> y <a href="/mision">misión</a>.</p>
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Redes Sociales</h5>
+	                <a href="https://facebook.com/tuempresa" target="_blank">
+	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                </a>
+	                <a href="https://twitter.com/tuempresa" target="_blank">
+	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                </a>
+	                <a href="https://instagram.com/tuempresa" target="_blank">
+	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                </a>
+	            </div>
+	        </div>
+	        <div class="row mt-3">
+	            <div class="col">
+	                <a href="/quienes_somos">Quiénes Somos</a> |
+	                <a href="/ubicacion">Ubicación</a> |
+	                <a href="/equipo">Nuestro Equipo</a>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
     
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-RbVcB4lP2hq6zjXL5zfB6Gk7u0V4W3p3zK/CBCv8txIowFMgE6kr0OspzE0y9nI1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

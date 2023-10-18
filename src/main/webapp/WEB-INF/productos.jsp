@@ -81,19 +81,19 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
     
     <!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
-    <div class="sidebar">
-        <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-        <ul>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Mis recetas</a></li>
-            <li><a href="#">Recetas Favoritas</a></li>
-            <li><a href="#">Productos Favoritos</a></li>
-        </ul>
-    </div>
-
-    <!-- Elemento con la clase sidebar-toggle que sirve para mostrar u ocultar la barra lateral -->
-    <div class="sidebar-toggle">☰</div>
-
+	<div class="sidebar">
+	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
+	    <ul>
+	        <li><a href="#">Perfil</a></li>
+	        <li><a href="#">Mis recetas</a></li>
+	        <li><a href="#">Recetas Favoritas</a></li>
+	        <li><a href="#">Productos Favoritos</a></li>
+	    </ul>
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
+	
 	<!-- Barra de búsqueda -->
 	<form action="/busquedaProductos" method="post" class="row mt-4 justify-content-center text-center">
 	    <div class="col-12 col-md-7 mx-auto mb-2">
