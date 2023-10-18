@@ -41,6 +41,14 @@
 	display: flex;
 }
 
-.card {
+section .card {
 	margin: 0 10px
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
