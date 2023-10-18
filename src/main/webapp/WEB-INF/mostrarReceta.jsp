@@ -144,31 +144,31 @@
         <!--solo si el usuario esta logeado-->
         <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
         	<div class="calificar-estrellas">
-            <p>Califica esta receta: </p>
-            <form class="star-rating">
-                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
-                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
-            
-                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
-                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
-            
-                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
-                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
-            
-                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
-                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
-            
-                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
-                <label class="radio-label" for="star1" title="1 star">1 star</label>
-            </form>
-        </div>
+          	    <p>Califica esta receta: </p>
+	            <form class="star-rating">
+	                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
+	                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
+	            
+	                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
+	                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
+	            
+	                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
+	                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
+	            
+	                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
+	                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
+	            
+	                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
+	                <label class="radio-label" for="star1" title="1 star">1 star</label>
+	            </form>
+       		 </div>
         </c:if>
         
         <!--Ingredientes-->
         <h3>Ingredientes</h3>
         <ul>
-            <c:forEach items="ingredientes" var="ingrediente">
-                <li>${ingrediente}</li>
+            <c:forEach items="${receta.ingredientes}" var="ingr">
+                <li><span>${ingr.nombre} ${ingr.cantidad}</span></li>
             </c:forEach>
         </ul>
         <!--Video-->

@@ -145,10 +145,6 @@ public class Servicio {
 		return rIma.findById(id);
 	}
 	
-	public List<Ingrediente> buscarRecetasPorIngrediente(Long id) {
-		return rIng.findByRecetasIdContains(id);
-	}
-	
 	public List<Ingrediente> buscarTodosIngredientes() {
 		return rIng.findAll();
 	}

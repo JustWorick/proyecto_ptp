@@ -1,11 +1,8 @@
-/*body{
-    background: url(../public/img/fondo.png) rgba(0,0, 0, 0);
-    background-blend-mode: multiply;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-}*/
+@charset "ISO-8859-1";
+
+body {
+	background-color: red;
+}
 
 .container {
 	margin: 0 auto;
