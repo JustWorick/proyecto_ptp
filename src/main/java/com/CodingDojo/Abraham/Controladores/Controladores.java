@@ -168,6 +168,17 @@ public class Controladores {
 		return "misProductos.jsp";
 	}
 	
+	@GetMapping("/perfil/{id}")
+	public String perfil(@PathVariable("id")Long id, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
+		Usuario user = serv.buscarUsuario(id);
+		model.addAttribute("usuario", user);
+		return "perfil.jsp";
+	}
+	
 	
 
 
