@@ -100,7 +100,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div>
-				<input type="file" name="imagen" class="form-control">     
+				<input type="file" name="imagen" class="form-control" multiple>     
 			</div>
 			<div>
 				<select name="etiqueta">

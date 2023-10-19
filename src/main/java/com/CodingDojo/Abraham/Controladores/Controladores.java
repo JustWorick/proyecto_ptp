@@ -190,7 +190,7 @@ public class Controladores {
 	@PostMapping("/nuevaReceta")
 	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, 
 								BindingResult result, HttpSession session,
-								@RequestParam("imagen")MultipartFile imagen,
+								@RequestParam("imagen")List<MultipartFile> imagenes,
 								@RequestParam("etiqueta")String nombreEtiqueta,
 								@RequestParam("nombreIng[]")String[] nombreIng, @RequestParam("cantidad[]")String[] cantidad, Model model) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
@@ -204,43 +204,46 @@ public class Controladores {
 		}
 	
 		// <<=========== Logica Para añadir Imagenes ================>>
-		
-		if(!imagen.isEmpty()) {		
-			String originalFileName = imagen.getOriginalFilename();
-			String extension = "";
-			if (originalFileName != null && originalFileName.contains(".")) {
-			    extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-			}
+		List<Imagen> nuevasImagenes = new ArrayList<>();
+		for(MultipartFile imagen : imagenes) {
+			if(!imagen.isEmpty()) {		
+				String originalFileName = imagen.getOriginalFilename();
+				String extension = "";
+				if (originalFileName != null && originalFileName.contains(".")) {
+				    extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+				}
 
-			String nombreImagen = UUID.randomUUID().toString() + extension;
-		    // Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
-		    Path rutaImagen = Paths.get("target/classes/static/img", nombreImagen);
-		    
-		    // RUTA ABSOLUTA (NOSE PARA QUE)
-		    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
-		    
-		    // Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
-		    Imagen newImagen = new Imagen();
-		    
-		    try {
-		        Files.write(rutaImagen, imagen.getBytes());
-		        newImagen.setNombre(imagen.getOriginalFilename());
-		        newImagen.setUrl("/img/"+nombreImagen);		
-		        
-		        serv.guardarImagen(newImagen);		// <<<======== SE GUARDA LA IMAGEN
+				String nombreImagen = UUID.randomUUID().toString() + extension;
+			    // Path rutaImagen = Paths.get("src/main/resources/static/img", nombreImagen);
+			    Path rutaImagen = Paths.get("target/classes/static/img", nombreImagen);
+			    
+			    // RUTA ABSOLUTA (NOSE PARA QUE)
+			    String rutaAbsoluta = rutaImagen.toAbsolutePath().toString();
+			    
+			    // Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
+			    Imagen newImagen = new Imagen();
+			    
+			    try {
+			        Files.write(rutaImagen, imagen.getBytes());
+			        newImagen.setNombre(imagen.getOriginalFilename());
+			        newImagen.setUrl("/img/"+nombreImagen);		
+			        
+			        serv.guardarImagen(newImagen);		// <<<======== SE GUARDA LA IMAGEN
 
-		       ArrayList<Imagen> imagenesDeLaReceta = new ArrayList<>(); //<<<==== AÑADIMOS LA IMAGEN A LA RELACION CON LA RECETA
-		       imagenesDeLaReceta.add(newImagen);
-		       newReceta.setImagenesRec(imagenesDeLaReceta);
-		       
-		       serv.guardarReceta(newReceta);
-		       newImagen.setRecetaImg(newReceta);
-		       serv.guardarImagen(newImagen);
-		        
-		      } catch (IOException e) {
-		        e.printStackTrace();
-		      }
-		}		
+			       ArrayList<Imagen> imagenesDeLaReceta = new ArrayList<>(); //<<<==== AÑADIMOS LA IMAGEN A LA RELACION CON LA RECETA
+			       imagenesDeLaReceta.add(newImagen);
+			       newReceta.setImagenesRec(imagenesDeLaReceta);
+			       
+			       serv.guardarReceta(newReceta);
+			       newImagen.setRecetaImg(newReceta);
+			       serv.guardarImagen(newImagen);
+			       
+			      } catch (IOException e) {
+			        e.printStackTrace();
+			      }
+			    newReceta.setImagenesRec(nuevasImagenes);
+			}		
+		}
 		//  <<================         Logica Para añadir Etiquetas                   ==================>> 
 		serv.guardarReceta(newReceta);
 		if(!nombreEtiqueta.isEmpty()) {

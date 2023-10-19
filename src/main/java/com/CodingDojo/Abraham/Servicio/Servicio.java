@@ -297,7 +297,6 @@ public class Servicio {
 		for(Imagen ima:imagenes) {
 			deleteImagen(ima.getId());
 		}
-		rec.getIngredientes().clear();
 		rec.getComentariosDeReceta().clear();
 		rec.getUsuarios().clear();
 		rec.getImagenesRec().clear();

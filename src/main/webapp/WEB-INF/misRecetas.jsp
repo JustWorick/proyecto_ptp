@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style/recetas.css">
+<link rel="stylesheet" href="/style/misRecetas.css">
 <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
 <title>Mis Recetas</title>
@@ -51,7 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/recetas">Recetas</a>
                     </li>
-                    </li>
+                    
                 </ul>
                 <!--Login/SignUp-->
 	          <c:if test="${usuarioEnSesion == null}">
@@ -97,10 +98,9 @@
     <!-- Etiqueta script que enlaza el archivo js que contiene el código JavaScript -->
     <script src="js/recetas.js"></script>
     
+    
     <div class="contenido">
-        <header class="d-flex justify-content-between align-items-center">
-            <h1>Mis Recetas</h1>
-        </header>
+        <h1>Mis Recetas</h1>
         <p>Aquí podrás encontrar todas las recetas que haz publicado</p>
         <form action="/busqueda" method="post" class="row" id="buscador">
             <div class="col-7">
@@ -110,39 +110,19 @@
             <!-- verificar si el usuario está logeado --> 
 		    <a href="/nuevaReceta" class="btn btn-primary col-2">Crear Receta</a>
         </form>
-    
-	<!-- BOTONES DE TESTEO -->	
-        <div>
-			<p>Botones de testeo no borrar hasta el final</p>
-			<form action="/borrar/imagen/all" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input class="btn btn-danger" type="submit" value="Delete All imagenes">
-			</form>
-		</div>
-		<div>
-			<form action="/borrar/recetas/all" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input class="btn btn-danger" type="submit" value="Delete All recetas">
-			</form>
-		</div>
             
-		 <div class="card mb-3">
-		 	
-		 	<div class="row g-0">
+		 <div class="cardContainer">
             	<c:forEach items="${recetas}" var="receta">
-	                <div class="col-md-4">
-	                	<div id="imagen-portada">
-		                    <c:if test="${not empty receta.imagenesRec}">
-								<c:forEach items="${receta.imagenesRec}" var="ima">
-	                        		<img alt="..." src="${ima.url}">
-	                        	</c:forEach>
-							</c:if>
-							<c:if test="${not empty receta.etiquetas}">
-	                        	<c:forEach items="${receta.etiquetas}" var="eti">
-	                        		<li>${eti.nombre}</li>
-	                        	</c:forEach>
-	                        </c:if>
-	                        <c:if test="${receta.creador.id == usuarioEnSesion.id}">
+	                <div class="targeta">
+	                	<div id="titulo">
+	                		<h3><a href="/receta/${receta.id}">${receta.nombre}</a></h3>
+	                		<p>${receta.etiquetas[0].nombre}</p>
+	                	</div>
+	                	<c:if test="${not empty receta.imagenesRec}">
+						  	<img alt="..." src="${receta.imagenesRec[0].url}">   
+						</c:if>
+						<div id="botones">
+							<c:if test="${receta.creador.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
 								<a href="/editar/receta/${receta.id}" class="btn btn-warning">Editar</a>
 							
@@ -155,26 +135,12 @@
 								<form action="/borrar/receta/${receta.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
 									<input class="btn btn-danger" type="submit" value="Delete Receta">
-								</form>
-								
+								</form>	
 							</c:if>
 						</div>
-							
-						<div class="col-md-8">
-							<div class="card-body">
-								<h5 class="card-title"><a href="/receta/${receta.id}">${receta.nombre}</a></h5>
-								<p class="card-text"><small class="text-body-secondary">Porciones: ${receta.porciones}</small></p>
-								<p class="card-text"><small class="text-body-secondary">Valoración: <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 de 5</meter></small></p>
-			                        <!-- cambiar value="${receta.valoracionFinal}" title="${receta.valoracionFinal}..." ${receta.valoracionFinal} de 5 -->
-								
-								<p class="card-text">${receta.descripcion}</p>
-					      </div>
-		               </div>
 	                </div>
                 </c:forEach>
-            </div>
-           </div>
-</body>
-</html>
+         </div>
+    </div>
 </body>
 </html>

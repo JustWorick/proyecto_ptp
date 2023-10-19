@@ -118,9 +118,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	                <div class="col-md-4">
 	                	<div id="imagen-portada">
 		                    <c:if test="${not empty receta.imagenesRec}">
-								<c:forEach items="${receta.imagenesRec}" var="ima">
-	                        		<img alt="..." src="${ima.url}">
-	                        	</c:forEach>
+	                        		<img alt="..." src="${receta.imagenesRec[0].url}">          
 							</c:if>
 							
 						</div>

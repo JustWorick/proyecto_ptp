@@ -93,6 +93,7 @@ form.input, a {
     linear-gradient(90deg, gold var(--percent), rgba(0,0,0,0.2) var(--percent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+	
 }
 
 .star-rating {
@@ -124,11 +125,13 @@ form.input, a {
 .radio-input:checked ~ .radio-label {
     color: #ffc700;
     color: gold;
+	
 }
 
 .radio-label:hover,
 .radio-label:hover ~ .radio-label {
     color: goldenrod;
+	
 }
 
 .radio-input:checked + .radio-label:hover,
@@ -209,7 +212,8 @@ form.input, a {
 }
 
 .container {
-	background-color: #447a1c;
+	background-color: #37d444;
+	border-radius:5px;
 }
 
 #mostrarPreparacion {

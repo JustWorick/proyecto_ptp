@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style/recetas.css">
+<link rel="stylesheet" href="/style/mostrarReceta.css">
 <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -95,112 +96,140 @@
     <div class="sidebar-toggle">☰</div>
 
     <!-- Etiqueta script que enlaza el archivo js que contiene el código JavaScript -->
-    <script src="js/recetas.js"></script>
+    <script src="/js/recetas.js"></script>
+
+
+
+	
 
 	<div class="contenido">
-        <div class="col-md-4" id="imagen-principal">
-               <!-- imagen -->
-			<div id="imagen-portada-mostrar">
-				<c:if test="${not empty receta.imagenesRec}">
-					<c:forEach items="${receta.imagenesRec}" var="ima">
-	                 	<img alt="..." src="${ima.url}" id="portada">
-	                </c:forEach>
-				
-			</div>
-        </div>
-       	<div class="row"> 
-	        <header class="d-flex justify-content-between align-items-center">
-	            <h1>${receta.nombre}</h1>
-	        </header>
-	        </c:if>
+		<div id="containerTitulo">
+			<div class="divTitulo">
+			<h1>${receta.nombre}</h1>
+			<div>
 				<c:if test="${not empty receta.etiquetas}">
-	                <c:forEach items="${receta.etiquetas}" var="eti">
-	                	<li>${eti.nombre}</li>
-	            	</c:forEach>
-	            </c:if>
-	        <div class="porciones-tiempo">
-	            <p>Porciones: ${receta.porciones}</p>
-	        </div>
-	     
-	        <p>${receta.descripcion}</p>
-        </div>
-        <div>
+			        <c:forEach items="${receta.etiquetas}" var="eti">
+			        	<span>${eti.nombre}</span>
+			        </c:forEach>
+		        </c:if>
+			</div>
+			
+		    <div class="row"> 
+			   	<div class="porciones-tiempo">
+			        <p>Porciones: ${receta.porciones}</p>
+			    </div>
+		        
+        	</div>
+		</div>
+		
+		<div id="subTitulo">
+			<p>${receta.descripcion}</p>
+			        <div>
             <!--Número de valoraciones y volaración final-->
             <div id="valoraciones">
                 <p>${receta.numeroValoraciones}</p>
                 <p>${receta.valoracionFinal} <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter></p>
             </div>
-            </div>
-       
-        <!--solo si el usuario esta logeado-->
-        <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
-        	<div class="calificar-estrellas">
-        	
-            <p>Califica esta receta: </p>
-            <form class="star-rating">
-                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
-                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
-            
-                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
-                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
-            
-                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
-                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
-            
-                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
-                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
-            
-                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
-                <label class="radio-label" for="star1" title="1 star">1 star</label>
-                
-                <input type="submit" value= "Enviar calificación" id="enviar-estrellas" class="btn btn-success"/>
-                
-            </form>
+	        </div>
+	       
+	        <!--solo si el usuario esta logeado-->
+	        <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
+	        	<div class="calificar-estrellas">
+		        																
+		            <p>Califica esta receta: </p>
+		            <form class="star-rating">			<!-- <<<============= FALTA AÑADIR LOGICA -->
+		                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
+		                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
+		            
+		                <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
+		                <label class="radio-label" for="star4" title="4 stars">4 stars</label>
+		            
+		                <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
+		                <label class="radio-label" for="star3" title="3 stars">3 stars</label>
+		            
+		                <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
+		                <label class="radio-label" for="star2" title="2 stars">2 stars</label>
+		            
+		                <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
+		                <label class="radio-label" for="star1" title="1 star">1 star</label>
+		                
+		                <input type="submit" value= "Enviar calificación" id="enviar-estrellas" class="btn btn-success"/>
+		                
+		            </form>
+	        	</div>
+	        </c:if>	
+		</div>
+		</div>
+		
+        <div class="col-md-4" id="imagen-principal">
+               <!-- imagen -->
+			<div id="imagen-portada-mostrar">
+				<c:if test="${not empty receta.imagenesRec}">
+					<c:forEach items="${receta.imagenesRec}" var="ima">
+						<div class="img">
+							<img alt="..." src="${ima.url}">
+						</div>
+	                </c:forEach>
+				</c:if>
+			</div>
         </div>
-
-        </c:if>
         
-        <!--Ingredientes-->
-        <h3>Ingredientes</h3>
-        <ul>
-            <c:forEach items="${receta.ingredientes}" var="ingr">
-                <li><span>${ingr.nombre} ${ingr.cantidad}</span></li>
-            </c:forEach>
-        </ul>
-        <!--Video-->
-        <p>Mira este video de la receta paso a paso</p>
-        <!--Preparación con fotos (opcional)-->
-        <h3>Preparación</h3>
-        <p id="mostrarPreparacion">${receta.preparacion}</p>
-        <!--Comentarios-->
-        <h5>Comentarios</h5>
-        <c:if test="${usuarioEnSesion == null}"><p>Inicio Sesion para añadir tu comentario</p></c:if>
-        <div>
-        	<c:if test="${usuarioEnSesion != null && receta.creador.id != usuarioEnSesion.id}">
-        			<p>Añade tu comentario aqui</p>
-        		<div>
-        			<form action="/receta/${receta.id}/comentario" method="post">
-        				<textarea name="contenido" rows="4" cols="50" class="form-control"></textarea>
-        				<input type="hidden" value="${usuarioEnSesion.id}" name="redactor">
-        				<input type="hidden" value="${receta.id}" name="recipe">
-        				<input type="submit" value="Crear Comentario">
-        			</form>
-        		</div>
-        	</c:if>
-        	
-        	<div>
-        		<c:if test="${receta.comentariosDeReceta != null && !receta.comentariosDeReceta.isEmpty()}">
-        			<c:forEach items="${receta.comentariosDeReceta}" var="com">
-        				<div>
-	        				<span>${com.redactor.nombre}</span>
-	        				<p>${com.contenido}</p>
-        				</div>
-        			</c:forEach>
-        		</c:if>
-        	</div>
-        </div>
+       	
+		<div id="divBajoImagen">
+				 <!--Ingredientes-->
+	        <div id="divIngredientes">
+	        	<h3>Ingredientes</h3>
+		        <ul id="ingredientes">
+		            <c:forEach items="${receta.ingredientes}" var="ingr">
+		                <li><span>${ingr.nombre} ${ingr.cantidad}</span></li>
+		            </c:forEach>
+		        </ul>
+	        </div>
+	        
+	        <!--Video-->
+	        <p>Mira este video de la receta paso a paso</p>
+	        <!--Preparación con fotos (opcional)-->
+	        <div>
+	        	<h3>Preparación</h3>
+	        	<p id="mostrarPreparacion">${receta.preparacion}</p>
+	        </div>
+	        
+	        <!--Comentarios-->
+	        
+		</div>
+		
+		<div id="divComentarios">
+			<h5>Comentarios</h5>
+	        
+	        <c:if test="${usuarioEnSesion == null}"><p>Inicia Sesion para añadir tu comentario</p></c:if>
+	        <div>
+	        	<c:if test="${usuarioEnSesion != null && receta.creador.id != usuarioEnSesion.id}">
+	        			<p>Añade tu comentario aqui</p>
+	        		<div>
+	        			<form action="/receta/${receta.id}/comentario" method="post">
+	        				<textarea name="contenido" rows="4" cols="50" class="form-control"></textarea>
+	        				<input type="hidden" value="${usuarioEnSesion.id}" name="redactor">
+	        				<input type="hidden" value="${receta.id}" name="recipe">
+	        				<input type="submit" value="Crear Comentario">
+	        			</form>
+	        		</div>
+	        	</c:if>
+	        	
+	        	<div>
+	        		<c:if test="${receta.comentariosDeReceta != null && !receta.comentariosDeReceta.isEmpty()}">
+	        			<c:forEach items="${receta.comentariosDeReceta}" var="com">
+	        				<div>
+		        				<span>${com.redactor.nombre}</span>
+		        				<p>${com.contenido}</p>
+	        				</div>
+	        			</c:forEach>
+	        		</c:if>
+	        	</div>
+	        </div>
+		</div>
+       
         <!---->
 	</div>
-	</div>
+	
 </body>
 </html>

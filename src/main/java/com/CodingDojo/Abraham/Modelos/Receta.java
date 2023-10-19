@@ -64,7 +64,7 @@ public class Receta {
 	public Receta() {}
 	
 	
-	@OneToMany(mappedBy="receta", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="receta", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Ingrediente> ingredientes; 
 	
 	
