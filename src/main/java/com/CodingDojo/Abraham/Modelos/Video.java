@@ -29,6 +29,7 @@ public class Video {
 	
 	private String nombre;
 	
+	@Column(columnDefinition = "LONGTEXT")
 	private String url;
 	
 	@Column(updatable=false)

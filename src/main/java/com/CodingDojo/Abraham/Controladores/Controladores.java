@@ -29,6 +29,7 @@ import com.CodingDojo.Abraham.Modelos.NombresEtiquetas;
 import com.CodingDojo.Abraham.Modelos.Producto;
 import com.CodingDojo.Abraham.Modelos.Receta;
 import com.CodingDojo.Abraham.Modelos.Usuario;
+import com.CodingDojo.Abraham.Modelos.Video;
 import com.CodingDojo.Abraham.Servicio.Servicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -191,6 +192,7 @@ public class Controladores {
 	public String crearReceta(@Valid @ModelAttribute("receta")Receta newReceta, 
 								BindingResult result, HttpSession session,
 								@RequestParam("imagen")List<MultipartFile> imagenes,
+								@RequestParam("video")String video,
 								@RequestParam("etiqueta")String nombreEtiqueta,
 								@RequestParam("nombreIng[]")String[] nombreIng, @RequestParam("cantidad[]")String[] cantidad, Model model) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
@@ -277,6 +279,17 @@ public class Controladores {
 				serv.guardarIngrediente(ingrediente);
 			}
 		}
+		
+		
+		// <<================         Logica Para añadir Video                 ==================>> 
+		
+		if(video != "0") {
+			Video newVideo = new Video();
+			newVideo.setUrl(video);
+			newVideo.setRecetasVid(newReceta);
+			serv.guardarVideo(newVideo);	
+		}
+		
 		
 		
 		serv.guardarReceta(newReceta);

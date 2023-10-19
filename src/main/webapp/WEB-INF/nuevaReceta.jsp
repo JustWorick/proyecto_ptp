@@ -12,7 +12,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style/nuevaReceta.css">
+<link rel="stylesheet" href="/style/nuevaReceta.css?1">
 <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -100,8 +100,22 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div>
+				<label>Añade tus imagenes Aqui!</label>
 				<input type="file" name="imagen" class="form-control" multiple>     
 			</div>
+			
+			<div id="divVideo">
+			    <div class="imgNo">
+			    	  <img src="/public/img/subirImagenes1.png"  alt="Imagen 1">
+			        <img src="/public/img/subirImagenes2.png"  alt="Imagen 2">
+			        <img src="/public/img/subirImagenes3.png"  alt="Imagen 3">
+			    </div>
+			      
+			
+				<p>¿Donde obtener el Link correcto? miralo aqui!</p>
+				<input type="text" name="video" class="form-control" value="0" oninput="if (this.value === '0') this.value = '';">
+			</div>
+			
 			<div>
 				<select name="etiqueta">
 					<c:forEach items="${nombreEtiquetas}" var="etiName">

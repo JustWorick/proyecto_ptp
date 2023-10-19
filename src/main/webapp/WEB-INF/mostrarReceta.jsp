@@ -188,7 +188,11 @@
 	        
 	        <!--Video-->
 	        <p>Mira este video de la receta paso a paso</p>
-	        <!--Preparación con fotos (opcional)-->
+	        <c:if test="${not empty receta.videoRec}">
+	        	<div>
+	        		${receta.videoRec.url}
+	        	</div>
+	        </c:if>
 	        <div>
 	        	<h3>Preparación</h3>
 	        	<p id="mostrarPreparacion">${receta.preparacion}</p>

@@ -103,3 +103,19 @@ select.form-control {
 }
 
 
+
+#divVideo{
+  height: 400px;
+  width: 400px;
+  background-color: red;
+}
+
+.imgNo {
+	display: none;
+}
+
+#divVideo:hover .imgNo {
+	display:block;
+}
+
+
