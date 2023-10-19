@@ -28,7 +28,7 @@ body {
     align-items:center;
 }
 #containerTitulo {
-	color: #7aac0b;
+	color: darkgreen;
 }
 
 .divTitulo div:nth-child(2) {
@@ -36,15 +36,13 @@ body {
     align-items:center;
 }
 .divTitulo div:nth-child(2) span {
-    color:white;
-    background-color:#00d80ca1;
+    color: #306133;
     border: 1px solid black;
     border-radius:5px;
     padding:2px 5px;
 }
 #subTitulo p{
-	background-color:#00d80ca1;
-	border: 1px solid black;
+	color:#306133;
 	border-radius:5px;
 	font-family:cursive;
 	text-transform:lowercase;
