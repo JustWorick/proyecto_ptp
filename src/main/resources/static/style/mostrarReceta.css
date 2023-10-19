@@ -1,8 +1,18 @@
 @charset "ISO-8859-1";
 
+/*
 body {
 	background-image: url("../public/img/mantel2.png");
 	background-repeat: repeat;
+}
+*/
+
+body {
+  background-image: url(../public/img/fondov2.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
 
 .contenido {
@@ -18,8 +28,7 @@ body {
     align-items:center;
 }
 #containerTitulo {
-	background-color:#b77a13cc;
-	border-radius:20px;
+	color: #7aac0b;
 }
 
 .divTitulo div:nth-child(2) {
@@ -80,14 +89,16 @@ body {
 }
 
 #divBajoImagen {
-  border: 1px solid brown;
-  border-radius: 5px;
   padding: 20px;
-  background-color:#eee490bf
 }
 
 #divComentarios {
 	margin-top: 10px;
+}
+
+.contenido {
+	background-color: rgba(245, 245, 245, 0.8);
+	border-radius: 5px;
 }
 
 

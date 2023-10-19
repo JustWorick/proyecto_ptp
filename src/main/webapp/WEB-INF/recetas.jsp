@@ -99,18 +99,20 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 
 
 	<div class="contenido">
-        <header class="d-flex justify-content-between align-items-center">
-            <h1>Recetas</h1>
-        </header>
-        <p>Aquí podrás encontrar miles de recetas sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
-        <form action="/busqueda" method="post" class="row">
-            <div class="col-7">
-                <input type="text" name="palabra" class="form-control" placeholder="Hotcakes sin gluten">
-            </div>	
-            <input type="submit" value="Buscar" class="btn btn-primary col-1">
-            <!-- verificar si el usuario está logeado --> 
-		    <a href="/nuevaReceta" class="btn btn-primary col-2">Crear Receta</a>
-        </form>
+		<div class="encabezado-buscador">
+	        <header class="d-flex justify-content-between align-items-center">
+	            <h1>Recetas</h1>
+	        	<p>Aquí podrás encontrar recetas sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
+	        </header>
+	        <form action="/busqueda" method="post" class="row">
+	            <div class="col-7">
+	                <input type="text" name="palabra" class="form-control" placeholder="Hotcakes sin gluten">
+	            </div>	
+	            <input type="submit" value="Buscar" class="btn btn-success col-1">
+	            <!-- verificar si el usuario está logeado --> 
+			    <a href="/nuevaReceta" class="btn btn-success col-2">Crear Receta</a>
+	        </form>
+        </div>
             
         <div class="card mb-3">
             <div class="row g-0">
