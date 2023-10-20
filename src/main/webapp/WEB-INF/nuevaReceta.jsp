@@ -98,7 +98,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 		<h1>Nueva Receta</h1>
 		<form:form action="/nuevaReceta" method="post" modelAttribute="receta" enctype="multipart/form-data">
 			<div>
-				<form:label path="nombre">Nombre</form:label>
+				<form:label path="nombre">Nombre de tu Receta</form:label>
 				<form:input path="nombre" class="form-control" type="text"/>
 				<form:errors path="nombre" class="text-danger"/>	
 			</div>
@@ -108,7 +108,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 				<form:errors path="descripcion" class="text-danger"/>	
 			</div>
 			<div>
-				<form:label path="porciones">Porciones</form:label>
+				<form:label path="porciones">Numero de Porciones</form:label>
 				<form:input path="porciones" class="form-control" type="number"/>
 				<form:errors path="porciones" class="text-danger"/>	
 			</div>
@@ -119,23 +119,18 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div id="divVideo">
-			    <div class="imgNo">
-			    	  <img src="/public/img/subirImagenes1.png"  alt="Imagen 1">
-			        <img src="/public/img/subirImagenes2.png"  alt="Imagen 2">
-			        <img src="/public/img/subirImagenes3.png"  alt="Imagen 3">
-			    </div>
-			      
-			
-				<p>¿Donde obtener el Link correcto? miralo aqui!</p>
+				<label>Añade un Video aqui! (desde compartir de youtube => boton de "incorporar" => copy)</label>
 				<input type="text" name="video" class="form-control" value="0" oninput="if (this.value === '0') this.value = '';">
 			</div>
 			
 			<div>
-				<select name="etiqueta" multiple>
-					<c:forEach items="${nombreEtiquetas}" var="etiName">
-						<option value="${etiName}">${etiName}</option>
-					</c:forEach>
-				</select>
+				<label>¿Que etiquetas tendra tu receta?</label>
+				<c:forEach items="${nombreEtiquetas}" var="etiName">
+			        <label>
+			            <input type="checkbox" name="etiqueta" value="${etiName}" />
+			            ${etiName}
+			        </label>
+			    </c:forEach>
 			</div>
 			
 			<div id="ingredientes">
@@ -144,10 +139,6 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
 	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
             	</div>
-            	<div class="añadir-quitar-ingrediente">
-					<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
-					<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
-				</div>
             </div>
 			
             <div>
@@ -161,6 +152,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			
             <input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
+		
+		<div class="añadir-quitar-ingrediente">
+			<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
+			<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
+		</div>
 		
 		
 		<!--  

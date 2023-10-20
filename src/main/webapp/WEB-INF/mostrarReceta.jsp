@@ -139,7 +139,7 @@
 	        	<div class="calificar-estrellas">
 		        																
 		            <p>Califica esta receta: </p>
-		            <form class="star-rating">			<!-- <<<============= FALTA AÑADIR LOGICA -->
+		            <form class="star-rating" action="/calificar/receta/${receta.id}" method="post">			<!-- <<<============= FALTA AÑADIR LOGICA -->
 		                <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
 		                <label class="radio-label" class for="star5" title="5 stars">5 stars</label>
 		            

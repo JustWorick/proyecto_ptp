@@ -457,6 +457,30 @@ public class Controladores {
 		return "redirect:/receta/"+recetaId;
 	}
 	
+	@PostMapping("/calificar/receta/{id}")
+	public String calificarReceta(@PathVariable("id")Long id, HttpSession session, Model model, @RequestParam("star-input")double stars) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		Receta receta = serv.buscarRecetaPorId(id);
+		double val1 = receta.getValoracionTotal();
+		int numVal = receta.getNumeroValoraciones();
+		
+		val1 += stars;
+		numVal += 1;
+		
+		
+		double valFinal = val1 /= numVal;
+		
+		receta.setValoracionTotal(val1);
+		receta.setNumeroValoraciones(numVal);
+		receta.setValoracionFinal(valFinal);
+		serv.guardarReceta(receta);
+		
+		return "redirect:/receta/"+id;
+	}
+	
 	// PUTMAPPING
 	
 	@PutMapping("/perfil/actualizar/{id}")
