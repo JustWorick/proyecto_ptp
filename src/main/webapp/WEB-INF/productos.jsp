@@ -96,18 +96,28 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	<div class="sidebar-toggle">☰</div>
 	
 	<!-- Barra de búsqueda -->
-	<form action="/busquedaProductos" method="post" class="row mt-4 justify-content-center text-center">
-	    <div class="col-12 col-md-7 mx-auto mb-2">
-	        <input type="text" name="palabra" class="form-control" placeholder="Buscar productos">
-	    </div>  
-	    <div class="col-12 col-md-1 mx-auto mb-2">
-	        <input type="submit" value="Buscar" class="btn btn-primary">
-	    </div>
-	    <div class="col-12 mx-auto">
-	        <a href="/nuevoProducto" class="btn btn-primary">Crear Producto</a>
-	    </div>
-	</form>
-
+	<div class="barra-busqueda">
+	
+		<header class="d-flex justify-content-between align-items-center">
+	    	<h1>Productos</h1>
+	       	<p>Aquí podrás encontrar productos sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
+	    </header>
+		
+		<div class="botones">
+			<form action="/busquedaProductos" method="post" class="row">
+			    <div class="col-6">
+			        <input type="text" name="palabra" class="form-control" placeholder="Buscar productos">
+			    </div>  
+			    
+			        <input type="submit" value="Buscar" class="btn btn-success col-2">
+			    
+			        <a href="/nuevoProducto" class="btn btn-success col-3">Crear Producto</a>
+			   
+		    </div>
+		</form>
+		
+	</div>
+	
 	<!-- Contenido de los productos como tarjetas -->
 	<div class="container mt-4">
 	    <div class="row">

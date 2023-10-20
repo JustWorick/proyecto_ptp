@@ -1,5 +1,9 @@
 @charset "ISO-8859-1";
 
+* {
+	font-family: sans-serif;
+}
+
 /*
 body {
 	background-image: url("../public/img/mantel2.png");
@@ -39,7 +43,7 @@ body {
     padding:2px 5px;
 }
 #subTitulo p{
-	color:#383b37;;
+	color:#383b37;
 	border-radius:5px;
 	font-family:cursive;
 	text-transform:lowercase;
@@ -114,6 +118,14 @@ body {
 	margin-bottom: 50px;
 }
 
+.creador span {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.creador {
+	margin-bottom: 50px;
+}
 
 
 

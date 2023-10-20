@@ -11,7 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style/recetas.css">
 <link rel="stylesheet" href="/style/misRecetas.css">
 <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
@@ -107,16 +106,16 @@
             <div class="col-7">
                 <input type="text" name="palabra" class="form-control" placeholder="busca entre tus recetas">
             </div>	
-            <input type="submit" value="Buscar" class="btn btn-primary col-1">
+            <input type="submit" value="Buscar" class="btn btn-success col-1">
             <!-- verificar si el usuario está logeado --> 
-		    <a href="/nuevaReceta" class="btn btn-primary col-2">Crear Receta</a>
+		    <a href="/nuevaReceta" class="btn btn-success col-2">Crear Receta</a>
         </form>
             
 		 <div class="cardContainer">
             	<c:forEach items="${recetas}" var="receta">
-	                <div class="targeta">
+	                <div class="tarjeta">
 	                	<div id="titulo">
-	                		<h3><a href="/receta/${receta.id}">${receta.nombre}</a></h3>
+	                		<h5><a href="/receta/${receta.id}">${receta.nombre}</a></h5>
 	                		<p>${receta.etiquetas[0].nombre}</p>
 	                	</div>
 	                	<c:if test="${not empty receta.imagenesRec}">
@@ -130,12 +129,12 @@
 								<c:if test="${receta.imagenesRec != null && !receta.imagenesRec.isEmpty()}">
 									<form action="/borrar/imagen/${receta.imagenesRec.get(0).id}" method="post">
 										<input type="hidden" name="_method" value="delete">
-										<input class="btn btn-danger" type="submit" value="Delete Imagen">
+										<input class="btn btn-danger" type="submit" value="Eliminar imagen">
 									</form>
 								</c:if>
 								<form action="/borrar/receta/${receta.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Receta">
+									<input class="btn btn-danger" type="submit" value="Eliminar Receta">
 								</form>	
 							</c:if>
 						</div>

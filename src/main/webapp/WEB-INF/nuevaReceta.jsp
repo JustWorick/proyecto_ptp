@@ -119,12 +119,12 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div id="divVideo">
-				<label>Añade un Video aqui! (desde compartir de youtube => boton de "incorporar" => copy)</label>
+				<label>¡Añade un video aquí! (desde compartir de youtube => boton de "incorporar" => copy)</label>
 				<input type="text" name="video" class="form-control" value="0" oninput="if (this.value === '0') this.value = '';">
 			</div>
 			
 			<div>
-				<label>¿Que etiquetas tendra tu receta?</label>
+				<label>¿Qué etiquetas tendré tu receta?</label>
 				<c:forEach items="${nombreEtiquetas}" var="etiName">
 			        <label>
 			            <input type="checkbox" name="etiqueta" value="${etiName}" />
@@ -139,6 +139,10 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
 	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
             	</div>
+            	<div class="añadir-quitar-ingrediente">
+					<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
+					<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
+				</div>
             </div>
 			
             <div>
@@ -153,10 +157,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
             <input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
 		
-		<div class="añadir-quitar-ingrediente">
-			<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
-			<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
-		</div>
+		
 		
 		
 		<!--  

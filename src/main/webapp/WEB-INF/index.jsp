@@ -87,13 +87,25 @@
     <!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
 	<div class="sidebar">
-	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-	    <ul>
-	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-	        <li><a href="#">Mis recetas</a></li>
-	        <li><a href="#">Recetas Favoritas</a></li>
-	        <li><a href="#">Productos Favoritos</a></li>
-	    </ul>
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<a href="/login" class="btn btn-success">Inica Sesión</a>
+			<a href="/registro" class="btn btn-warning">Regístrate</a>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="#">Recetas Favoritas</a></li>
+				<li><a href="#">Productos Favoritos</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
 	    <div class="close-button">X</div>
 	</div>
 	
@@ -123,10 +135,14 @@
 	
 	</section>
 	<section class="texto-eslogan">
-	    <h3>.Life</h3>
-	    <h5>Cocina Inclusiva: Recetas y Productos para todos</h5>
-	    <p>
-	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer .Life! Un espacio creado para ti. En .Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
+	    <h1>.Life</h1>
+	    <h4>Cocina Inclusiva: Recetas y Productos para todos</h4>
+	    <p class="primer-parrafo">
+	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias?</p>
+			
+		<h3>¡Te invitamos a conocer .Life! Un espacio creado para ti</h3>
+			        
+	    <p>En .Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a .Life, el lugar donde la cocina es para todos.
 	    </p>
 	</section>
 	
@@ -140,8 +156,8 @@
 	                    <div class="card" style="width: 18rem;">
 	                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="Chocolate Bonbons">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Chocolate Bonbons</h5>
-	                            <p class="card-text">Deliciosos bombones de chocolate.</p>
+	                            <h5 class="card-title">Bombones Veganos</h5>
+	                            <p class="card-text">Deliciosos bombones de chocolate con aceite de coco y cacao en polvo.</p>
 	                            <a href="#" class="btn btn-primary">Ver Receta</a>
 	                        </div>
 	                    </div>
@@ -152,8 +168,8 @@
 	                    <div class="card" style="width: 18rem;">
 	                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="Mini Tartas">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Mini Tartas</h5>
-	                            <p class="card-text">Deliciosas mini tartas para disfrutar.</p>
+	                            <h5 class="card-title">Mini Tartas sin gluten</h5>
+	                            <p class="card-text">Deliciosas mini tartas para disfrutar sin gluten con harina de arroz.</p>
 	                            <a href="#" class="btn btn-primary">Ver Receta</a>
 	                        </div>
 	                    </div>
@@ -164,8 +180,8 @@
 	                    <div class="card" style="width: 18rem;">
 	                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="Vegetales">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Vegetales</h5>
-	                            <p class="card-text">Recetas deliciosas y saludables con vegetales.</p>
+	                            <h5 class="card-title">Hamburquesa Vegetariana</h5>
+	                            <p class="card-text">Hamburguesa de legumbres y especias.</p>
 	                            <a href="#" class="btn btn-primary">Ver Receta</a>
 	                        </div>
 	                    </div>

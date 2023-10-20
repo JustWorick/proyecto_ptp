@@ -134,6 +134,7 @@
                   class="form-control bg-dark-x border-0 mb-2"
                   placeholder="Ingresa tu contraseña"
                   id="exampleInputPassword1"
+                  required
                 />
                 <a id="emailHelp" class="form-text text-muted text-decoration-none" href="#">¿Olvidaste tu contraseña?</a>
               </div>

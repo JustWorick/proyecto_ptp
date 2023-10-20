@@ -166,6 +166,38 @@ a {
     margin-top: 1rem;
 }
 
+.barra-busqueda {
+	display: flex;
+	flex-direction: column;
+}
+
+.barra-busqueda header {
+	display: flex;
+	flex-direction: column;
+	margin-top: 70px;
+}
+
+.botones {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.barra-busqueda {
+	background-color: rgba(245, 245, 245, 0.8);
+    border-radius:5px;
+    width: 80%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.container mt-4 {
+	background-color: rgba(245, 245, 245, 0.8);
+    border-radius:5px;
+    width: 80%;
+}
+
 
 
 

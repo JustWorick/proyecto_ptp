@@ -83,7 +83,7 @@ form.input, a {
 }
 
 .average-rating::before {
-    --percent: calc(4.3/5*100%);
+    --percent: calc(4.3/ 5 * 100%);
     content: '★★★★★';
     position: absolute;
     top: 0;
@@ -91,10 +91,10 @@ form.input, a {
     color: rgba(0,0,0,0.2);
     background:
     linear-gradient(90deg, gold var(--percent), rgba(0,0,0,0.2) var(--percent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-	
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
+
 
 .star-rating {
     display: flex;
@@ -235,6 +235,10 @@ form.input, a {
 .encabezado-buscador {
 	background-color: rgba(245, 245, 245, 0.8);
     border-radius:5px;
+}
+
+.encabezado-buscador form {
+	padding: 20px;
 }
 
 .contenido a {

@@ -1,38 +1,46 @@
 @charset "ISO-8859-1";
 
 body {
-	background-image: url("../public/img/mantel2.png");
+	background-image: url("../public/img/fondov2.jpeg");
 	background-repeat: repeat;
 }
 
-#titulo a{
-	text-decoration:none;
-	color:#ff8a49;
-	
+.contenido {
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
 }
+
+
 
 .cardContainer {
 	display:flex;
-	justify-content:space-evenly;
-	border: 1px solid brown;
-	border-radius:3px;
-	background-color:#ffdb7fdb
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.targeta {
+.cardContainer h5 a {
+	text-decoration: none;
+	color: #383b37;
+}
+
+.tarjeta {
 	display:flex;
 	flex-direction:column;
 	align-items:center;
 	background-color:white;
-	border-radius:10px;
+	border-radius:5px;
 	padding:5px;
 	width:220px;
 	height:auto;
+	justify-content: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 30px;
 }
 
-.targeta img {
+.tarjeta img {
 	
-	height:200px;
 	width:150px;
 }
 
@@ -44,5 +52,14 @@ body {
 #botones form, #botones a {
 	margin: 2px 0px;
 	
+}
+
+.contenido {
+	background-color: rgba(245, 245, 245, 0.8);
+    border-radius:5px;
+}
+
+.contenido h1 {
+	color: #7aac0b;
 }
 

@@ -142,7 +142,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 		                        	</c:forEach>
 	                        	</c:if>
 								<p class="card-text"><small class="text-body-secondary">Porciones: ${receta.porciones}</small></p>
-								<p class="card-text"><small class="text-body-secondary">Valoración: <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 de 5</meter></small></p>
+								<p class="card-text">
+									<small class="text-body-secondary">
+										Valoración: <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter>
+									</small>
+								</p>
 			                        <!-- cambiar value="${receta.valoracionFinal}" title="${receta.valoracionFinal}..." ${receta.valoracionFinal} de 5 -->
 								
 								<p class="card-text">${receta.descripcion}</p>

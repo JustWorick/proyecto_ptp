@@ -133,6 +133,9 @@
 		<div id="subTitulo">
 			<p>${receta.descripcion}</p>
 	    </div>
+	    <div class="creador">
+	    	<span>Por ${receta.creador.nombre}</span>
+	    </div>
 	       
 	        <!--solo si el usuario esta logeado-->
 	        <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
