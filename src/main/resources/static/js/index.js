@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Añade event listeners para los botones de control del primer carrusel
     document.querySelector('#carouselExampleIndicators .carousel-control-prev').addEventListener('click', function(e) {
         e.preventDefault();
         changeSlide(-1, 'carouselExampleIndicators');
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         changeSlide(1, 'carouselExampleIndicators');
     });
 
+    // Añade event listeners para los botones de control del segundo carrusel
     document.querySelector('#carouselExampleAutoplaying .carousel-control-prev').addEventListener('click', function(e) {
         e.preventDefault();
         changeSlide(-1, 'carouselExampleAutoplaying');
@@ -50,6 +52,4 @@ document.addEventListener('DOMContentLoaded', function() {
         changeSlide(1, 'carouselExampleAutoplaying');
     });
 });
-
-
 

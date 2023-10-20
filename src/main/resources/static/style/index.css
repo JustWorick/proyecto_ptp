@@ -15,8 +15,6 @@
 	transform: scale(1.2);
 }
 
-
-
 .carousel-item {
   height: 400px;
 }
@@ -67,6 +65,7 @@ section {
     margin-top: 100px;
     margin-bottom: 100px;
 }
+
 
 .texto-eslogan p {
 	text-align: center;

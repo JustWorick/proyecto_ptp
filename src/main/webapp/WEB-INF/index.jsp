@@ -13,6 +13,7 @@
 
      <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style/index.css" />
+       <link rel="stylesheet" href="/style/sidebar.css" />
    	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -83,6 +84,21 @@
         </div>
     </nav>
     
+    <!--SIDEBAR--> 
+    <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
+	<div class="sidebar">
+	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
+	    <ul>
+	        <li><a href="#">Perfil</a></li>
+	        <li><a href="#">Mis recetas</a></li>
+	        <li><a href="#">Recetas Favoritas</a></li>
+	        <li><a href="#">Productos Favoritos</a></li>
+	    </ul>
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
+    
 	<div id="carouselExampleIndicators" class="carousel">
 	    <div class="carousel-inner">
 	        <div class="carousel-item active">
@@ -107,116 +123,66 @@
 	
 	</section>
 	<section class="texto-eslogan">
-	    <h3>better.Life</h3>
+	    <h3>.Life</h3>
 	    <h5>Cocina Inclusiva: Recetas y Productos para todos</h5>
 	    <p>
-	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer better.Life! Un espacio creada para ti. En better.Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
+	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer .Life! Un espacio creado para ti. En .Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
 	    </p>
 	</section>
 	
     <!-- SEGUNDO CARRUSEL -->
-    <section class="segundo-carrusel">
-    <h2>Recetas Destacadas</h2>
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="cards-wrapper">
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="cards-wrapper">
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" onclick="changeSlide(-1, 'carouselExampleAutoplaying')">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" onclick="changeSlide(1, 'carouselExampleAutoplaying')">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-    
+	<section class="segundo-carrusel">
+	    <h2>Recetas Destacadas</h2>
+	    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
+	        <div class="carousel-inner">
+	            <div class="carousel-item active">
+	                <div class="cards-wrapper">
+	                    <div class="card" style="width: 18rem;">
+	                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="Chocolate Bonbons">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Chocolate Bonbons</h5>
+	                            <p class="card-text">Deliciosos bombones de chocolate.</p>
+	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="carousel-item">
+	                <div class="cards-wrapper">
+	                    <div class="card" style="width: 18rem;">
+	                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="Mini Tartas">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Mini Tartas</h5>
+	                            <p class="card-text">Deliciosas mini tartas para disfrutar.</p>
+	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="carousel-item">
+	                <div class="cards-wrapper">
+	                    <div class="card" style="width: 18rem;">
+	                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="Vegetales">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Vegetales</h5>
+	                            <p class="card-text">Recetas deliciosas y saludables con vegetales.</p>
+	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <button class="carousel-control-prev" type="button">
+	            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	            <span class="visually-hidden">Previous</span>
+	        </button>
+	        <button class="carousel-control-next" type="button">
+	            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	            <span class="visually-hidden">Next</span>
+	        </button>
+	    </div>
+	</section>
 	
-
-    
     <!-- Footer -->
 	<footer class="bg-dark text-white py-5">
 	    <div class="container">
@@ -254,7 +220,7 @@
 	        </div>
 	    </div>
 	</footer>
- 
+ 	<script src="js/sidebar.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

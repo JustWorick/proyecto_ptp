@@ -108,16 +108,16 @@
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-around">
           <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-0">
-            <img
-              src="/public/img/logo.png"
-              alt="logoLife"
-              class="img- mb-0"
-              width="100px"
-            />
+            
+            <a class="navbar-brand" href="/">
+                <img src="/public/img/logo2.png" alt="logoLife" width="200px" />
+                <!--Cambiar Logo-->
+            </a>
+            
             <!--Cambiar Logo-->
           </div>
           <div class="px-lg-5 py-lg-4 p-4">
-            <h1 class="fw-bold mb-1">Registrate en Life</h1>
+            <h1 class="fw-bold mb-1">Regístrate en .Life</h1>
             
             
             
@@ -154,7 +154,7 @@
 				<form:password path="confirmacion" class="form-control bg-dark-x border-0"/>
 				<form:errors path="confirmacion" class="text-danger"/>
 			</div>
-			<input type="submit" value="Registrarme" class="btn btn-primary w-100 mb-0">
+			<input type="submit" value="Registrarme" class="btn btn-warning w-100 mb-0">
 		</form:form>
 		
 		<!-- 

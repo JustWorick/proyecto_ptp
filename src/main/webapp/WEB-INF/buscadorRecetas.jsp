@@ -15,6 +15,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
       crossorigin="anonymous"
     />
     <link rel="stylesheet" type="text/css" href="/style/index.css" />
+    <link rel="stylesheet" type="text/css" href="/style/sidebar.css" />
    	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -128,8 +129,46 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
         </c:forEach>
       </ul>
     </div>
+    <!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-4">
+	                <h5>Contacto</h5>
+	                <p>Teléfono: +56 123 456 789</p>
+	                <p>Email: info@lifediet.com</p>
+	                <p>Dirección: Caupolicán #263, Concepción, Región del Biobío, Chile</p> <!-- Dirección Falsa -->
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Quiénes Somos</h5>
+	                <p>Descubre más sobre <a href="/quienes_somos">quiénes somos</a>.</p>
+	                <p>Explora nuestra <a href="/vision">visión</a> y <a href="/mision">misión</a>.</p>
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Redes Sociales</h5>
+	                <a href="https://facebook.com/tuempresa" target="_blank">
+	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                </a>
+	                <a href="https://twitter.com/tuempresa" target="_blank">
+	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                </a>
+	                <a href="https://instagram.com/tuempresa" target="_blank">
+	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                </a>
+	            </div>
+	        </div>
+	        <div class="row mt-3">
+	            <div class="col">
+	                <a href="/quienes_somos">Quiénes Somos</a> |
+	                <a href="/ubicacion">Ubicación</a> |
+	                <a href="/equipo">Nuestro Equipo</a>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-RbVcB4lP2hq6zjXL5zfB6Gk7u0V4W3p3zK/CBCv8txIowFMgE6kr0OspzE0y9nI1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
+    <script src="js/sidebar.js"></script>
   </body>
 </html>

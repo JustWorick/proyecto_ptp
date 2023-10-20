@@ -9,6 +9,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 <title>Crear Receta</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
+<link rel="stylesheet" href="/style/sidebar.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -78,7 +79,20 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
             </div>
         </div>
     </nav>
-    
+    <!--SIDEBAR--> 
+    <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
+	<div class="sidebar">
+	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
+	    <ul>
+	        <li><a href="#">Perfil</a></li>
+	        <li><a href="#">Mis recetas</a></li>
+	        <li><a href="#">Recetas Favoritas</a></li>
+	        <li><a href="#">Productos Favoritos</a></li>
+	    </ul>
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
 
 	<div class="contenido">
 		<h1>Nueva Receta</h1>
@@ -110,6 +124,18 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 				</select>
 			</div>
 			
+			<div id="ingredientes">
+				<p>Ingredientes:</p>
+            	<div class="nombre-cantidad-ingrediente">
+	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
+	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
+            	</div>
+            	<div class="añadir-quitar-ingrediente">
+					<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
+					<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
+				</div>
+            </div>
+			
             <div>
 				<form:label path="preparacion">Preparación</form:label>
 				<form:textarea path="preparacion" class="form-control" id="preparacion" style="white-space: pre-line;"/>
@@ -118,19 +144,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			<form:hidden path="creador" value="${usuarioEnSesion.id}"/>
 			
 			
-			<div id="ingredientes">
-            	<div class="divs">
-	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
-	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
-            	</div>
-            </div>
+			
             <input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
 		
-		<div>
-			<button class="btn btn-info" onclick="add()" id="add">Añadir Ingrediente</button>
-			<button class="btn btn-info"  onclick="remove()" id="remove">Quitar Ingrediente</button>
-		</div>
+		
 		<!--  
 		
 		<form action="/subir-imagen" method="post" enctype="multipart/form-data">
@@ -140,6 +158,44 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 		-->
 		
 	</div>
+	<!-- Footer -->
+	<footer class="bg-dark text-white py-5">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-4">
+	                <h5>Contacto</h5>
+	                <p>Teléfono: +56 123 456 789</p>
+	                <p>Email: info@lifediet.com</p>
+	                <p>Dirección: Caupolicán #263, Concepción, Región del Biobío, Chile</p> <!-- Dirección Falsa -->
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Quiénes Somos</h5>
+	                <p>Descubre más sobre <a href="/quienes_somos">quiénes somos</a>.</p>
+	                <p>Explora nuestra <a href="/vision">visión</a> y <a href="/mision">misión</a>.</p>
+	            </div>
+	            <div class="col-md-4">
+	                <h5>Redes Sociales</h5>
+	                <a href="https://facebook.com/tuempresa" target="_blank">
+	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                </a>
+	                <a href="https://twitter.com/tuempresa" target="_blank">
+	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                </a>
+	                <a href="https://instagram.com/tuempresa" target="_blank">
+	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                </a>
+	            </div>
+	        </div>
+	        <div class="row mt-3">
+	            <div class="col">
+	                <a href="/quienes_somos">Quiénes Somos</a> |
+	                <a href="/ubicacion">Ubicación</a> |
+	                <a href="/equipo">Nuestro Equipo</a>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
 	<script src="js/nuevaReceta.js"></script>
+	<script src="js/sidebar.js"></script>
 </body>
 </html>
