@@ -212,7 +212,7 @@ form.input, a {
 }
 
 .container {
-	background-color: #37d444;
+	background-color: #7aac0b;
 	border-radius:5px;
 }
 
@@ -224,4 +224,24 @@ form.input, a {
 	display: flex;
 	justify-content: flex-end;
 	font-size: smaller;
+}
+
+.contenido header{
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.encabezado-buscador {
+	background-color: rgba(245, 245, 245, 0.8);
+    border-radius:5px;
+}
+
+.contenido a {
+	text-decoration: none;
+	color: #7aac0b;
+}
+
+.contenido form a {
+	color: white;
 }

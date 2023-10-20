@@ -89,7 +89,7 @@
 	<div class="sidebar">
 	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
 	    <ul>
-	        <li><a href="#">Perfil</a></li>
+	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
 	        <li><a href="#">Mis recetas</a></li>
 	        <li><a href="#">Recetas Favoritas</a></li>
 	        <li><a href="#">Productos Favoritos</a></li>
@@ -120,6 +120,15 @@
 		    <span class="sr-only">Next</span>
 		</a>
 	</div>
+	
+	</section>
+	<section class="texto-eslogan">
+	    <h3>.Life</h3>
+	    <h5>Cocina Inclusiva: Recetas y Productos para todos</h5>
+	    <p>
+	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer .Life! Un espacio creado para ti. En .Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
+	    </p>
+	</section>
 	
     <!-- SEGUNDO CARRUSEL -->
 	<section class="segundo-carrusel">
@@ -173,14 +182,7 @@
 	        </button>
 	    </div>
 	</section>
-	<section class="texto-eslogan">
-	    <h3>better.Life</h3>
-	    <h5>Cocina Inclusiva: Recetas y Productos para todos</h5>
-	    <p>
-	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias? ¡Te invitamos a conocer better.Life! Un espacio creada para ti. En better.Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
-	    </p>
-	</section>
-
+	
     <!-- Footer -->
 	<footer class="bg-dark text-white py-5">
 	    <div class="container">

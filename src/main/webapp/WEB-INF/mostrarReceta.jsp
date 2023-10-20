@@ -86,7 +86,7 @@
     <div class="sidebar">
         <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
         <ul>
-            <li><a href="#">Perfil</a></li>
+            <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
             <li><a href="#">Mis recetas</a></li>
             <li><a href="#">Recetas Favoritas</a></li>
             <li><a href="#">Productos Favoritos</a></li>
@@ -106,32 +106,33 @@
 	<div class="contenido">
 		<div id="containerTitulo">
 			<div class="divTitulo">
-			<h1>${receta.nombre}</h1>
-			<div>
-				<c:if test="${not empty receta.etiquetas}">
-			        <c:forEach items="${receta.etiquetas}" var="eti">
-			        	<span>${eti.nombre}</span>
-			        </c:forEach>
-		        </c:if>
+				<h1>${receta.nombre}</h1>
 			</div>
-			
-		    <div class="row"> 
-			   	<div class="porciones-tiempo">
-			        <p>Porciones: ${receta.porciones}</p>
-			    </div>
-		        
-        	</div>
+			<div class="bajo-titulo">
+				<div class="porciones-valoraciones">
+				   	<div class="porciones-tiempo">
+				        <p>Porciones: ${receta.porciones}</p>
+				    </div>
+	        	
+		        	<!--Número de valoraciones y volaración final-->
+		            <div id="valoraciones">
+		                <p>${receta.numeroValoraciones}</p>
+		                <p>${receta.valoracionFinal} <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter></p>
+		            </div>
+		        </div>
+	            
+	            <div class="etiquetas">
+					<c:if test="${not empty receta.etiquetas}">
+				        <c:forEach items="${receta.etiquetas}" var="eti">
+				        	<span>${eti.nombre}</span>
+				        </c:forEach>
+			        </c:if>
+				</div>
 		</div>
 		
 		<div id="subTitulo">
 			<p>${receta.descripcion}</p>
-			        <div>
-            <!--Número de valoraciones y volaración final-->
-            <div id="valoraciones">
-                <p>${receta.numeroValoraciones}</p>
-                <p>${receta.valoracionFinal} <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter></p>
-            </div>
-	        </div>
+	    </div>
 	       
 	        <!--solo si el usuario esta logeado-->
 	        <c:if test="${usuarioEnSesion != null && usuarioEnSesion.id != receta.creador.id}">
@@ -160,7 +161,7 @@
 	        	</div>
 	        </c:if>	
 		</div>
-		</div>
+		
 		
         <div class="col-md-4" id="imagen-principal">
                <!-- imagen -->
@@ -215,7 +216,7 @@
 	        				<textarea name="contenido" rows="4" cols="50" class="form-control"></textarea>
 	        				<input type="hidden" value="${usuarioEnSesion.id}" name="redactor">
 	        				<input type="hidden" value="${receta.id}" name="recipe">
-	        				<input type="submit" value="Crear Comentario">
+	        				<input type="submit" value="Crear Comentario" class="btn btn-success">
 	        			</form>
 	        		</div>
 	        	</c:if>
@@ -232,7 +233,7 @@
 	        	</div>
 	        </div>
 		</div>
-       
+       </div>
         <!---->
 	</div>
 	<!-- Footer -->

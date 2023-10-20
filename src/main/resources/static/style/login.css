@@ -1,5 +1,4 @@
 :root {
-  --green: #447a1c;
   --orange: #f19820;
   --light: #ffffff;
 }
@@ -11,7 +10,9 @@ body {
 }
 
 .bg-dark {
-  background-color: var(--green) !important;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7aac0b+0,719651+100 */
+background: linear-gradient(to bottom,  #7aac0b 0%,#719651 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
 }
 
 .bg-dark-x {

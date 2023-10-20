@@ -102,22 +102,21 @@
         </div>
         <div class="col-lg-5 d-flex flex-column justify-content-around">
           <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-0">
-            <img
-              src="/public/img/logo.png"
-              alt="logoLife"
-              class="img- mb-0"
-              width="100px"
-            />
+          
+          	<a class="navbar-brand" href="/">
+                <img src="/public/img/logo2.png" alt="logoLife" width="200px" />
+                <!--Cambiar Logo-->
+            </a>
             
           </div>
           
           <div class="px-lg-5 py-lg-4 p-4">
-            <h1 class="fw-bold mb-1">Inicia Sesion en Life</h1>
+            <h1 class="fw-bold mb-1">Inicia Sesión en .Life</h1>
            
             <!--				Login				-->
             <form class="mb-5" action="/login" method="post">
               <div class="mb-4">
-                <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electronico</label>
+                <label for="exampleInputEmail1" class="form-label fw-bold">Correo Electrónico</label>
                 <input
                   name="email"
                   type="email"
@@ -138,10 +137,12 @@
                 />
                 <a id="emailHelp" class="form-text text-muted text-decoration-none" href="#">¿Olvidaste tu contraseña?</a>
               </div>
-              <button type="submit" class="btn btn-primary w-100 mb-0">Ingresar</button>
+              <button type="submit" class="btn btn-warning w-100 mb-0">Ingresar</button>
             </form>
             
-            <p class="fw-bold text-center text-muted mb-3">O inicia sesion con</p>
+            <div id="sesion-google">
+            	<p class="fw-bold text-center text-muted mb-3">O inicia sesion con</p>
+            </div>
             
             <div class="d-flex justify-content-around">
               <button type="submit" class="btn btn-outline-light flex-grow-1 me-2">

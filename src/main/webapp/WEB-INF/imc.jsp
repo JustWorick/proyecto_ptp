@@ -82,6 +82,19 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
         </div>
     </nav>
     
+    <div class="sidebar">
+	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
+	    <ul>
+	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+	        <li><a href="#">Mis recetas</a></li>
+	        <li><a href="#">Recetas Favoritas</a></li>
+	        <li><a href="#">Productos Favoritos</a></li>
+	    </ul>
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
+    
     <h1>Calculadora de IMC</h1>
     <form action="result.jsp" method="post">
 		Género:

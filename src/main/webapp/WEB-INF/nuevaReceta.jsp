@@ -84,7 +84,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	<div class="sidebar">
 	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
 	    <ul>
-	        <li><a href="#">Perfil</a></li>
+	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
 	        <li><a href="#">Mis recetas</a></li>
 	        <li><a href="#">Recetas Favoritas</a></li>
 	        <li><a href="#">Productos Favoritos</a></li>
@@ -138,6 +138,18 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 				</select>
 			</div>
 			
+			<div id="ingredientes">
+				<p>Ingredientes:</p>
+            	<div class="nombre-cantidad-ingrediente">
+	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
+	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
+            	</div>
+            	<div class="añadir-quitar-ingrediente">
+					<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
+					<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
+				</div>
+            </div>
+			
             <div>
 				<form:label path="preparacion">Preparación</form:label>
 				<form:textarea path="preparacion" class="form-control" id="preparacion" style="white-space: pre-line;"/>
@@ -146,19 +158,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			<form:hidden path="creador" value="${usuarioEnSesion.id}"/>
 			
 			
-			<div id="ingredientes">
-            	<div class="divs">
-	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
-	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
-            	</div>
-            </div>
+			
             <input type="submit" class="btn btn-success mt-3" value="Publicar"/>
 		</form:form>
 		
-		<div>
-			<button class="btn btn-info" onclick="add()" id="add">Añadir Ingrediente</button>
-			<button class="btn btn-info"  onclick="remove()" id="remove">Quitar Ingrediente</button>
-		</div>
+		
 		<!--  
 		
 		<form action="/subir-imagen" method="post" enctype="multipart/form-data">

@@ -1,8 +1,18 @@
 @charset "ISO-8859-1";
 
+/*
 body {
 	background-image: url("../public/img/mantel2.png");
 	background-repeat: repeat;
+}
+*/
+
+body {
+  background-image: url(../public/img/fondov2.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
 }
 
 .contenido {
@@ -12,39 +22,42 @@ body {
     margin-top: 20px;
 }
 
-.divTitulo {
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-}
 #containerTitulo {
-	background-color:#b77a13cc;
-	border-radius:20px;
+	color: #383b37;;
 }
 
-.divTitulo div:nth-child(2) {
+.divTitulo {
     display:flex;
     align-items:center;
+    margin-top: 30px;
+    justify-content: center;
 }
-.divTitulo div:nth-child(2) span {
-    color:white;
-    background-color:#00d80ca1;
-    border: 1px solid black;
+.etiquetas span {
+    color: white;
+    background-color: #7aac0b;
     border-radius:5px;
     padding:2px 5px;
 }
 #subTitulo p{
-	background-color:#00d80ca1;
-	border: 1px solid black;
+	color:#383b37;;
 	border-radius:5px;
 	font-family:cursive;
 	text-transform:lowercase;
+}
+#subTitulo {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	
+}
+
+#divBajoImagen {
+	margin-top: 100px;
+	margin-bottom: 20px;
 }
 
 .divTitulo div:nth-child(3) p {
     display:flex;
     align-items:center;
-    font-family:fantasy;
 }
 
 .divTitulo h1 {
@@ -60,9 +73,7 @@ body {
 }
 
 #imagen-portada-mostrar {
-  width: 5
-    600px; /* Ancho fijo de la galerÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­a */
-  height: 100px; /* Altura fija de la galerÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­a */
+  height: 100px; /* Altura fija de la galeria */
 }
 
 .img{
@@ -74,21 +85,35 @@ body {
   height: 100%;
 }
 
-#subTitulo {
-  display:flex;
-  justify-content:space-evenly;
-}
 
-#divBajoImagen {
-  border: 1px solid brown;
-  border-radius: 5px;
-  padding: 20px;
-  background-color:#eee490bf
+.contenido {
+	padding: 50px;
 }
 
 #divComentarios {
 	margin-top: 10px;
 }
+
+.bajo-titulo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.porciones-valoraciones {
+	display: flex;
+}
+
+.contenido {
+	background-color: rgba(245, 245, 245, 0.8);
+	border-radius: 5px;
+}
+
+.calificar-estrellas {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
 
 
 

@@ -1,7 +1,7 @@
 
 .container {
 	margin: 0 auto;
-	background-color: #447a1c;
+	background-color: #7aac0b;
 }
 
 
@@ -26,23 +26,19 @@
 
 .segundo-carrusel {
 	margin: 0 auto;
+	background-color: rgba(245, 245, 245, 0.7);
 }
 /* Estilos para el carrusel de tarjetas */
 .cards-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: -15px; /* Para ajustar el espacio entre las tarjetas */
+
 }
 
-.card {
-    width: calc(33.33% - 30px); /* Para que haya 3 tarjetas por fila */
-    margin: 15px; /* Espacio entre las tarjetas */
-    box-sizing: border-box;
-}
 
 section .card {
-	margin: 0 10px
+	margin: 5px 10px
 }
 
 section {
@@ -50,5 +46,35 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
+
+.texto-eslogan {
+    background-color: rgba(245, 245, 245, 0.8);
+    border-radius:5px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+    
+}
+
+.texto-eslogan {
+    padding: 30px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+
+.texto-eslogan p {
+	text-align: center;
+}
+
+body {
+  background-image: url(../public/img/fondov2.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+

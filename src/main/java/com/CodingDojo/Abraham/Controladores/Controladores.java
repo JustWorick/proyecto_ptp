@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -143,7 +144,12 @@ public class Controladores {
 	@GetMapping("/productos")
 	public String productos(Model model, HttpSession session) {
 	    List<Producto> productos = serv.buscarTodosProductos();
+	    Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
 	    model.addAttribute("productos", productos);
+	    model.addAttribute("usuarioEnSesion", userTemp);
 	    return "productos.jsp";
 	}
 
@@ -175,16 +181,20 @@ public class Controladores {
 		if(userTemp == null) {
 			return "redirect:/login";
 		}
-		Usuario user = serv.buscarUsuario(id);
-		model.addAttribute("usuario", user);
-		return "perfil.jsp";
+		model.addAttribute("usuarioEnSesion", userTemp);
+		return "mostrarPerfil.jsp";
 	}
 	
-	
+	@GetMapping("perfil/editar/{id}")
+	public String editarPerfil(@PathVariable("id") Long id,
+						 	   @ModelAttribute("usuario") Usuario usuario,
+						 	   Model model) { 
+		Usuario userTemp = serv.buscarUsuario(id);
+		model.addAttribute("usuarioEnSesion", userTemp);
+		
+		return "editarPerfil.jsp";
+	}
 
-
-
-	
 	
 	// POSTMAPPING
 	
@@ -419,7 +429,28 @@ public class Controladores {
 		return "redirect:/receta/"+recetaId;
 	}
 	
+	// PUTMAPPING
 	
+	@PutMapping("/perfil/actualizar/{id}")
+	public String actualizarPerfil(HttpSession session,
+						@PathVariable("id") Long id,  
+						@Valid  @ModelAttribute("usuario")Usuario usuario,
+						BindingResult result, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}	
+		
+		if(result.hasErrors()) {
+			Usuario user = serv.buscarUsuario(id);
+			model.addAttribute("usuarioEnSesion", user);
+			return "editar.jsp";
+		} else {
+			Usuario user = serv.buscarUsuario(id);
+			serv.guardarUsuario(user);
+			return "redirect:/perfil";
+		}
+	}
 
 		
 	
