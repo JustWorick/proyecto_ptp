@@ -85,7 +85,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
     <div class="sidebar">
         <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
         <ul>
-            <li><a href="#">Perfil</a></li>
+            <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
             <li><a href="#">Mis recetas</a></li>
             <li><a href="#">Recetas Favoritas</a></li>
             <li><a href="#">Productos Favoritos</a></li>

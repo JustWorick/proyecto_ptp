@@ -1,0 +1,64 @@
+@charset "ISO-8859-1";
+
+.foto {
+	height: 350px;
+	
+}
+
+.container {
+	margin: 0 auto;
+	background-color: #447a1c;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background-color: whitesmoke;
+    transform: translateX(-200px);
+    transition: transform 0.5s, z-index 0.5s; /* Agregando transición de z-index */
+    z-index: 2; /* Número mayor que el z-index de los elementos que quieres que aparezcan por debajo */
+}
+
+.sidebar.open {
+    transform: translateX(0);
+    z-index: 3; /* Asegurando que el sidebar abierto tenga un z-index mayor */
+}
+
+.sidebar h5 {
+    margin-top: 100px;
+    word-wrap: break-word;
+}
+
+.sidebar h5,
+p,
+ul {
+    padding: 10px;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: darkgreen;
+}
+
+.sidebar li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+/* Estilo del elemento con la clase sidebar-toggle */
+.sidebar-toggle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: lightgreen;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
