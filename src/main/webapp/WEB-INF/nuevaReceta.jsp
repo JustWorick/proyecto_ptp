@@ -131,7 +131,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div>
-				<select name="etiqueta">
+				<select name="etiqueta" multiple>
 					<c:forEach items="${nombreEtiquetas}" var="etiName">
 						<option value="${etiName}">${etiName}</option>
 					</c:forEach>

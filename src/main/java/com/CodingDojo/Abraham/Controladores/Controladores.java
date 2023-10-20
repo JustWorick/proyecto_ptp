@@ -193,7 +193,7 @@ public class Controladores {
 								BindingResult result, HttpSession session,
 								@RequestParam("imagen")List<MultipartFile> imagenes,
 								@RequestParam("video")String video,
-								@RequestParam("etiqueta")String nombreEtiqueta,
+								@RequestParam("etiqueta")String[] nombresEti,
 								@RequestParam("nombreIng[]")String[] nombreIng, @RequestParam("cantidad[]")String[] cantidad, Model model) {
 		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
 		if(userTemp == null) {
@@ -248,6 +248,22 @@ public class Controladores {
 		}
 		//  <<================         Logica Para añadir Etiquetas                   ==================>> 
 		serv.guardarReceta(newReceta);
+		if(nombresEti != null) {
+			ArrayList<Etiqueta> etiquetas = new ArrayList<>();
+			ArrayList<Receta> recetas = new ArrayList<>();
+			recetas.add(newReceta);
+			
+			for(String etiqueta:nombresEti) {
+				Etiqueta eti = new Etiqueta();		
+				eti.setNombre(etiqueta);
+				
+			
+				eti.setRecetas(recetas);
+				serv.guardarEtiqueta(eti);
+			}
+		}
+		/*
+		serv.guardarReceta(newReceta);
 		if(!nombreEtiqueta.isEmpty()) {
 			Etiqueta eti = new Etiqueta();		
 			eti.setNombre(nombreEtiqueta);
@@ -262,7 +278,7 @@ public class Controladores {
 				serv.guardarEtiqueta(eti);
 			}		
 		}
-		
+		*/
 		
 		// <<================         Logica Para añadir Ingredientes                  ==================>> 
 		
@@ -282,7 +298,6 @@ public class Controladores {
 		
 		
 		// <<================         Logica Para añadir Video                 ==================>> 
-		
 		if(video != "0") {
 			Video newVideo = new Video();
 			newVideo.setUrl(video);
