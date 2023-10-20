@@ -87,7 +87,7 @@ public class Controladores {
 	public String recetas(Model model, HttpSession session) {
 		
 		
-		List<Etiqueta> todasEtiquetas = serv.buscarTodasEtiquetas();
+		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
 		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
 		
 		List<Receta> todasRecetas = serv.buscarTodasRecetas();
@@ -193,6 +193,34 @@ public class Controladores {
 		model.addAttribute("usuarioEnSesion", userTemp);
 		
 		return "editarPerfil.jsp";
+	}
+	
+	@GetMapping("/busqueda/etiqueta/{etiqueta}")
+	public String busquedaPorEtiqueta(@PathVariable("etiqueta")String etiqueta, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
+		List<Receta> recetas = serv.buscarRecetaPorNombreEtiqueta(etiqueta);
+		model.addAttribute("recetas", recetas);
+		
+		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
+		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		return "busqueda.jsp";
+	}
+	
+	@GetMapping("/busqueda/nombre")
+	public String busquedaPorNombre(@RequestParam("palabra")String nombre, HttpSession session, Model model) {
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
+		List<Receta> recetas = serv.buscarTodasRecetasPorNombre(nombre);
+		model.addAttribute("recetas", recetas);
+		
+		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
+		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		return "busqueda.jsp";
 	}
 
 	

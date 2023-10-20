@@ -16,9 +16,11 @@ public interface RepoReceta extends CrudRepository<Receta, Long>{
 	
 	Receta findByNombreContains(String palabra);
 	
-	List<Receta> findByEtiquetasNombreContains(String nombre);  // <<====== falta testeo
+	List<Receta> findAllByEtiquetasNombreContains(String nombre);  // <<====== falta testeo
 	
 	Receta findByCreadorNombreContains(String nombre);
 	
 	List<Receta> findByIngredientesNombreContains(String nombre);
+	
+	List<Receta> findAllByNombreContains(String nombre);
 }

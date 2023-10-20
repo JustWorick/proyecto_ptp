@@ -170,7 +170,11 @@ public class Servicio {
 	}
 	
 	public List<Receta> buscarRecetaPorNombreEtiqueta(String palabra) {
-		return rRec.findByEtiquetasNombreContains(palabra);
+		return rRec.findAllByEtiquetasNombreContains(palabra);
+	}
+	
+	public List<Receta> buscarTodasRecetasPorNombre(String palabra){
+		return rRec.findAllByNombreContains(palabra);
 	}
 	
 	public List<Receta> buscarRecetaPorNombreIngrediente(String nombre) {
