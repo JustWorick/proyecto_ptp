@@ -123,14 +123,16 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 				<input type="text" name="video" class="form-control" value="0" oninput="if (this.value === '0') this.value = '';">
 			</div>
 			
-			<div>
-				<label>¿Qué etiquetas tendré tu receta?</label>
-				<c:forEach items="${nombreEtiquetas}" var="etiName">
+			<div class="etiquetas">
+				<label>¿Qué etiquetas tendrá tu receta?</label>
+				<div class="checkboxes">
+					<c:forEach items="${nombreEtiquetas}" var="etiName">
 			        <label>
 			            <input type="checkbox" name="etiqueta" value="${etiName}" />
 			            ${etiName}
 			        </label>
 			    </c:forEach>
+				</div>
 			</div>
 			
 			<div id="ingredientes">

@@ -61,5 +61,11 @@ body {
 
 .contenido h1 {
 	color: #7aac0b;
+	text-align: center;
 }
+
+.contenido form a {
+	margin-left: 20px;
+}
+
 

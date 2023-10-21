@@ -55,3 +55,21 @@ ul {
 .close-button {
 	cursor: pointer;
 }
+
+.sidebar h4 {
+	text-align: center;
+	color: #7aac0b;
+	margin: 10px;
+	margin-top: 70px;
+}
+
+.sidebar h5 {
+	text-align: center;
+}
+
+.botones-inicio-sesion {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 20px;
+}

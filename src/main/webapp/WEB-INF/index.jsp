@@ -63,19 +63,19 @@
 		          <div
 		            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
 		          >
-		            <a href="/login" class="text-white text-decoration-none">Login</a>
+		            <a href="/login" class="text-white text-decoration-none">Inicia Sesión</a>
 		            <a
 		              href="/registro"
 		              class="text-black text-decoration-none px-3 py-1 rounded-4"
 		              style="background-color: #eefb03"
 		            >
-		              Sign Up
+		              Regístrate
 		            </a>
 		          </div>
 	          </c:if>
 	          <c:if test="${usuarioEnSesion != null}">
 	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
 		     	 </div>
@@ -91,8 +91,10 @@
 		<c:if test="${usuarioEnSesion == null}">
 			<h4>¡Hola!</h4>
 			<h5>Bienvenid@ a .Life</h5>
-			<a href="/login" class="btn btn-success">Inica Sesión</a>
-			<a href="/registro" class="btn btn-warning">Regístrate</a>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
 		</c:if>
 	        
 	    <c:if test="${usuarioEnSesion != null}">

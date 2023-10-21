@@ -102,4 +102,8 @@ select.form-control {
   background: #218838;
 }
 
+.etiquetas {
+	display: flex;
+	flex-direction: column;
+}
 

@@ -101,7 +101,7 @@
     
     <div class="contenido">
         <h1>Mis Recetas</h1>
-        <p>Aquí podrás encontrar todas las recetas que haz publicado</p>
+        <p>Aquí podrás encontrar todas las recetas que haz publicado.</p>
         <form action="/busqueda" method="post" class="row" id="buscador">
             <div class="col-7">
                 <input type="text" name="palabra" class="form-control" placeholder="busca entre tus recetas">
