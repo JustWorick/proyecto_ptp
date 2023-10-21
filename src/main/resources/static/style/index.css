@@ -15,6 +15,15 @@
 }
 
 #perfil:hover{
+	transform: scale(1.1);
+}
+
+#cerrarSesion{
+	transition: 0.5s;
+	object-fit: cover;
+}
+
+#cerrarSesion:hover{
 	transform: scale(1.2);
 }
 
