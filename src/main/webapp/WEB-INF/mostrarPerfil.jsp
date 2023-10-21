@@ -74,6 +74,9 @@
 			                	<a href="#" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
 			                	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
 			                	</i>${usuarioEnSesion.nickname}</a>
+								<a href="/logout" id="cerrarSesion">
+									<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
+								  </a>
 					     	 </div>
 					      </c:if>
 			            </div>
