@@ -1,13 +1,56 @@
 @charset "ISO-8859-1";
 
+*{
+	font-family: sans-serif, Arial, Helvetica;
+}
 .foto {
 	height: 350px;
 	
 }
 
-.container {
-	margin: 0 auto;
-	background-color: #447a1c;
+.container-perfil {
+	background-color: rgba(245, 245, 245, 0.9);
+    border-radius:5px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contenido-perfil {
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+}
+
+.contenido-perfil .foto-perfil {
+	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+  	margin: 50px;
+}
+
+.foto-perfil img {
+	margin: 30px;
+	font-size: medium;
+}
+
+.perfil {
+	display: flex;
+	text-align: start;
+	align-items: center;
+	margin: 20px;
+	margin-left: 100px;
+	font-size: medium;
+}
+
+.perfil span {
+	font-weight: bold;
+	color: #7aac0b;
+}
+
+.boton-perfil {
+	display: flex;
+	justify-content: center;
 }
 
 .sidebar {
@@ -62,3 +105,4 @@ ul {
     line-height: 50px;
     cursor: pointer;
 }
+

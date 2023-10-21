@@ -106,13 +106,28 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
     <!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
 	<div class="sidebar">
-	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-	    <ul>
-	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-	        <li><a href="#">Mis recetas</a></li>
-	        <li><a href="#">Recetas Favoritas</a></li>
-	        <li><a href="#">Productos Favoritos</a></li>
-	    </ul>
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
 	    <div class="close-button">X</div>
 	</div>
 	

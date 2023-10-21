@@ -143,54 +143,6 @@ form.input, a {
 }
 
 
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    background-color: whitesmoke;
-    transform: translateX(-200px);
-    transition: transform 0.5s;
-}
-
-  /* Estilo del elemento con la clase sidebar cuando tiene la clase open */
-.sidebar.open {
-    transform: translateX(0);
-}
-
-.sidebar h5 {
-    margin-top: 100px;
-    word-wrap: break-word;
-}
-
-.sidebar h5, p, ul {
-    padding: 10px;
-}
-
-.sidebar li a {
-    text-decoration: none;
-    color: #447a1c;
-}
-
-.sidebar li {
-    list-style-type: none;
-    margin-bottom: 10px;
-}
-
-  /* Estilo del elemento con la clase sidebar-toggle */
-.sidebar-toggle {
-    position: fixed;
-    left: 0;
-    top: 18px;
-    width: 50px;
-    height: 50px;
-    color: #447a1c;
-    font-size: 30px;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-}
 
 .calificar-estrellas {
     display: flex;

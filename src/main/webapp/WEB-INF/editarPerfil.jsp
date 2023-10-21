@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style/index.css" />
 <link rel="stylesheet" href="/style/sidebar.css" />
+<link rel="stylesheet" href="/style/editarPerfil.css" />
    
 
 
@@ -20,91 +21,109 @@
 </head>
 <body>
 	 <!--Nav-->
-			   <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
-			        <div class="container">
-			            <a class="navbar-brand" href="/">
-			                <img src="/public/img/logo2.png" alt="logoLife" width="120px" />
-			            </a>
-			            <button
-			                class="navbar-toggler shadow-none border-0"
-			                type="button"
-			                data-bs-toggle="collapse"
-			                data-bs-target="#navbarSupportedContent"
-			                aria-controls="navbarSupportedContent"
-			                aria-expanded="false"
-			                aria-label="Toggle navigation"
-			            >
-			                <span class="navbar-toggler-icon"></span>
-			            </button>
-			            <div
-			                class="collapse navbar-collapse d-flex flex-column p-4 flex-lg-row p-lg-0"
-			                id="navbarSupportedContent"
-			            >
-			                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			                    <li class="nav-item">
-			                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-			                    </li>
-			                    <li class="nav-item">
-			                        <a class="nav-link" href="#">Contacto</a>
-			                    </li>
-			                    <li class="nav-item">
-			                        <a class="nav-link" href="/productos">Productos</a>
-			                    </li>
-			                    <li class="nav-item">
-			                        <a class="nav-link" href="/recetas">Recetas</a>
-			                    </li>
-			                    </li>
-			                </ul>
-			                <!--Login/SignUp-->
-				          <c:if test="${usuarioEnSesion == null}">
-					          <div
-					            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
-					          >
-					            <a href="/login" class="text-white text-decoration-none">Login</a>
-					            <a
-					              href="/registro"
-					              class="text-black text-decoration-none px-3 py-1 rounded-4"
-					              style="background-color: #eefb03"
-					            >
-					              Sign Up
-					            </a>
-					          </div>
-				          </c:if>
-				          <c:if test="${usuarioEnSesion != null}">
-				          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-			                	<a href="#" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
-			                	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
-			                	</i>${usuarioEnSesion.nickname}</a>
-								<a href="/logout" id="cerrarSesion">
-									<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
-								  </a>
-					     	 </div>
-					      </c:if>
-			            </div>
-			        </div>
-			    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark p-md-3 bg-transparent">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/public/img/logo2.png" alt="logoLife" width="120px" />
+                <!--Cambiar Logo-->
+            </a>
+            <button
+                class="navbar-toggler shadow-none border-0"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="collapse navbar-collapse d-flex flex-column p-4 flex-lg-row p-lg-0"
+                id="navbarSupportedContent"
+            >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recetas">Recetas</a>
+                    </li>
+                </ul>
+                <!--Login/SignUp-->
+	          <c:if test="${usuarioEnSesion == null}">
+		          <div
+		            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
+		          >
+		            <a href="/login" class="text-white text-decoration-none">Inicia Sesión</a>
+		            <a
+		              href="/registro"
+		              class="text-black text-decoration-none px-3 py-1 rounded-4"
+		              style="background-color: #eefb03"
+		            >
+		              Regístrate
+		            </a>
+		          </div>
+	          </c:if>
+	          <c:if test="${usuarioEnSesion != null}">
+	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right:5px; ">
+
+                	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
+                	</i>${usuarioEnSesion.nickname}</a>
+                	<a href="/logout" id="cerrarSesion">
+		              <i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
+		            </a>
+		     	 </div>
+		      </c:if>
+            </div>
+        </div>
+    </nav>
 			    
 			    <!--SIDEBAR--> 
-			    <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
-			    <div class="sidebar">
-			        <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-			        <ul>
-			            <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-			            <li><a href="#">Mis recetas</a></li>
-			            <li><a href="#">Recetas Favoritas</a></li>
-			            <li><a href="#">Productos Favoritos</a></li>
-			        </ul>
-			    </div>
-			
-			    <!-- Elemento con la clase sidebar-toggle que sirve para mostrar u ocultar la barra lateral -->
-			    <div class="sidebar-toggle">☰</div>
-			
-			    <!-- Etiqueta script que enlaza el archivo js que contiene el código JavaScript -->
-			    <script src="js/recetas.js"></script>
-					<div class="container">
+    <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
+	<div class="sidebar">
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
+	
+	
+					<div class="container-editar-perfil">
 						<div class="d-flex justify-content-evenly">
 							<form:form action="/actualizar/${usuarioEnSesion.id}" method="post" modelAttribute="usuario" >
-								<h1>Editar Usuario</h1>
+								<h2>Editar Usuario</h2>
 									<!-- Sobreescribimos el método -->
 								<input type="hidden" name="_method" value="PUT">
 								<div>
@@ -132,11 +151,6 @@
 										<form:password path="password" class="form-control" />
 										<form:errors path="password" class="text-danger" />
 								</div>
-								<div>
-										<form:label path="region" >Región:</form:label>
-										<form:input type="region" path="region" class="form-control" />
-										<form:errors path="region" class="text-danger" />
-								</div>
 								
 								
 								<!--  Opcion para cambiar la region
@@ -157,6 +171,9 @@
 							</form:form>
 						</div>
 					</div>
+					
+					
+					
 				<footer class="bg-dark text-white py-5">
 	    <div class="container">
 	        <div class="row">

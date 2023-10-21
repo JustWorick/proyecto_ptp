@@ -53,31 +53,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/recetas">Recetas</a>
                     </li>
-                    </li>
                 </ul>
                 <!--Login/SignUp-->
 	          <c:if test="${usuarioEnSesion == null}">
 		          <div
 		            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
 		          >
-		            <a href="/login" class="text-white text-decoration-none">Login</a>
+		            <a href="/login" class="text-white text-decoration-none">Inicia Sesión</a>
 		            <a
 		              href="/registro"
 		              class="text-black text-decoration-none px-3 py-1 rounded-4"
 		              style="background-color: #eefb03"
 		            >
-		              Sign Up
+		              Regístrate
 		            </a>
 		          </div>
 	          </c:if>
 	          <c:if test="${usuarioEnSesion != null}">
 	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right:5px; ">
+
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
-					<a href="/logout" id="cerrarSesion">
-						<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
-					  </a>
+                	<a href="/logout" id="cerrarSesion">
+		              <i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
+		            </a>
 		     	 </div>
 		      </c:if>
             </div>
@@ -86,13 +89,28 @@
 	<!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
 	<div class="sidebar">
-	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-	    <ul>
-	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-	        <li><a href="#">Mis recetas</a></li>
-	        <li><a href="#">Recetas Favoritas</a></li>
-	        <li><a href="#">Productos Favoritos</a></li>
-	    </ul>
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
 	    <div class="close-button">X</div>
 	</div>
 	

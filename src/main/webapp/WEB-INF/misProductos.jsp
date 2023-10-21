@@ -8,6 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/style/index.css" />
 <link rel="stylesheet" href="/style/sidebar.css" />
+<link rel="stylesheet" href="/style/misProductos.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -51,31 +52,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/recetas">Recetas</a>
                     </li>
-                    </li>
                 </ul>
                 <!--Login/SignUp-->
 	          <c:if test="${usuarioEnSesion == null}">
 		          <div
 		            class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3"
 		          >
-		            <a href="/login" class="text-white text-decoration-none">Login</a>
+		            <a href="/login" class="text-white text-decoration-none">Inicia Sesión</a>
 		            <a
 		              href="/registro"
 		              class="text-black text-decoration-none px-3 py-1 rounded-4"
 		              style="background-color: #eefb03"
 		            >
-		              Sign Up
+		              Regístrate
 		            </a>
 		          </div>
 	          </c:if>
 	          <c:if test="${usuarioEnSesion != null}">
 	          	<div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
+
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right:5px; ">
+
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
-					<a href="/logout" id="cerrarSesion">
-						<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
-					  </a>
+                	<a href="/logout" id="cerrarSesion">
+		              <i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ec4646;margin-right: 10px;"></i>
+		            </a>
 		     	 </div>
 		      </c:if>
             </div>
@@ -85,99 +89,80 @@
     <!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
 	<div class="sidebar">
-	    <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-	    <ul>
-	        <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-	        <li><a href="#">Mis recetas</a></li>
-	        <li><a href="#">Recetas Favoritas</a></li>
-	        <li><a href="#">Productos Favoritos</a></li>
-	    </ul>
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
 	    <div class="close-button">X</div>
 	</div>
 	
 	<div class="sidebar-toggle">☰</div>
-
+	
 	<div class="contenido">
-        <header class="d-flex justify-content-between align-items-center">
-            <h1>Mis Productos</h1>
-        </header>
-        <p>Aquí podrás encontrar todos los productos que haz publicado</p>    
-        <form action="/busqueda" method="post" class="row">
+        <h1>Mis Productos</h1>
+        <p>Aquí podrás encontrar todos los productos que haz publicado.</p>
+        <form action="/busqueda" method="post" class="row" id="buscador">
             <div class="col-7">
-                <input type="text" name="palabra" class="form-control" placeholder="busca entre tus productos">
-                </div>	
-                <input type="submit" value="Buscar" class="btn btn-primary col-1">
+                <input type="text" name="palabra" class="form-control" placeholder="busca entre tus productos publicados">
+            </div>	
+            <input type="submit" value="Buscar" class="btn btn-success col-1">
+            <!-- verificar si el usuario está logeado --> 
+		    <a href="/nuevoProducto" class="btn btn-success col-2">Crear Producto</a>
         </form>
-        <div>
-			<p>Botones de testeo no borrar hasta el final</p>
-			<form action="/borrar/imagen/all" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input class="btn btn-danger" type="submit" value="Delete All imagenes">
-			</form>
-		</div>
-		<div>
-			<form action="/borrar/recetas/all" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input class="btn btn-danger" type="submit" value="Delete All recetas">
-			</form>
-		</div>
             
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Valoración</th>
-                    <th>fotos</th>
-                    <th>Etiqueta</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${productos}" var="producto">
-                    <tr>
-                        <td><a href="/producto/${producto.id}">${producto.nombre}</a></td>
-                        <td>${producto.valoracionFinal}</td>
-                        <td>
-                        	<c:if test="${not empty producto.imagenesPro}">
-								<c:forEach items="${producto.imagenesPro}" var="ima">
-                        			<img alt="..." src="${ima.url}">
-                        		</c:forEach>
-							</c:if>
-                        </td>
-                        <td>
-                        	<ul>
-	                        	<c:if test="${not empty producto.etiquetasProducto}">
-	                        		<c:forEach items="${producto.etiquetasProducto}" var="eti">
-	                        			<li>${eti.nombre}</li>
-	                        		</c:forEach>
-	                        	</c:if>
-                        	</ul>
-                        </td>
-                        <td>
-                            <!--Editar y eliminar un producto solo si es el autor-->
+		 <div class="cardContainer">
+            	<c:forEach items="${productos}" var="producto">
+	                <div class="tarjeta-producto">
+	                	<div id="titulo-producto">
+	                		<h5>${producto.nombre}</h5>
+	                		<p>${receta.etiquetasProductos[0].nombre}</p>
+	                	</div>
+	                	<c:if test="${not empty producto.imagenesPro}">
+						  	<img alt="..." src="${producto.imagenesPro[0].url}">   
+						</c:if>
+						<div id="botones-producto">
 							<c:if test="${producto.creadorProducto.id == usuarioEnSesion.id}">
 							<!-- si es autor entonces se muestran los botones -->
-								<a href="/editar/producto/${producto.id}" class="btn btn-warning">Editar</a>
-								
+								<a href="/editar/producto/${producto.id}" class="btn btn-warning btn-sm">Editar</a>
+							
 								<c:if test="${producto.imagenesPro != null && !producto.imagenesPro.isEmpty()}">
 									<form action="/borrar/imagen/${producto.imagenesPro.get(0).id}" method="post">
 										<input type="hidden" name="_method" value="delete">
-										<input class="btn btn-danger" type="submit" value="Delete Imagen">
+										<input class="btn btn-danger btn-sm" type="submit" value="Eliminar imagen">
 									</form>
 								</c:if>
-								
 								<form action="/borrar/producto/${producto.id}" method="post">
 									<input type="hidden" name="_method" value="delete">
-									<input class="btn btn-danger" type="submit" value="Delete Producto">
-								</form>
-								
+									<input class="btn btn-danger btn-sm" type="submit" value="Eliminar Producto">
+								</form>	
 							</c:if>
-						</td>
-                    </tr>
+						</div>
+	                </div>
                 </c:forEach>
-            </tbody>
-        </table>
-	</div>
+         </div>
+    </div>
+	
+	
+
+	
 	<!-- Footer -->
 	<footer class="bg-dark text-white py-5">
 	    <div class="container">

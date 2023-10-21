@@ -78,7 +78,7 @@
 
                 	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right: 35px; ">
 
-                	<a href="/perfil/${id}" class="text-white text-decoration-none" id="perfil" style=" margin-right:5px; ">
+                	<a href="/perfil/${usuarioEnSesion.id}" class="text-white text-decoration-none" id="perfil" style=" margin-right:5px; ">
 
                 	<i class="fa-regular fa-user fa-2xl" style="color: #e0901f;margin-right: 10px;">
                 	</i>${usuarioEnSesion.nickname}</a>
@@ -109,6 +109,7 @@
 			<ul>
 				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
 				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
 				<li><a href="/nuevaReceta">Crear Receta</a></li>
 				<li><a href="/nuevoProducto">Publicar Producto</a></li>
 			</ul>
