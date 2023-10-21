@@ -114,7 +114,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			</div>
 			
 			<div>
-				<label>Añade tus imagenes Aqui!</label>
+				<label>¡Añade tus imagenes aquí!</label>
 				<input type="file" name="imagen" class="form-control" multiple>     
 			</div>
 			

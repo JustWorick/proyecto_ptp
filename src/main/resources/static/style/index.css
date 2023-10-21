@@ -90,8 +90,9 @@ section {
 
 body {
   background-image: url(../public/img/fondov2.jpeg);
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 

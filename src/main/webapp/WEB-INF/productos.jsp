@@ -96,62 +96,50 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	<div class="sidebar-toggle">☰</div>
 	
 	<!-- Barra de búsqueda -->
-	<div class="barra-busqueda">
-	
-		<header class="d-flex justify-content-between align-items-center">
-	    	<h1>Productos</h1>
-	       	<p>Aquí podrás encontrar productos sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
-	    </header>
+	<div class="contenido">
 		
-		<div class="botones">
-			<form action="/busquedaProductos" method="post" class="row">
-			    <div class="col-6">
-			        <input type="text" name="palabra" class="form-control" placeholder="Buscar productos">
-			    </div>  
-			    
-			        <input type="submit" value="Buscar" class="btn btn-success col-2">
-			    
-			        <a href="/nuevoProducto" class="btn btn-success col-3">Crear Producto</a>
-			   
-		    </div>
-		</form>
+		<div class="encabezado-buscador">
+		
+	        <header class="d-flex justify-content-between align-items-center">
+	            <h1>Productos</h1>
+	        	<p>Aquí podrás encontrar productos sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
+	        </header>
+	        
+	        <form action="/busqueda/nombre" method="get" class="row">
+	            <div class="col-7">
+	                <input type="text" name="palabra" class="form-control" placeholder="Leche sin lactosa">
+	            </div>	
+	            <input type="submit" value="Buscar" class="btn btn-success col-1">
+	            <!-- verificar si el usuario está logeado --> 
+			    <a href="/nuevoProducto" class="btn btn-success col-2">Crear Producto</a>
+	        </form>
+	        
+        </div>
+        
+        <div class="card mb-3">
+            <div class="row g-0">
+            	<c:forEach items="${productos}" var="producto">
+            	
+	            	<div class="card" style="width: 18rem;" id="tarjeta-producto">
+	            		<div id="imagen-portada">
+		                    <c:if test="${not empty producto.imagenesPro}">
+	                        		<img alt="..." class="card-img-top" src="${producto.imagenesPro[0].url}" id="tarjeta-img-producto">          
+							</c:if>
+						</div>
+						
+					  <div class="card-body">
+					    <h5 class="card-title">${producto.nombre}</h5>
+					    <p class="card-text">${producto.descripcion}</p>
+					    <p class="card-text">$${producto.precio}</p>
+					  </div>
+					</div>
+					
+                </c:forEach>
+            </div>
+        </div>
 		
 	</div>
 	
-	<!-- Contenido de los productos como tarjetas -->
-	<div class="container mt-4">
-	    <div class="row">
-	        <!-- Primera Tarjeta -->
-			<div class="col-md-4">
-			    <div class="card mb-3">
-			        <img src="public/img/lechealmendra.jpg" class="card-img-top" alt="Producto 1">
-			        <div class="card-body">
-			            <h5 class="card-title">Leche de Almendras</h5>
-			            <p class="card-text">Información nutricional</p>
-						<div class="calificar-estrellas">
-						    <p class="star" data-value="1">★</p>
-						    <p class="star" data-value="2">★</p>
-						    <p class="star" data-value="3">★</p>
-						    <p class="star" data-value="4">★</p>
-						    <p class="star" data-value="5">★</p>
-						</div>
-			        </div>
-			    </div>
-			</div>
-	
-	        <!-- Segunda Tarjeta -->
-	        <div class="col-md-4">
-	            <div class="card mb-3">
-	            	<img src="public/img/lechealmendra.jpg" class="card-img-top" alt="Producto 2">
-	                <div class="card-body">
-	                    <h5 class="card-title">Producto 2</h5>
-	                    <p class="card-text">Información nutricional</p>
-	                </div>
-	            </div>
-	        </div>
-	
-	        <!-- Otras tarjetas se pueden agregar según sea necesario -->
-	    </div>
 	</div>
 	<!-- Footer -->
 	<footer class="bg-dark text-white py-5">

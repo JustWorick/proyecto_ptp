@@ -192,12 +192,14 @@
 	        </div>
 	        
 	        <!--Video-->
-	        <p>Mira este video de la receta paso a paso</p>
-	        <c:if test="${not empty receta.videoRec}">
-	        	<div>
-	        		${receta.videoRec.url}
-	        	</div>
-	        </c:if>
+	        <div class="video-receta">
+		        <h3>Mira este video de la receta paso a paso</h3>
+		        <c:if test="${not empty receta.videoRec}">
+		        	<div id="cuadro-video">
+		        		${receta.videoRec.url}
+		        	</div>
+		        </c:if>
+	        </div>
 	        <div>
 	        	<h3>Preparación</h3>
 	        	<p id="mostrarPreparacion">${receta.preparacion}</p>

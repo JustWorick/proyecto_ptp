@@ -102,8 +102,8 @@
 			<ul>
 				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
 				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
-				<li><a href="#">Recetas Favoritas</a></li>
-				<li><a href="#">Productos Favoritos</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
 			</ul>
 	        		
 	    </c:if>

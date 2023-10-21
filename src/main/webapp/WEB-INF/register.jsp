@@ -123,39 +123,41 @@
             
             <!--								Register												-->
             
-            <form:form action="/registro" method="post" modelAttribute="usuario" class="mb-5">
-			<div class="mb-4">
-				<form:label path="nickname" class="form-label fw-bold">Elige un Nickname</form:label>
-				<form:input path="nickname" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre de usuario"/>
-				<form:errors path="nickname" class="text-danger"/>
-			</div>
-			<div class="mb-4">
-				<form:label path="nombre" class="form-label fw-bold">Nombre</form:label>
-				<form:input path="nombre" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre"/>
-				<form:errors path="nombre" class="text-danger"/>
-			</div>
-			<div class="mb-4">
-				<form:label path="apellido" class="form-label fw-bold">Apellido</form:label>
-				<form:input path="apellido" class="form-control bg-dark-x border-0"/>
-				<form:errors path="apellido" class="text-danger"/>
-			</div>
-			<div class="mb-4">
-				<form:label path="email" class="form-label fw-bold">Email</form:label>
-				<form:input path="email" class="form-control bg-dark-x border-0" aria-describedby="emailHelp"/>
-				<form:errors path="email" class="text-danger"/>
-			</div>
-			<div class="mb-4">
-				<form:label path="password" class="form-label fw-bold">Contraseña</form:label>
-				<form:password path="password" class="form-control bg-dark-x border-0"/>
-				<form:errors path="password" class="text-danger"/>
-			</div>
-			<div class="mb-4">
-				<form:label path="confirmacion" class="form-label fw-bold">Confirma la Contraseña</form:label>
-				<form:password path="confirmacion" class="form-control bg-dark-x border-0"/>
-				<form:errors path="confirmacion" class="text-danger"/>
-			</div>
-			<input type="submit" value="Registrarme" class="btn btn-warning w-100 mb-0">
-		</form:form>
+            <div class="registro">
+	            <form:form action="/registro" method="post" modelAttribute="usuario" class="mb-5">
+				<div class="mb-4">
+					<form:label path="nickname" class="form-label fw-bold">Elige un Nickname</form:label>
+					<form:input path="nickname" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre de usuario"/>
+					<form:errors path="nickname" class="text-danger"/>
+				</div>
+				<div class="mb-4">
+					<form:label path="nombre" class="form-label fw-bold">Nombre</form:label>
+					<form:input path="nombre" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre"/>
+					<form:errors path="nombre" class="text-danger"/>
+				</div>
+				<div class="mb-4">
+					<form:label path="apellido" class="form-label fw-bold">Apellido</form:label>
+					<form:input path="apellido" class="form-control bg-dark-x border-0"/>
+					<form:errors path="apellido" class="text-danger"/>
+				</div>
+				<div class="mb-4">
+					<form:label path="email" class="form-label fw-bold">Email</form:label>
+					<form:input path="email" class="form-control bg-dark-x border-0" aria-describedby="emailHelp"/>
+					<form:errors path="email" class="text-danger"/>
+				</div>
+				<div class="mb-4">
+					<form:label path="password" class="form-label fw-bold">Contraseña</form:label>
+					<form:password path="password" class="form-control bg-dark-x border-0"/>
+					<form:errors path="password" class="text-danger"/>
+				</div>
+				<div class="mb-4">
+					<form:label path="confirmacion" class="form-label fw-bold">Confirma la Contraseña</form:label>
+					<form:password path="confirmacion" class="form-control bg-dark-x border-0"/>
+					<form:errors path="confirmacion" class="text-danger"/>
+				</div>
+				<input type="submit" value="Registrarme" class="btn btn-warning w-100 mb-0">
+			</form:form>
+		</div>
 		
 		<!-- 
             <form class="mb-5">
