@@ -33,6 +33,7 @@ import com.CodingDojo.Abraham.Modelos.Usuario;
 import com.CodingDojo.Abraham.Modelos.Video;
 import com.CodingDojo.Abraham.Servicio.Servicio;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -80,11 +81,15 @@ public class Controladores {
 	public String index(HttpSession session, Model model) {
 		List<Receta> top5Recetas = serv.buscarTop5Recetas();
 		model.addAttribute("top5Recetas", top5Recetas);
+		
+		int numero = 1;
+		session.setAttribute("num",numero);
+	
 		return "index.jsp";
 	}
 	
 	@GetMapping("/recetas")
-	public String recetas(Model model, HttpSession session) {
+	public String recetas(Model model, HttpSession session, HttpServletResponse response) {
 		
 		
 		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
@@ -92,6 +97,11 @@ public class Controladores {
 		
 		List<Receta> todasRecetas = serv.buscarTodasRecetas();
 		model.addAttribute("recetas", todasRecetas);
+		
+		// Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
 		return "recetas.jsp";
 	}
 	
@@ -142,14 +152,16 @@ public class Controladores {
 	}
 	
 	@GetMapping("/productos")
-	public String productos(Model model, HttpSession session) {
+	public String productos(Model model, HttpServletResponse response) {
 	    List<Producto> productos = serv.buscarTodosProductos();
-	    Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
-		if(userTemp == null) {
-			return "redirect:/login";
-		}
+	    
 	    model.addAttribute("productos", productos);
-	    model.addAttribute("usuarioEnSesion", userTemp);
+	    
+	 // Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+	    
 	    return "productos.jsp";
 	}
 
@@ -188,40 +200,93 @@ public class Controladores {
 	@GetMapping("perfil/editar/{id}")
 	public String editarPerfil(@PathVariable("id") Long id,
 						 	   @ModelAttribute("usuario") Usuario usuario,
-						 	   Model model) { 
-		Usuario userTemp = serv.buscarUsuario(id);
-		model.addAttribute("usuarioEnSesion", userTemp);
+						 	   Model model, HttpSession session) { 
+		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
+		
+		model.addAttribute("usuario", userTemp);
 		
 		return "editarPerfil.jsp";
 	}
 	
 	@GetMapping("/busqueda/etiqueta/{etiqueta}")
-	public String busquedaPorEtiqueta(@PathVariable("etiqueta")String etiqueta, HttpSession session, Model model) {
-		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
-		if(userTemp == null) {
-			return "redirect:/login";
-		}
+	public String busquedaPorEtiqueta(@PathVariable("etiqueta")String etiqueta, HttpSession session, Model model, HttpServletResponse response) {
+		
 		List<Receta> recetas = serv.buscarRecetaPorNombreEtiqueta(etiqueta);
 		model.addAttribute("recetas", recetas);
 		
 		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
 		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		
+		// Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
 		return "busqueda.jsp";
 	}
 	
-	@GetMapping("/busqueda/nombre")
-	public String busquedaPorNombre(@RequestParam("palabra")String nombre, HttpSession session, Model model) {
-		Usuario userTemp = (Usuario) session.getAttribute("usuarioEnSesion");
-		if(userTemp == null) {
-			return "redirect:/login";
-		}
+	@GetMapping("/busqueda/nombre/{palabra}")
+	public String busquedaPorNombre(@PathVariable("palabra")String nombre, HttpSession session, Model model, HttpServletResponse response) {
+		
 		List<Receta> recetas = serv.buscarTodasRecetasPorNombre(nombre);
 		model.addAttribute("recetas", recetas);
 		
 		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
 		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		
+		// Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
 		return "busqueda.jsp";
 	}
+	
+	@GetMapping("/busqueda/productos/{palabra}")
+	public String busquedaProductos(Model model, @PathVariable("palabra") String nombre, HttpSession session, HttpServletResponse response) {
+	    List<Producto> productos = serv.buscarTodosProductosPorNombre(nombre);
+	    
+	    model.addAttribute("productos", productos);
+	    
+	    // Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+	    
+	    return "busquedaProducto.jsp";
+	}
+	
+	@PostMapping("/busqueda/productos/nombre")
+	public String productosPost(Model model, @RequestParam("palabra") String nombre, HttpSession session, HttpServletResponse response) {
+	    List<Producto> productos = serv.buscarTodosProductosPorNombre(nombre);
+	    
+	    model.addAttribute("productos", productos);
+	    
+	    // Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+	    
+	    return "redirect:/busqueda/productos/"+nombre;
+	}
+	
+	
+	@PostMapping("/busqueda/nombre")
+	public String busquedaPorNombrePost(@RequestParam("palabra")String nombre, HttpSession session, Model model, HttpServletResponse response) {
+		List<Receta> recetas = serv.buscarTodasRecetasPorNombre(nombre);
+		model.addAttribute("recetas", recetas);
+		
+		List<String> todasEtiquetas = Arrays.asList(NombresEtiquetas.NomEtiquetas);
+		model.addAttribute("todasLasEtiquetas", todasEtiquetas);
+		
+		// Deshabilitar la caché para esta página
+	    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+		return "redirect:/busqueda/nombre/"+nombre;
+	}
+
 
 	
 	// POSTMAPPING
@@ -493,14 +558,17 @@ public class Controladores {
 			return "redirect:/login";
 		}	
 		
+		Usuario user = serv.buscarUsuario(id);
+		
 		if(result.hasErrors()) {
-			Usuario user = serv.buscarUsuario(id);
-			model.addAttribute("usuarioEnSesion", user);
-			return "editar.jsp";
+			model.addAttribute("usuario", user);
+			return "editarPerfil.jsp";
 		} else {
-			Usuario user = serv.buscarUsuario(id);
-			serv.guardarUsuario(user);
-			return "redirect:/perfil";
+
+			serv.guardarUsuario(usuario);
+			Usuario userTemp2 = serv.buscarUsuario(id);
+			session.setAttribute("usuarioEnSesion", userTemp2);
+			return "redirect:/perfil/"+id;
 		}
 	}
 

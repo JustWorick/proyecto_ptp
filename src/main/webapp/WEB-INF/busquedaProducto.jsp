@@ -12,8 +12,8 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style/productos.css?1">
-<link rel="stylesheet" type="text/css" href="style/sidebar.css?1">
+<link rel="stylesheet" type="text/css" href="/style/productos.css?2">
+<link rel="stylesheet" type="text/css" href="/style/sidebar.css?2">
 <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -177,13 +177,13 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	            <div class="col-md-4">
 	                <h5>Redes Sociales</h5>
 	                <a href="https://facebook.com/tuempresa" target="_blank">
-	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                    <img src="/public/img/facebook_logo.png?3" alt="Facebook" width="30" height="30">
 	                </a>
 	                <a href="https://twitter.com/tuempresa" target="_blank">
-	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                    <img src="/public/img/twitter_logo.png?3" alt="Twitter" width="30" height="30">
 	                </a>
 	                <a href="https://instagram.com/tuempresa" target="_blank">
-	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                    <img src="/public/img/instagram_logo.png?3" alt="Instagram" width="30" height="30">
 	                </a>
 	            </div>
 	        </div>
@@ -197,9 +197,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	    </div>
 	</footer>
 
-    <script src="js/sidebar.js?1"></script>
-     <script src="js/index.js?1"></script>
+    <script src="/js/sidebar.js?2"></script>
+     <script src="/js/index.js?2"></script>
 </body>
 </html>
-
-

@@ -13,8 +13,8 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style/recetas.css">
-<script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/style/recetas.css?${num}">
+<script src="https://kit.fontawesome.com/c6f3fdb2bb.js?${num}" crossorigin="anonymous"></script>
 </head>
 <body>
     <!--Nav-->
@@ -122,7 +122,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	        	<p>Aquí podrás encontrar recetas sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
 	        </header>
 	        
-	        <form action="/busqueda/nombre" method="get" class="row">
+	        <form action="/busqueda/nombre" method="post" class="row">
 	            <div class="col-7">
 	                <input type="text" name="palabra" class="form-control" placeholder="Hotcakes sin gluten">
 	            </div>	
@@ -210,6 +210,6 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	        </div>
 	    </div>
 	</footer>
-	<script src="js/sidebar.js"></script>
+	<script src="/js/sidebar.js"></script>
 </body>
 </html>

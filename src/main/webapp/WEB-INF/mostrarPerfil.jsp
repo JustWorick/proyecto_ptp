@@ -180,7 +180,7 @@
 	        </div>
 	    </div>
 	</footer>
-	<script src="js/sidebar.js"></script>
-    <script src="js/index.js"></script>
+	<script src="/js/sidebar.js"></script>
+    <script src="/js/index.js"></script>
    </body>
 </html>

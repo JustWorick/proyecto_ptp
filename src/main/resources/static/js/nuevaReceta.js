@@ -23,6 +23,7 @@ $(document).ready(function() {
 });
 */
 
+
 let padre = document.getElementById("ingredientes");
 const addButton = document.getElementById("add");
 const removeButton = document.getElementById("remove");
@@ -52,12 +53,20 @@ function add(){
 
 function remove(){
 	let divs = padre.getElementsByTagName("div");
-	if(divs.length > 1){
+	if(divs.length > 2){
         padre.removeChild(divs[divs.length - 1]);
 	}
 }
 
+document.getElementById("add").addEventListener("click", function (e) {
+  e.preventDefault();
+  add();
+});
 
+document.getElementById("remove").addEventListener("click", function (e) {
+  e.preventDefault();
+  remove();
+});
 
 
 //addButton.addEventListener("click",add());

@@ -122,10 +122,12 @@
 	
 					<div class="container-editar-perfil">
 						<div class="d-flex justify-content-evenly">
-							<form:form action="/actualizar/${usuarioEnSesion.id}" method="post" modelAttribute="usuario" >
+							
+							<form:form action="/perfil/actualizar/${usuarioEnSesion.id}" method="post" modelAttribute="usuario" >
+							
 								<h2>Editar Usuario</h2>
 									<!-- Sobreescribimos el método -->
-								<input type="hidden" name="_method" value="PUT">
+								<input type="hidden" name="_method" value="put">
 								<div>
 										<form:label path="nickname" >Nickname:</form:label>
 										<form:input path="nickname" class="form-control" />
@@ -142,32 +144,15 @@
 										<form:errors path="apellido" class="text-danger" />
 								</div>
 								<div>
-										<form:label path="email" >E-mail:</form:label>
-										<form:input type="email" path="email" class="form-control" />
-										<form:errors path="email" class="text-danger" />
+										<form:label path="region" >Region:</form:label>
+										<form:input path="region" class="form-control" />
+										<form:errors path="region" class="text-danger" />
 								</div>
-								<div>
-										<form:label path="password" >Password:</form:label>
-										<form:password path="password" class="form-control" />
-										<form:errors path="password" class="text-danger" />
-								</div>
-								
-								
-								<!--  Opcion para cambiar la region
-								
-								
-								<div>
-										<form:label path="region">Región</form:label>
-										<form:select path="region" class="form-select">
-											<c:forEach items="${region}" var="region">
-												<form:option value="${region.id}">${region.nombre}</form:option>
-											</c:forEach>
-										</form:select>
-								</div>
-								
-								-->
-								
-								<a href="/perfil/actualizar/${usuarioEnSesion.id}"  ><input type="submit" value="Guardar" class="btn btn-success mt-3" /></a>
+								<form:hidden path="id" value="${usuarioEnSesion.id}"/>
+								<form:hidden path="email" value="${usuarioEnSesion.email}"/>
+								<form:hidden path="password" value="${usuarioEnSesion.password}"/>
+								<form:hidden path="confirmacion" value="${usuarioEnSesion.password}"/>
+								<input type="submit" value="Guardar" class="btn btn-success mt-3" />
 							</form:form>
 						</div>
 					</div>
@@ -191,13 +176,13 @@
 	            <div class="col-md-4">
 	                <h5>Redes Sociales</h5>
 	                <a href="https://facebook.com/tuempresa" target="_blank">
-	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                    <img src="/public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
 	                </a>
 	                <a href="https://twitter.com/tuempresa" target="_blank">
-	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                    <img src="/public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
 	                </a>
 	                <a href="https://instagram.com/tuempresa" target="_blank">
-	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                    <img src="/public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
 	                </a>
 	            </div>
 	        </div>
@@ -210,7 +195,7 @@
 	        </div>
 	    </div>
 	</footer>
-	<script src="js/sidebar.js"></script>
-    <script src="js/index.js"></script>
+	<script src="/js/sidebar.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

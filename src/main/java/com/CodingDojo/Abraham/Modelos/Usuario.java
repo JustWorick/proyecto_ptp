@@ -54,8 +54,6 @@ public class Usuario {
 	private String password;
 	
 	@Transient
-	@NotEmpty(message="Este campo no puede estar vacio")
-	@Size(min=6,message="La confirmacion debe tener al menos 6 caracteres")
 	private String confirmacion;
 	
 	private String region;

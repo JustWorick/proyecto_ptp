@@ -155,14 +155,14 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 			
 			<div id="ingredientes">
 				<p>Ingredientes:</p>
+            	<div class="añadir-quitar-ingrediente">
+					<button class="btn btn-warning" type="button" onclick="add()" id="add">Añadir Ingrediente</button>
+					<button class="btn btn-warning" type="button" onclick="remove()" id="remove">Quitar Ingrediente</button>
+				</div>
             	<div class="nombre-cantidad-ingrediente">
 	            	<input type="text" name="nombreIng[]"  placeholder="Ingrediente" class="form-control">
 	            	<input type="text" name="cantidad[]" placeholder="Cantidad" class="form-control">
             	</div>
-            	<div class="añadir-quitar-ingrediente">
-					<button class="btn btn-warning" onclick="add()" id="add">Añadir Ingrediente</button>
-					<button class="btn btn-warning"  onclick="remove()" id="remove">Quitar Ingrediente</button>
-				</div>
             </div>
 			
             <div>

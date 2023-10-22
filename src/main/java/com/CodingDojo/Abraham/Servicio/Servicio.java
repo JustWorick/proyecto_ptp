@@ -153,6 +153,10 @@ public class Servicio {
 		return rPro.findAll();
 	}
 	
+	public List<Producto> buscarTodosProductosPorNombre(String nombre){
+		return rPro.findAllByNombreContains(nombre);
+	}
+	
 	public List<Producto> buscarTodosProductosPorCreador(Long id){
 		return rPro.findAllByCreadorProductoId(id);
 	}

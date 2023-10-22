@@ -13,8 +13,8 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style/recetas.css">
-<script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/style/recetas.css?${num}">
+<script src="https://kit.fontawesome.com/c6f3fdb2bb.js?${num}" crossorigin="anonymous"></script>
 </head>
 <body>
     <!--Nav-->
@@ -85,21 +85,33 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
     
     <!--SIDEBAR--> 
     <!-- Elemento con la clase sidebar que contiene el contenido de la barra lateral -->
-    <div class="sidebar">
-        <h5>¡Hola ${usuarioEnSesion.nombre}!</h5>
-        <ul>
-            <li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
-            <li><a href="#">Mis recetas</a></li>
-            <li><a href="#">Recetas Favoritas</a></li>
-            <li><a href="#">Productos Favoritos</a></li>
-        </ul>
-    </div>
-
-    <!-- Elemento con la clase sidebar-toggle que sirve para mostrar u ocultar la barra lateral -->
-    <div class="sidebar-toggle">☰</div>
-
-    <!-- Etiqueta script que enlaza el archivo js que contiene el código JavaScript -->
-    <script src="js/recetas.js"></script>
+	<div class="sidebar">
+		
+		<c:if test="${usuarioEnSesion == null}">
+			<h4>¡Hola!</h4>
+			<h5>Bienvenid@ a .Life</h5>
+			<div class="botones-inicio-sesion">
+				<a href="/login" class="btn btn-success">Inicia Sesión</a>
+				<a href="/registro" class="btn btn-warning">Regístrate</a>
+			</div>
+		</c:if>
+	        
+	    <c:if test="${usuarioEnSesion != null}">
+	    	<h5>¡Hola ${usuarioEnSesion.nickname}!</h5>
+			<ul>
+				<li><a href="perfil/${usuarioEnSesion.id}">Perfil</a></li>
+				<li><a href="/misRecetas/${usuarioEnSesion.id}">Mis recetas</a></li>
+				<li><a href="/misProductos/${usuarioEnSesion.id}">Productos publicados</a></li>
+				<li><a href="/nuevaReceta">Crear Receta</a></li>
+				<li><a href="/nuevoProducto">Publicar Producto</a></li>
+			</ul>
+	        		
+	    </c:if>
+	    
+	    <div class="close-button">X</div>
+	</div>
+	
+	<div class="sidebar-toggle">☰</div>
 
 
 	<div class="contenido">
@@ -110,7 +122,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	        	<p>Aquí podrás encontrar recetas sin gluten, sin lactosa, veganas y muchas otras opciones que se adapten a tu estilo de vida y alimentación</p>
 	        </header>
 	        
-	        <form action="/busqueda/nombre" method="get" class="row">
+	        <form action="/busqueda/nombre" method="post" class="row">
 	            <div class="col-7">
 	                <input type="text" name="palabra" class="form-control" placeholder="Hotcakes sin gluten">
 	            </div>	
@@ -145,7 +157,11 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 		                        	</c:forEach>
 	                        	</c:if>
 								<p class="card-text"><small class="text-body-secondary">Porciones: ${receta.porciones}</small></p>
-								<p class="card-text"><small class="text-body-secondary">Valoración: <meter class="average-rating" min="0" max="5" value="4.3" title="4.3 out of 5 stars">4.3 de 5</meter></small></p>
+								<p class="card-text">
+									<small class="text-body-secondary">
+										Valoración: <meter class="average-rating" min="0" max="5" value="${receta.valoracionFinal}" title="${receta.valoracionFinal} out of 5 stars">${receta.valoracionFinal} out of 5</meter>
+									</small>
+								</p>
 			                        <!-- cambiar value="${receta.valoracionFinal}" title="${receta.valoracionFinal}..." ${receta.valoracionFinal} de 5 -->
 								
 								<p class="card-text">${receta.descripcion}</p>
@@ -175,13 +191,13 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	            <div class="col-md-4">
 	                <h5>Redes Sociales</h5>
 	                <a href="https://facebook.com/tuempresa" target="_blank">
-	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
+	                    <img src="/public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
 	                </a>
 	                <a href="https://twitter.com/tuempresa" target="_blank">
-	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
+	                    <img src="/public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
 	                </a>
 	                <a href="https://instagram.com/tuempresa" target="_blank">
-	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
+	                    <img src="/public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
 	                </a>
 	            </div>
 	        </div>
@@ -194,6 +210,6 @@ uri="http://www.springframework.org/tags/form" %> <%@ page isErrorPage="true" %>
 	        </div>
 	    </div>
 	</footer>
-	<script src="js/sidebar.js"></script>
+	<script src="/js/sidebar.js?1"></script>
 </body>
 </html>
