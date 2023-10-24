@@ -27,37 +27,56 @@
 	transform: scale(1.2);
 }
 
+.bg-custom {
+    background-color: #7aac0b;
+}
+
 .carousel-item {
-  height: 400px;
+    height: 100%;
 }
 
 .carousel-item img {
-  height: 100%;
-  object-fit: cover;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item.active .card img {
+    height: 400px;
+    object-fit: cover;
 }
 
 .segundo-carrusel {
-	margin: 0 auto;
-	background-color: rgba(245, 245, 245, 0.7);
+    margin: 0 auto;
+    background-color: rgba(245, 245, 245, 0.7);
 }
-/* Estilos para el carrusel de tarjetas */
+
 .cards-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
+.cards-wrapper .card {
+    flex: 0 0 calc(33.33% - 10px);
+    margin: 5px;
+}
 
-section .card {
-	margin: 5px 10px
+.card-title,
+.card-text,
+.card-body a.btn {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.card-body a.btn {
+    display: block;
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .texto-eslogan {

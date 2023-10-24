@@ -11,9 +11,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
 
-     <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c6f3fdb2bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style/index.css" />
-       <link rel="stylesheet" href="/style/sidebar.css" />
+    <link rel="stylesheet" href="/style/sidebar.css" />
+   	<link rel="stylesheet" href="/style/footer.css" />
    	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -143,7 +144,6 @@
 		</a>
 	</div>
 	
-	</section>
 	<section class="texto-eslogan">
 	    <h1>.Life</h1>
 	    <h4>Cocina Inclusiva: Recetas y Productos para todos</h4>
@@ -161,87 +161,165 @@
 	    <h2>Recetas Destacadas</h2>
 	    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark">
 	        <div class="carousel-inner">
-	            <div class="carousel-item active">
+	            <!-- Conjunto 1 -->
+				<div class="carousel-item active">
+				    <div class="cards-wrapper">
+				        <!-- Tarjeta 1 -->
+				        <div class="card" style="width: 30%;">
+				            <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="Chocolate Bonbons">
+				            <div class="card-body">
+				                <h5 class="card-title">Bombones Veganos</h5>
+				                <p class="card-text">Deliciosos bombones de chocolate con aceite de coco y cacao en polvo.</p>
+				                <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+				            </div>
+				        </div>
+				        
+				        <!-- Tarjeta 2 -->
+				        <div class="card" style="width: 30%;">
+				            <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="Mini Tartas">
+				            <div class="card-body">
+				                <h5 class="card-title">Mini Tartas Sin Gluten</h5>
+				                <p class="card-text">Deliciosas mini tartas para disfrutar sin gluten con harina de arroz.</p>
+				                <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+				            </div>
+				        </div>
+				        
+				        <!-- Tarjeta 3 -->
+				        <div class="card" style="width: 30%;">
+				            <img src="public/img/cheesecake.jpg" class="card-img-top" alt="Cheesecake Frutos Rojos">
+				            <div class="card-body">
+				                <h5 class="card-title">Cheesecake Vegano de Frutos Rojos</h5>
+				                <p class="card-text">Un cheesecake vegano suave y cremoso, sin lácteos ni ingredientes de origen animal.</p>
+				                <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+	            
+	            <!-- Conjunto 2 -->
+	            <div class="carousel-item">
 	                <div class="cards-wrapper">
-	                    <div class="card" style="width: 18rem;">
-	                        <img src="public/img/chocolate-bonbons.jpg" class="card-img-top" alt="Chocolate Bonbons">
+	                    <!-- Tarjeta 4 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/ensalada.jpg" class="card-img-top" alt="Ensalada Caprese">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Bombones Veganos</h5>
-	                            <p class="card-text">Deliciosos bombones de chocolate con aceite de coco y cacao en polvo.</p>
-	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                            <h5 class="card-title">Ensalada Caprese</h5>
+	                            <p class="card-text">Tomates, mozzarella fresca y albahaca se combinan en esta ensalada clásica.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                    
+	                    <!-- Tarjeta 5 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/sopa.jpg" class="card-img-top" alt="Sopa Calabaza">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Sopa de Calabaza</h5>
+	                            <p class="card-text">Calabaza asada, caldo de verduras y crema se unen en esta reconfortante sopa.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                    
+	                    <!-- Tarjeta 6 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/rollitos.jpg" class="card-img-top" alt="Rollitos Primavera">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Rollitos de Primavera</h5>
+	                            <p class="card-text">Vegetales frescos envueltos en papel de arroz y servidos con una salsa de cacahuate y jengibre.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
 	                        </div>
 	                    </div>
 	                </div>
 	            </div>
+	            
+	            <!-- Conjunto 3 -->
 	            <div class="carousel-item">
 	                <div class="cards-wrapper">
-	                    <div class="card" style="width: 18rem;">
-	                        <img src="public/img/mini-tartas.jpg" class="card-img-top" alt="Mini Tartas">
+	                    <!-- Tarjeta 7 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/bowlbatata.jpg" class="card-img-top" alt="Bowl Batata">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Mini Tartas sin gluten</h5>
-	                            <p class="card-text">Deliciosas mini tartas para disfrutar sin gluten con harina de arroz.</p>
-	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                            <h5 class="card-title">Bowl de Batata y Garbanzos</h5>
+	                            <p class="card-text">Batatas asadas, garbanzos crujientes y espinacas frescas se combinan en este bowl nutritivo.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
 	                        </div>
 	                    </div>
-	                </div>
-	            </div>
-	            <div class="carousel-item">
-	                <div class="cards-wrapper">
-	                    <div class="card" style="width: 18rem;">
-	                        <img src="public/img/vegetables.jpg" class="card-img-top" alt="Vegetales">
+	                    
+	                    <!-- Tarjeta 8 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/currylentejas.jpg" class="card-img-top" alt="Curry Lentejas">
 	                        <div class="card-body">
-	                            <h5 class="card-title">Hamburquesa Vegetariana</h5>
-	                            <p class="card-text">Hamburguesa de legumbres y especias.</p>
-	                            <a href="#" class="btn btn-primary">Ver Receta</a>
+	                            <h5 class="card-title">Curry de Lentejas</h5>
+	                            <p class="card-text">Lentejas cocinadas a fuego lento en una mezcla de especias aromáticas y leche de coco cremosa.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
+	                        </div>
+	                    </div>
+	                    
+	                    <!-- Tarjeta 9 -->
+	                    <div class="card" style="width: 30%;">
+	                        <img src="public/img/hamburguesaporotos.jpg" class="card-img-top" alt="Hanburguesa Porotos">
+	                        <div class="card-body">
+	                            <h5 class="card-title">Hamburguesas de Frijoles Negros</h5>
+	                            <p class="card-text">Hamburguesas hechas con frijoles negros, maíz y avena, sazonadas con especias.</p>
+	                            <a href="#" class="btn bg-custom text-white">Ver Receta</a>
 	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
+	        
 	        <button class="carousel-control-prev" type="button">
 	            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 	            <span class="visually-hidden">Previous</span>
 	        </button>
+	        
 	        <button class="carousel-control-next" type="button">
 	            <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	            <span class="visually-hidden">Next</span>
 	        </button>
 	    </div>
 	</section>
+
 	
-    <!-- Footer -->
+ 	<!-- Footer -->
 	<footer class="bg-dark text-white py-5">
 	    <div class="container">
 	        <div class="row">
-	            <div class="col-md-4">
+	            <div class="col-md-4 mb-4 text-center text-md-left justify-content-between">
 	                <h5>Contacto</h5>
 	                <p>Teléfono: +56 123 456 789</p>
 	                <p>Email: info@lifediet.com</p>
-	                <p>Dirección: Caupolicán #263, Concepción, Región del Biobío, Chile</p> <!-- Dirección Falsa -->
+	                <p>Dirección: Caupolicán #263, Concepción, Región del Biobío, Chile</p>
+	                <p>Horario de atención: Lunes a Viernes, 9am - 5pm</p>
 	            </div>
-	            <div class="col-md-4">
+	            <div class="col-md-4 mb-4 text-center text-md-left justify-content-between">
 	                <h5>Quiénes Somos</h5>
-	                <p>Descubre más sobre <a href="/quienes_somos">quiénes somos</a>.</p>
-	                <p>Explora nuestra <a href="/vision">visión</a> y <a href="/mision">misión</a>.</p>
+	                <p>Descubre más sobre <a href="/quienes_somos" class="text-white">quiénes somos</a>.</p>
+	                <p>Explora nuestra <a href="/vision" class="text-white">visión</a> y <a href="/mision" class="text-white">misión</a>.</p>
 	            </div>
-	            <div class="col-md-4">
+	            <div class="col-md-4 mb-4 text-center text-md-left justify-content-between">
 	                <h5>Redes Sociales</h5>
-	                <a href="https://facebook.com/tuempresa" target="_blank">
-	                    <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30">
-	                </a>
-	                <a href="https://twitter.com/tuempresa" target="_blank">
-	                    <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30">
-	                </a>
-	                <a href="https://instagram.com/tuempresa" target="_blank">
-	                    <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30">
-	                </a>
+	                <p>
+	                    <a href="https://facebook.com/tuempresa" target="_blank" class="text-white">
+	                        <img src="public/img/facebook_logo.png" alt="Facebook" width="30" height="30"> BETTERLIFECHILE
+	                    </a>
+	                </p>
+	                <p>
+	                    <a href="https://twitter.com/tuempresa" target="_blank" class="text-white">
+	                        <img src="public/img/twitter_logo.png" alt="Twitter" width="30" height="30"> BETTERLIFECHILE
+	                    </a>
+	                </p>
+	                <p>
+	                    <a href="https://instagram.com/clubbetterlifetv" target="_blank" class="text-white">
+	                        <img src="public/img/instagram_logo.png" alt="Instagram" width="30" height="30"> BETTERLIFECHILE
+	                    </a>
+	                </p>
 	            </div>
 	        </div>
-	        <div class="row mt-3">
-	            <div class="col">
-	                <a href="/quienes_somos">Quiénes Somos</a> |
-	                <a href="/ubicacion">Ubicación</a> |
-	                <a href="/equipo">Nuestro Equipo</a>
+	        <div class="row">
+	            <div class="col text-center">
+	                <a href="/quienes_somos" class="text-white mx-2">Quiénes Somos</a> |
+	                <a href="/ubicacion" class="text-white mx-2">Ubicación</a> |
+	                <a href="/equipo" class="text-white mx-2">Nuestro Equipo</a>
 	            </div>
 	        </div>
 	    </div>
