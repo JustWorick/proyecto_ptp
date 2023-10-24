@@ -145,14 +145,14 @@
 	</div>
 	
 	<section class="texto-eslogan">
-	    <h1>.Life</h1>
+	    <h1>better.Life</h1>
 	    <h4>Cocina Inclusiva: Recetas y Productos para todos</h4>
 	    <p class="primer-parrafo">
 	        ¿Te gustaría disfrutar de la cocina sin preocuparte por las restricciones alimentarias? ¿Quieres encontrar recetas y productos que se adapten a tus necesidades y preferencias?</p>
 			
-		<h3>¡Te invitamos a conocer .Life! Un espacio creado para ti</h3>
+		<h3>¡Te invitamos a conocer better.Life! Un espacio creado para ti</h3>
 			        
-	    <p>En .Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a .Life, el lugar donde la cocina es para todos.
+	    <p>En better.Life podrás acceder a una gran variedad de opciones gastronómicas que respetan tu estilo de vida, ya sea gluten free, sin lactosa, vegano, o cualquier otro. Además, podrás compartir tus propias recetas, productos y experiencias con una comunidad de personas que te comprenden y apoyan. No esperes más y únete a better.Life, el lugar donde la cocina es para todos.
 	    </p>
 	</section>
 	
